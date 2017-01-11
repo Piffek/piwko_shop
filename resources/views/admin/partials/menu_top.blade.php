@@ -1,4 +1,3 @@
-      
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -34,7 +33,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+               <h3>{{ $new_user }}</h3>
 
               <p>User Registrations</p>
             </div>
