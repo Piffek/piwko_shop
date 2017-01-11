@@ -11,17 +11,25 @@ use Carbon\Carbon;
 class AdminController extends Controller
 {
 	
-	public function newUser()
+	public function index()
 	{
-		$current = Carbon::now();
-		$current = new Carbon();
-		
-		$today = $current->toDateString();
-		$new_user = User::where('created_at', $today)->count();  
-		return view('admin.index', compact('new_user'));
+		return view('admin.index');
 	}
-
-
+	
+	public function ViewNewUser()
+	{
+		
+	}
+	
+	public function ViewNewOrder()
+	{
+		
+	}
+	
+	public function ViewNewOrderFronSingOff()
+	{
+		
+	}
 
 
 
