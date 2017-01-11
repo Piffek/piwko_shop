@@ -94,7 +94,7 @@ Route::group([
 		'roles' => ['Admin']
 ], function() {
 	
-	Route::get('/admin','AdminController@newUser');
+	Route::get('/admin','AdminController@index');
 	
 	
 });
