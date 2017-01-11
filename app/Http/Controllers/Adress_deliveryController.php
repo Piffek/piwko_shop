@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Add_adress_delivery;
+use Session;
+use Illuminate\Support\Facades\Auth;
+
+class Adress_deliveryController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+    	$add_adress = Add_adress_delivery::whereid_user(Auth::user()->id)->get();
+    	return view('add_adress_delivery.index',compact('add_adress'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+    	//$dane = User::find(Auth::user()->id);
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+    	$new_adress = new Add_adress_delivery;
+    	$new_adress ->  id_user = $request-> input('id_user');
+    	$new_adress ->  city = $request-> input('city');
+    	$new_adress -> street = $request-> input('street');
+    	$new_adress -> phone = $request-> input('phone');
+    	$new_adress -> save();
+    	//return back()->with('status', 'Zmieniono dane.');
+    	Session::flash('success','Dodano Nowy adres.');
+    	return redirect()->action('Adress_deliveryController@index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+    	$delete_adres = Add_adress_delivery::find($id);
+    	$delete_adres->delete();
+    	return back()->with('status', 'Usunięto.');
+    }
+}
