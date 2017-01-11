@@ -3,9 +3,9 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3>{{ $new_order }}</h3>
 
-              <p>New Orders</p>
+              <p>Nowych zamówień</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -18,9 +18,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>{{ $new_order_from_singoff }}</h3>
 
-              <p>Bounce Rate</p>
+              <p>Zamówień od niezalogowanych</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -35,12 +35,12 @@
             <div class="inner">
                <h3>{{ $new_user }}</h3>
 
-              <p>User Registrations</p>
+              <p>Nowi użytkownicy</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Więcej informacji <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
