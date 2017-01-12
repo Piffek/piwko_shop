@@ -28,7 +28,6 @@ class DealController extends Controller
     	
     	->with(compact('data_deals'));
     	
-    	
     }
 
     /**
