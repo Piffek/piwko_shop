@@ -13,7 +13,9 @@
 
 Route::get('/', 'Strona_domowaController@index');
 
-
+/*Route::get('/', function () {
+	return 'Laravel5';
+});*/
 
 	Route::get('koszyk_goscia', ['uses' => 'ProductController@getBasket']);
 	Route::get('koszyk_goscia',[
