@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use View;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Add_adress_delivery;
@@ -17,14 +18,16 @@ class DealController extends Controller
      */
     public function index()
     {	
-    	/*$data_deals_join = DB::table('users')
-    	->join('add_adress_delivery', 'users.id', '=', 'add_adress_delivery.id_user')
-    	->select('users.surname','add_adress_delivery.id_user')
-    	->whereid_user(Auth::user()->id)
-    	->get();*/
+
     	$data_users = User::whereid(Auth::user()->id)->get();
     	$data_deals = Add_adress_delivery::whereid_user(Auth::user()->id)->get();
-    	return view('transakcja',compact('data_users'),compact('data_deals'));
+    	
+    	return View::make('transakcja')
+    	
+    	->with(compact('data_users'))
+    	
+    	->with(compact('data_deals'));
+    	
     	
     }
 
