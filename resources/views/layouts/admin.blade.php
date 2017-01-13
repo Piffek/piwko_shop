@@ -374,7 +374,7 @@
 <script src="{{ url('/admin/admin_layout/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
 <script src="{{ url('/admin/admin_layout/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <!-- jQuery Knob Chart -->
-<script src="/{{ url('admin/admin_layout/plugins/knob/jquery.knob.js') }}"></script>
+<script src="{{ url('admin/admin_layout/plugins/knob/jquery.knob.js') }}"></script>
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="{{ url('/admin/admin_layout/plugins/daterangepicker/daterangepicker.js') }}"></script>
