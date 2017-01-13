@@ -8,7 +8,7 @@
         <h3>Nick: {{ $new_users_today -> name }}</h3>
         <h3>Imie i nazwisko: {{ $new_users_today -> surname }}</h3>
 
-        <p><a href="#" class="btn btn-primary" role="button">Zobacz zamówienia</a>
+        <p><a href="{{url('/admin/orders_this_customers/'.$new_users_today->id.'')}}" class="btn btn-primary" role="button">Zobacz zamówienia</a> <a href="#" class="btn btn-primary" role="button">Zarządzaj użytkownikiem</a>
       </div>
     </div>
   </div>
