@@ -1,7 +1,7 @@
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <li class="active treeview">
-          <a href="{{url('/admin')}}">
+          <a href="{{url('/admin/strona_domowa')}}">
             <i class="fa fa-dashboard"></i> <span>Strona domowa</span>
           </a>
           
