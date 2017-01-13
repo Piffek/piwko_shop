@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Koszyks extends Model
 {
 	protected $fillable = [
-			'id_produktu', 'cena', 'ilosc', 'id_user'
+			'id_produktu','product', 'cena', 'ilosc', 'id_user'
 	];
 	
 	protected $hidden = [

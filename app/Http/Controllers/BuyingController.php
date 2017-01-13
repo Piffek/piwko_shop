@@ -19,11 +19,12 @@ class BuyingController extends Controller
      */
     public function index()
     {
-    	$buying = DB::table('items')
+    	/*$buying = DB::table('items')
     	->join('buyings', 'items.id', '=', 'buyings.id_produktu')
     	->select('items.produkt','buyings.ilosc','buyings.cena','buyings.id','buyings.id_produktu','buyings.created_at')
     	->whereid_user(Auth::user()->id)
-    	->get();
+    	->get();*/
+    	$buying = Buyings::where('id_user',Auth::user()->id)->get();
     	
     	
     	//$buying = Buyings::whereid_user(Auth::user()->id)->get();
@@ -50,6 +51,7 @@ class BuyingController extends Controller
     	{
     		$add_buyings = new Buyings;
     		$add_buyings -> id_produktu = $koszyks['id_produktu'];
+    		$add_buyings -> product = $koszyks['product'];
     		$add_buyings-> cena = $koszyks['cena'];
     		$add_buyings -> ilosc = $koszyks['ilosc'];
     		$add_buyings -> id_user = Auth::user()->id;
