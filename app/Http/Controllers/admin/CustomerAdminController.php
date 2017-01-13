@@ -17,17 +17,28 @@ class CustomerAdminController extends Controller
      */
     public function index()
     {
+
+    	$all_users = User::all();
+    		
+    	return view('admin.customers.customers',compact('all_users'));
+    }
+    
+    
+    public function ViewNewUser()
+    {
     	$current = Carbon::now();
     	$current = new Carbon();
+    
     		
-    	
-    		
+    
     	$today = $current->toDateString();
-    	$new_user = User::where('created_at', $today)->get();
-    		
-    	//return view('admin.index',compact('new_user'),compact('new_order'),compact('new_order_from_singoff'));
-    	return view('admin.customers',compact('new_user'));
+
+    	$new_users_todays = User::where('created_at', $today)->get();
+    
+    	return view('admin.customers.new_customers',compact('new_users_todays'));
+    
     }
+    
 
     /**
      * Show the form for creating a new resource.
