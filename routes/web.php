@@ -11,6 +11,12 @@
 |
 */
 
+
+//@Admin page
+
+
+
+
 Route::get('/', 'Strona_domowaController@index');
 
 /*Route::get('/', function () {
@@ -97,6 +103,7 @@ Route::group([
 ], function() {
 	
 	Route::get('/admin','AdminController@index');
+	Route::get('/admin/customers', 'Admin\CustomerAdminController@index');
 	
 	
 });
