@@ -127,11 +127,16 @@ Route::get('/pdf/{id}', function ($id) {
 			['id_user','=',Auth::user()->id]
 	])->get();*/
 	
-	$buying = DB::table('buyings')
+	/*$buying = DB::table('buyings')
 	->join('items', 'buyings.id_produktu', '=', 'items.id')
 	->select('items.produkt','buyings.*')
-	->where([
+	->->where([
 			['buyings.id','=',$id],
+			['id_user','=',Auth::user()->id]
+	])->get();*/
+	
+	$buying = App\Buyings::where([
+			['id','=',$id],
 			['id_user','=',Auth::user()->id]
 	])->get();
 	
