@@ -40,7 +40,7 @@
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">Więcej informacji <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('/admin/new_customers')}}" class="small-box-footer">Zobacz <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
