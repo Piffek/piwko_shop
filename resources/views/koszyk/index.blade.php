@@ -30,7 +30,7 @@
 	
 				@foreach($koszyk as $koszyks)
 					<tbody>
-					   	<td>{{$koszyks->produkt}}</td>
+					   	<td>{{$koszyks->product}}</td>
 						<td>{{$koszyks->cena}}</td>
 						<td>{{$koszyks->ilosc}}</td>
 						<td><form method="POST" action="/koszyk/destroy/{{$koszyks->id}}">

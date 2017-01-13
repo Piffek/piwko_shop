@@ -32,7 +32,7 @@
 					  	</thread>
 						@foreach($buying as $buyings)
 							<tbody>
-							   	<td>{{$buyings->produkt}}</td>
+							   	<td>{{$buyings->product}}</td>
 								<td>{{$buyings->cena}}</td>
 								<td>{{$buyings->ilosc}}</td>
 								<td>{{$buyings->created_at}}</td>

@@ -63,7 +63,7 @@
             <tr>
             
                 <td>{!!$item->id!!}</td>
-                <td>{!!$item->produkt!!}</td>
+                <td>{!!$item->product!!}</td>
                 <td></td>
                 <td>{!!$item->ilosc!!}</td>
                 <td></td>

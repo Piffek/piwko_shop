@@ -17,6 +17,7 @@
 					Ilosc:
 					<form method="post" action="/koszyk/store">
 					{!! csrf_field() !!}
+					<input hidden name="product" value="{{$items->produkt}}"></td></tr>
 					<input hidden name="cena" value="{{$items->cena}}"></td></tr>
 					<input hidden name="id_produktu" value="{{$items->id}}"></td></tr>
 					<input hidden name="id_user" value="{{$koszyk}}"></td></tr>
