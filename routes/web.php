@@ -102,7 +102,7 @@ Route::group([
 		'roles' => ['Admin']
 ], function() {
 	
-	Route::get('/admin','AdminController@index');
+	Route::get('/admin/strona_domowa','AdminController@index');
 	Route::get('/admin/customers', 'Admin\CustomerAdminController@index');
 	
 	
