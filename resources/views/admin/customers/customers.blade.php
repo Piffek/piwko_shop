@@ -9,7 +9,7 @@
         <h3>Imie i nazwisko: {{ $all_user -> surname }}</h3>
 
        <p><a href="{{url('/admin/orders_this_customers/'.$all_user->id.'')}}" class="btn btn-primary" role="button">Zobacz zamówienia</a> 
-       <a href="{{url('/admin/edit_customers/'.$all_user->id.'')}}" class="btn btn-primary" role="button">Zarządzaj użytkownikiem</a>
+       <a href="{{url('/admin/show_one_customers/'.$all_user->id.'')}}" class="btn btn-primary" role="button">Zarządzaj użytkownikiem</a>
       </div>
     </div>
   </div>
