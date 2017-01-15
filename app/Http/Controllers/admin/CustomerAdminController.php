@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use View;
 use Carbon\Carbon;
+use Session;
 
 class CustomerAdminController extends Controller
 {
@@ -37,6 +38,13 @@ class CustomerAdminController extends Controller
     
     	return view('admin.customers.new_customers',compact('new_users_todays'));
     
+    }
+    
+    public function showOneCustomers($user_id)
+    {
+    	$users = User::where('id', $user_id)->get();
+    	return view('admin.customers.show_one_customers',compact('users'));
+    	 
     }
     
     public function editCustomers($user_id)
@@ -97,9 +105,21 @@ class CustomerAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-        //
+    	$user= User::find($user_id);
+        $user -> name = $request -> input('name');
+        $user -> surname = $request -> input('surname');
+        $user -> email = $request -> input('email');
+        $user -> street = $request -> input('street');
+        $user -> city = $request -> input('city');
+        $user -> phone = $request -> input('phone');
+        $user -> companyname = $request -> input('companyname');
+        $user -> nip = $request -> input('nip');
+        $user -> save();
+        
+        Session::flash('success','Dane klienta zmieniono pomyślnie');
+        return redirect()->back();
     }
 
     /**
@@ -108,8 +128,11 @@ class CustomerAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id)
     {
-        //
+    	$user= User::find($user_id);
+    	$user -> delete();
+    	Session::flash('success','Usunięto klienta');
+    	return view('admin.index');
     }
 }
