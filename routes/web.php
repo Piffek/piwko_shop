@@ -104,9 +104,9 @@ Route::group([
 	
 	Route::get('/admin/strona_domowa','Admin\AdminController@index');
 	Route::get('/admin/customers', 'Admin\CustomerAdminController@index');
-	Route::get('/admin/new_customers', 'Admin\CustomerAdminController@ViewNewUser');
+	Route::get('/admin/new_customers', 'Admin\CustomerAdminController@viewNewUser');
 	Route::get('/admin/orders_this_customers/{user_id}', 'Admin\OrdersAdminController@index');
-	
+	Route::get('/admin/edit_customers/{user_id}', 'Admin\CustomerAdminController@editCustomers');
 	
 });
 
