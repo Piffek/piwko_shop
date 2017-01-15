@@ -24,7 +24,7 @@ class CustomerAdminController extends Controller
     }
     
     
-    public function ViewNewUser()
+    public function viewNewUser()
     {
     	$current = Carbon::now();
     	$current = new Carbon();
@@ -37,6 +37,13 @@ class CustomerAdminController extends Controller
     
     	return view('admin.customers.new_customers',compact('new_users_todays'));
     
+    }
+    
+    public function editCustomers($user_id)
+    {
+    	$users = User::where('id', $user_id)->get();
+    	return view('admin.customers.edit_customers',compact('users'));
+    	
     }
     
 
