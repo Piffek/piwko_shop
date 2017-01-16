@@ -21,17 +21,18 @@
 					echo '<td><a href="pokaz_produkt/'.$item->id.'"></td>';
 					echo '<span>';
 						$zdjecie=$item->id;
-						$katalog = "zdjecia/$zdjecie";
-						$galeria = opendir( $katalog );
-						while ( $zdjecie = readdir( $galeria ) )
-						{
-							$odczyt = pathinfo( $katalog.'/'.$zdjecie );
-							if ( $odczyt['extension']  == 'jpg' )
+							$katalog = "zdjecia/$zdjecie";
+							$galeria = opendir( $katalog );
+							while ( $zdjecie = readdir( $galeria ) )
 							{
-								echo'<img  height="250px" width="100%" src="'.$katalog.'/'.$zdjecie.'"/>';
+								$odczyt = pathinfo( $katalog.'/'.$zdjecie );
+								if ( $odczyt['extension']  == 'jpg' )
+								{
+									echo'<img  height="250px" width="100%" src="'.$katalog.'/'.$zdjecie.'"/>';
+								}
 							}
-						}
-					closedir($galeria);
+							closedir($galeria);
+						
 					echo '</div>';
 					echo '<div class="product_bottom">';
 					echo '<div class="rodzaj">'.$item->rodzaj.'</div>';
