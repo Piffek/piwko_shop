@@ -133,6 +133,7 @@ class CustomerAdminController extends Controller
     	$user= User::find($user_id);
     	$user -> delete();
     	Session::flash('success','Usunięto klienta');
-    	return view('admin.index');
+    	return redirect()->action('Admin\CustomerAdminController@index');
+    	//return view('admin.index');
     }
 }
