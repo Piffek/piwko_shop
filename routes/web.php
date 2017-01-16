@@ -110,7 +110,9 @@ Route::group([
 	Route::get('/admin/show_one_customers/{user_id}', 'Admin\CustomerAdminController@showOneCustomers');
 	Route::post('/admin/edit_customers/update/{user_id}', 'Admin\CustomerAdminController@update');
 	Route::get('/admin/delete_customers/{user_id}', 'Admin\CustomerAdminController@destroy');
-	
+	Route::get('/admin/add_product', 'Admin\ProductsAdminController@addProduct');
+	Route::get('/admin/all_product', 'Admin\ProductsAdminController@index');
+	Route::post('/admin/add_product/store', 'Admin\ProductsAdminController@store');
 });
 
 
