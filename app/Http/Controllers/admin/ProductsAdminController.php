@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Items;
+use Session;
 
 class ProductsAdminController extends Controller
 {
@@ -13,7 +16,14 @@ class ProductsAdminController extends Controller
      */
     public function index()
     {
-        //
+        $items = new Items();
+        $items = Items::all();
+        return view('admin.products.all_product',compact('items'));
+    }
+    
+    public function addProduct()
+    {
+    	return view('admin.products.add');
     }
 
     /**
@@ -34,7 +44,22 @@ class ProductsAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Items();
+        $item -> produkt = $request -> product;
+        $item -> wymiary = $request -> size;
+        $item -> cena = $request -> price;
+        $item -> rodzaj = $request -> kind;
+        $item -> przeznaczenie = $request -> appropriaton;
+        $item -> wymiary_ogolne = $request -> general_size;
+        $item -> ilosc = $request -> amount;
+        $item -> promocja = $request -> promotion;
+        $item -> procent_promocji = $request -> percent_promotion;
+        $item -> tekst_promocji = $request -> text_promotion;
+        $item -> opis = $request -> desc;
+        
+        $item -> save();
+        Session::flash('success','Dodano produkt');
+        return redirect()->back();
     }
 
     /**
