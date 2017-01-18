@@ -16,6 +16,18 @@ class OrdersAdminController extends Controller
 		$orders_this_customers = Buyings::where('id_user',$user_id)->get();
 		return view('admin.orders.orders_this_customers',compact('orders_this_customers'));
 	}
+	
+	public function allOrders()
+	{
+		$all_orders = Buyings::all();
+		return view('admin.orders.allOrders',compact('all_orders'));
+	}
+	
+	public function thisOrder($id)
+	{
+		$this_orders = Buyings::where('id',$id)->get();
+		return view('admin.orders.thisOrder',compact('this_orders'));
+	}
 
 
 

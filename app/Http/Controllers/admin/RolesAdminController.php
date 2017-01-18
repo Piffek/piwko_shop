@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Roles;
+use Session;
+
 
 class RolesAdminController extends Controller
 {
@@ -13,7 +17,16 @@ class RolesAdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.roles.add');
+    }
+    
+    public function addRole(Request $request)
+    {
+    	$role = new Roles();
+    	$role -> name = $request -> role_name;
+    	$role->save();
+    	Session::flash('success','Dodano nową role');
+    	return redirect()->back();
     }
 
     /**

@@ -38,11 +38,16 @@ class BuyingController extends Controller
      */
     public function create(Request $request)
     {
+    	
     	if(empty($request -> id_adress_delivery))
     	{
+    		$city = Auth::user()->city;
+    		$street = Auth::user()->street;
     		$id_adress_delivery = '0';
-    	}else 
+    	}else if(!empty($request -> id_adress_delivery))
     	{
+    		$city = $request -> city;
+    		$street = $request -> street;
     		$id_adress_delivery = $request -> id_adress_delivery;
     	}
     	$koszyk = Koszyks::whereid_user(Auth::user()->id)->get();
@@ -56,8 +61,8 @@ class BuyingController extends Controller
     		$add_buyings -> ilosc = $koszyks['ilosc'];
     		$add_buyings -> id_user = Auth::user()->id;
     		$add_buyings -> surname = Auth::user()->surname;
-    		$add_buyings -> street = Auth::user()->street;
-    		$add_buyings -> city = Auth::user()->city;
+    		$add_buyings -> street = $street;
+    		$add_buyings -> city = $city;
     		$add_buyings -> nip = Auth::user()->nip;
     		$add_buyings -> companyname = Auth::user()->companyname;
     		$add_buyings -> id_adress_delivery = $id_adress_delivery;
