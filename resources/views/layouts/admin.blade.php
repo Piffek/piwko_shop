@@ -379,7 +379,7 @@
 <!-- jQuery Knob Chart -->
 <script src="{{ url('admin/admin_layout/plugins/knob/jquery.knob.js') }}"></script>
 <!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="{{ url('admin/admin_layout/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- datepicker -->
 <script src="{{ url('admin/admin_layout/plugins/datepicker/bootstrap-datepicker.js') }}"></script>

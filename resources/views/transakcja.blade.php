@@ -37,7 +37,6 @@
 									
 		</div>
 		<div class ="col-md-3 col-md-offset-8">
-					
 							@foreach($data_deals as $data_deal)
 								@if(count($data_deal->id) > 0)
 								<div class="panel panel-info"> 
@@ -46,13 +45,15 @@
 											<div class="panel-body"> 
 												<div class="container">
 													{!! csrf_field() !!}
-													<p>Miasto: {{$data_deal -> city}}</p>
-													<p>Ulica: {{$data_deal -> street}}</p>
-													<p>Telefon: {{$data_deal -> phone}}</p>
+													<p>Miasto: {{$data_deal -> city}}
+													<input hidden name="city" value="{{$data_deal -> city}}" ></p>
+													<p>Ulica:  {{$data_deal -> street}}
+													<input hidden name="street" value="{{$data_deal -> street}}" ></p>
+													<p>Telefon: {{$data_deal -> phone}}
+													<input hidden name="phone" value="{{$data_deal -> phone}}" ></p>
 													<input name="id_adress_delivery" type="checkbox" value="{{$data_deal->id}}">
 												</div>
 											</div>
-											<form method="POST" action="/kupione/create">
 												{!! csrf_field() !!}
 											<input type="submit" value="Zrealizuj"></tr>
 									</div>
