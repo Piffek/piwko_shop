@@ -115,7 +115,7 @@ Route::group([
 	Route::post('/admin/add_product/store', 'Admin\ProductsAdminController@store');
 });
 
-
+Route::get('/test', 'Pokaz_produktController@test');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
