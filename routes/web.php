@@ -113,6 +113,13 @@ Route::group([
 	Route::get('/admin/add_product', 'Admin\ProductsAdminController@addProduct');
 	Route::get('/admin/all_product', 'Admin\ProductsAdminController@index');
 	Route::post('/admin/add_product/store', 'Admin\ProductsAdminController@store');
+	Route::post('/admin/edit_product/update/{id}', 'Admin\ProductsAdminController@update');
+	Route::get('/admin/all_product/delete/{id}', 'Admin\ProductsAdminController@destroy');
+	Route::get('/admin/current_orders', 'Admin\OrdersAdminController@allOrders');
+	Route::get('/admin/this_order/{id}', 'Admin\OrdersAdminController@thisOrder');
+	Route::get('/admin/add_role', 'Admin\RolesAdminController@index');
+	Route::post('/admin/add_role', 'Admin\RolesAdminController@addRole');
+	Route::get('/admin/edit_product/{id}', 'Admin\ProductsAdminController@edit');
 });
 
 Route::get('/test', 'Pokaz_produktController@test');
