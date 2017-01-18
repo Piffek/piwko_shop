@@ -11,9 +11,8 @@ use Session;
 class Pokaz_produktController extends Controller
 {
 	
-	
 
-    public function index($id)
+    public function index(Items $items,$id)
     {
     	//return $id;
     	$items = Items::whereId($id)->first();
