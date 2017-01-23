@@ -305,7 +305,7 @@
     </nav>
   </header>
   <div class="col-md-offset-2">
-  <div id="myfirstchart" style="height: 250px; width: 500px;"></div>
+  <div  id="myfirstchart" style="height: 250px; width: 500px;"></div>
   </div>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -367,18 +367,22 @@
 <script>
 new Morris.Line({
 	  // ID of the element in which to draw the chart.
+	  parseTime:false,
 	  element: 'myfirstchart',
 	  // Chart data records -- each entry in this array corresponds to a point on
 	  // the chart.
+	  
 	  data: [
-	    { year: '2008', value: {{ $new_user }} },
-	    { year: '2009', value: 10 },
-	    { year: '2010', value: 5 },
-	    { year: '2011', value: 5 },
-	    { year: '2012', value: 20 }
+	    { day: 'Poniedziałek', value: {{ $new_user }} },
+	    { day: 'Wtorek', value: 100 },
+	    { day: 'Sroda', value: 5 },
+	    { day: 'Czwartek', value: 5 },
+	    { day: 'Piątek', value: 20 },
+	    { day: 'Sobota', value: 20 },
+	    { day: 'Niedziela', value: 20 }
 	  ],
 	  // The name of the data record attribute that contains x-values.
-	  xkey: 'year',
+	  xkey: 'day',
 	  // A list of names of data record attributes that contain y-values.
 	  ykeys: ['value'],
 	  // Labels for the ykeys -- will be displayed when you hover over the
