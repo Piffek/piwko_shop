@@ -50,10 +50,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/admin/chart/chart_product')}}"><i class="fa fa-circle-o"></i> Wykres Produktów</a></li>
-            <li><a href="{{url('/admin/chart/chart_sold')}}"><i class="fa fa-circle-o"></i> Wykres sprzedaży</a></li>
-            <li><a href="{{url('/admin/chart/chart_delivery')}}"><i class="fa fa-circle-o"></i> Wykres dostaw</a></li>
-            <li><a href="{{url('/admin/chart/chart_paying')}}"><i class="fa fa-circle-o"></i> Wykres płatności</a></li>
+            <li><a href="{{url('/admin/chart_product')}}"><i class="fa fa-circle-o"></i> Wykres Produktów</a></li>
+            <li><a href="{{url('/admin/chart_sold')}}"><i class="fa fa-circle-o"></i> Wykres sprzedaży</a></li>
+            <li><a href="{{url('/admin/chart_delivery')}}"><i class="fa fa-circle-o"></i> Wykres dostaw</a></li>
+            <li><a href="{{url('/admin/chart_paying')}}"><i class="fa fa-circle-o"></i> Wykres płatności</a></li>
           </ul>
         </li>
         <li class="treeview">
