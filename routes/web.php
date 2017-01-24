@@ -120,6 +120,10 @@ Route::group([
 	Route::get('/admin/add_role', 'Admin\RolesAdminController@index');
 	Route::post('/admin/add_role', 'Admin\RolesAdminController@addRole');
 	Route::get('/admin/edit_product/{id}', 'Admin\ProductsAdminController@edit');
+	Route::get('/admin/chart_product', 'Admin\AdminController@productChart');
+	Route::get('/admin/chart_sold', 'Admin\AdminController@soldChart');
+	Route::get('/admin/chart_delivery', 'Admin\AdminController@deliveryChart');
+	Route::get('/admin/chart_paying', 'Admin\AdminController@paidChart');
 });
 
 Route::get('/test', 'Pokaz_produktController@test');
