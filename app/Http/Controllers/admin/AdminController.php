@@ -37,6 +37,10 @@ class AdminController extends Controller
 	public function deliveryChart()
 	{
 		$delivery = DB::table('buyings')->selectRaw('count(id) as buyings_count, delivery as deli')->groupBy('deli')->get();
+		//$day = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday, delivery as deli')->groupBy('weekday')->get();
+
+			//return dd($day);
+
 		return view('admin.chart.deliveryChart',compact('delivery'));
 	}
 	
