@@ -13,13 +13,9 @@ new Morris.Line({
 	  // the chart.
 	  
 	  data: [
-	    { day: 'Poniedziałek', value: 34 },
-	    { day: 'Wtorek', value: 1002 },
-	    { day: 'Sroda', value: 52323 },
-	    { day: 'Czwartek', value: 5 },
-	    { day: 'Piątek', value: 2230 },
-	    { day: 'Sobota', value: 2230 },
-	    { day: 'Niedziela', value: 20 }
+	    { day: 'DPD', value: {{ $delivery['0']->buyings_count}} },
+	    { day: 'UPS', value: {{ $delivery['1']->buyings_count}} },
+
 	  ],
 	  // The name of the data record attribute that contains x-values.
 	  xkey: 'day',
