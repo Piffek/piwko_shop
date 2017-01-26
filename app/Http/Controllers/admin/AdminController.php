@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Items;
 use Session;
 use DB;
-
+use View;
 
 class AdminController extends Controller
 {
@@ -36,12 +36,11 @@ class AdminController extends Controller
 	
 	public function deliveryChart()
 	{
-		$delivery = DB::table('buyings')->selectRaw('count(id) as buyings_count, delivery as deli')->groupBy('deli')->get();
-		//$day = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday, delivery as deli')->groupBy('weekday')->get();
-
-			//return dd($day);
-
-		return view('admin.chart.deliveryChart',compact('delivery'));
+		$delivery2 = DB::table('buyings')->selectRaw('count(id) as buyings_count, delivery as deli')->groupBy('deli')->get();
+		$dayUPS = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->where('delivery','UPS')->groupBy('weekday')->get();
+		$dayDPD = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->where('delivery','DPD')->groupBy('weekday')->get();
+		
+		return View::make('admin.chart.deliveryChart',compact('dayUPS','dayDPD','delivery2'));
 	}
 	
 	public function paidChart()
