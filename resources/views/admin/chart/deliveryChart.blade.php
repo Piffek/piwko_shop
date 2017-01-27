@@ -19,26 +19,26 @@ new Morris.Donut({
 new Morris.Bar({
 	  element: 'myfirstchart',
 	  data: [
-		    { y: 'Poniedziałek', a: {{ isset($dayUPS['1']) ? $dayUPS['1']->buyings_count : '0' }}, 
-			    b: {{ isset($dayDPD['1']) ? $dayDPD['1']->buyings_count : '0' }} },
+		    { y: 'Poniedziałek', a: {{ isset($UPS['2']) ? $UPS['2']->buyings_count : '0' }}, 
+			    b: {{ isset($DPD['2']) ? $DPD['2']->buyings_count : '0' }} },
 			    
-		    { y: 'Wtorek', a: {{ isset($dayUPS['2']) ? $dayUPS['2']->buyings_count : '0' }}, 
-				b: {{ isset($dayDPD['2']) ? $dayDPD['2']->buyings_count : '0' }} },
+		    { y: 'Wtorek', a: {{ isset($UPS['3']) ? $UPS['3']->buyings_count : '0' }}, 
+				b: {{ isset($DPD['3']) ? $DPD['3']->buyings_count : '0' }} },
 				
-		    { y: 'Sroda', a: {{ isset($dayUPS['3']) ? $dayUPS['3']->buyings_count : '0' }}, 
-				b: {{ isset($dayDPD['3']) ? $dayDPD['3']->buyings_count : '0' }} },
+		    { y: 'Sroda', a: {{ isset($UPS['4']) ? $UPS['4']->buyings_count : '0' }}, 
+				b: {{ isset($DPD['4']) ? $DPD['4']->buyings_count : '0' }} },
 				
-		    { y: 'Czwartek', a: {{ isset($dayUPS['4']) ? $dayUPS['4']->buyings_count : '0' }}, 
-				b: {{ isset($dayDPD['4']) ? $dayDPD['4']->buyings_count : '0' }} },
+		    { y: 'Czwartek', a: {{ isset($UPS['5']) ? $UPS['5']->buyings_count : '0' }}, 
+				b: {{ isset($DPD['5']) ? $DPD['5']->buyings_count : '0' }} },
 				
-		    { y: 'Piątek', a: {{ isset($dayUPS['5']) ? $dayUPS['5']->buyings_count : '0' }}, 
-				b: {{ isset($dayDPD['5']) ? $dayDPD['5']->buyings_count : '0' }} },
+		    { y: 'Piątek', a: {{ isset($UPS['6']) ? $UPS['6']->buyings_count : '0' }}, 
+				b: {{ isset($DPD['6']) ? $DPD['6']->buyings_count : '0' }} },
 				
-		    { y: 'Sobota', a: {{ isset($dayUPS['6']) ? $dayUPS['6']->buyings_count : '0' }}, 
-				b: {{ isset($dayDPD['6']) ? $dayDPD['6']->buyings_count : '0' }} },
+		    { y: 'Sobota', a: {{ isset($UPS['7']) ? $UPS['7']->buyings_count : '0' }}, 
+				b: {{ isset($DPD['7']) ? $DPD['7']->buyings_count : '0' }} },
 				
-		    { y: 'Niedziela', a: {{ isset($dayUPS['0']) ? $dayUPS['0']->buyings_count : '0' }}, 
-				b: {{ isset($dayDPD['0']) ? $dayDPD['0']->buyings_count : '0' }} }
+		    { y: 'Niedziela', a: {{ isset($UPS['1']) ? $UPS['1']->buyings_count : '0' }}, 
+				b: {{ isset($DPD['1']) ? $DPD['1']->buyings_count : '0' }} }
 	  ],
 	  xkey: 'y',
 	  ykeys: ['a', 'b'],
