@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 class Buyings extends Model
 {
 
@@ -17,4 +16,6 @@ class Buyings extends Model
 	];
 	
 	protected $table = 'buyings';
+	
+
 }

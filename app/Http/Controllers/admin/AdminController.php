@@ -9,6 +9,8 @@ use Session;
 use DB;
 use View;
 
+use App\Buyings;
+
 class AdminController extends Controller
 {
 	
@@ -36,16 +38,21 @@ class AdminController extends Controller
 	
 	public function deliveryChart()
 	{
-		$delivery2 = DB::table('buyings')->selectRaw('count(id) as buyings_count, delivery as deli')->groupBy('deli')->get();
+		$deliveryChart = new ChartAdmin('buyings', 'delivery', 'UPS', 'DPD','delivery2','admin.chart.deliveryChart');
+		return $deliveryChart->chartDelivery();
+
+		/*$delivery2 = DB::table('buyings')->selectRaw('count(id) as buyings_count, delivery as deli')->groupBy('deli')->get();
 		$dayUPS = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->where('delivery','UPS')->groupBy('weekday')->get();
-		$dayDPD = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->where('delivery','DPD')->groupBy('weekday')->get();
-		
-		return View::make('admin.chart.deliveryChart',compact('dayUPS','dayDPD','delivery2'));
+		$dayDPD = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->where('delivery', 'DPD')->groupBy('weekday')->get();
+		$UPS=$dayUPS->keyBy('weekday');
+		$DPD=$dayDPD->keyBy('weekday');*/
+		//return View::make('admin.chart.deliveryChart',compact('UPS','DPD','delivery2'));
 	}
 	
 	public function paidChart()
 	{
-		return view('admin.chart.paidChart');
+		$deliveryChart = new ChartAdmin('buyings', 'paying', 'przedplata', 'pobranie','Calosc','admin.chart.paidChart');
+		return $deliveryChart->chartDelivery();
 	}
 
 
