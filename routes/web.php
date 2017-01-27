@@ -135,21 +135,7 @@ Route::get('user/activation/{token}', 'Auth\AuthController@activateUser')->name(
 Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
 
 Route::get('/pdf/{id}', function ($id) {
-	/*$buying = DB::table('items')
-	->join('buyings', 'items.id', '=', 'buyings.id_produktu')
-	->select('items.produkt','buyings.ilosc','buyings.cena','buyings.id','buyings.id_user','buyings.created_at')
-	->where([
-			['buyings.id','=',$id],
-			['id_user','=',Auth::user()->id]
-	])->get();*/
-	
-	/*$buying = DB::table('buyings')
-	->join('items', 'buyings.id_produktu', '=', 'items.id')
-	->select('items.produkt','buyings.*')
-	->->where([
-			['buyings.id','=',$id],
-			['id_user','=',Auth::user()->id]
-	])->get();*/
+
 	
 	$buying = App\Buyings::where([
 			['id','=',$id],
