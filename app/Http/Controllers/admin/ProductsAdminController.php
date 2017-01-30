@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Input;
 use App\Http\Controllers\Controller;
 use App\Items;
 use Session;
+use Image;
+
 
 class ProductsAdminController extends Controller
 {
@@ -44,25 +47,33 @@ class ProductsAdminController extends Controller
      */
     public function store(Request $request)
     {
-    	
-    	
-    	
-        $item = new Items();
-        $item -> produkt = $request -> product;
-        $item -> wymiary = $request -> size;
-        $item -> cena = $request -> price;
-        $item -> rodzaj = $request -> kind;
-        $item -> przeznaczenie = $request -> appropriaton;
-        $item -> wymiary_ogolne = $request -> general_size;
-        $item -> ilosc = $request -> amount;
-        $item -> promocja = $request -> promotion;
-        $item -> procent_promocji = $request -> percent_promotion;
-        $item -> tekst_promocji = $request -> text_promotion;
-        $item -> opis = $request -> desc;
-        
-        $item -> save();
-        Session::flash('success','Dodano produkt');
-        return redirect()->back();
+    	if(Input::file())
+    	{
+    		foreach(Items::where('produkt',$request->product)->cursor() as $id)
+    		{		
+	    		$image = Input::File('image');
+	    		$filename = $id->id . '.' . $image->getClientOriginalExtension();
+	    		$path = public_path('zdjecia/'. $filename);
+	    		Image::make($image->getRealPath())->resize(200, 200)->save($path);
+
+		        $item = new Items();
+		        $item -> produkt = $request -> product;
+		        $item -> wymiary = $request -> size;
+		        $item -> cena = $request -> price;
+		        $item -> rodzaj = $request -> kind;
+		        $item -> przeznaczenie = $request -> appropriaton;
+		        $item -> wymiary_ogolne = $request -> general_size;
+		        $item -> ilosc = $request -> amount;
+		        $item -> promocja = $request -> promotion;
+		        $item -> procent_promocji = $request -> percent_promotion;
+		        $item -> tekst_promocji = $request -> text_promotion;
+		        $item -> opis = $request -> desc;
+	        
+	        	$item -> save();
+    		}
+        	Session::flash('success','Dodano produkt');
+	        return redirect()->back();
+    	}
     }
 
     /**
