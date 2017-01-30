@@ -44,6 +44,9 @@ class ProductsAdminController extends Controller
      */
     public function store(Request $request)
     {
+    	
+    	
+    	
         $item = new Items();
         $item -> produkt = $request -> product;
         $item -> wymiary = $request -> size;

@@ -5,7 +5,7 @@
     <div class="thumbnail">
       <div class="caption">
       	<div class="col-md-offset-4">
-      	<form method="POST" action="/admin/add_product/store">
+      	<form method="POST" action="/admin/add_product/store" enctype="multipart/form-data">
       	{!! csrf_field() !!}
       	Nazwa Produktu:
 			<input style="width:150px" id="product" type="text" class="form-control" name="product">
@@ -29,7 +29,7 @@
 			<input style="width:150px" id="text_promotion" type="text" class="form-control" name="text_promotion">
 		Opis:
 			<input style="width:150px" id="desc" type="textarea" class="form-control" name="desc">
-
+		{!! Form::file('image') !!}
         <input type="submit" value="Dodaj"></tr>
       	</div>
       </div>

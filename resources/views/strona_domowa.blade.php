@@ -10,6 +10,7 @@
 
 <!-- umieszczamy tekst, który chcemy mieć w divie kontent -->
 @section('content')
+
 <div class ="col-md-10">
 	@foreach($products as $item)
 	

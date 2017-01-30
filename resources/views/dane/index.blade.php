@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="/koszyk">About Us</a>
 <div class ="col-md-3 col-md-offset-4">
 	<div class="panel panel-info">
 		<div class="panel-heading"> 

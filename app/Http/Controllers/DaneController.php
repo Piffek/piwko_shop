@@ -19,6 +19,7 @@ class DaneController extends Controller
     {
         $data_users = User::whereid(Auth::user()->id)->get();
         return view('dane.index',compact('data_users'));
+        
     }
 
     /**

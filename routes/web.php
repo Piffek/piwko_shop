@@ -126,7 +126,6 @@ Route::group([
 	Route::get('/admin/chart_paying', 'Admin\AdminController@paidChart');
 });
 
-Route::get('/test', 'Pokaz_produktController@test');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
