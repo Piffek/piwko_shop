@@ -5,6 +5,9 @@
     <div class="thumbnail">
       <div class="caption">
       	<div class="col-md-offset-4">
+      	
+  	
+      	
       	<form method="POST" action="/admin/add_product/store" enctype="multipart/form-data">
       	{!! csrf_field() !!}
       	Nazwa Produktu:

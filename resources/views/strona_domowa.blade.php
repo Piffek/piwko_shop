@@ -31,17 +31,17 @@
 					Sprzedanych: {{ $item->zakupienia }} szt
 					@if($item->ilosc > 0)
 					
-						@if($item->promocja = 'Tak' AND $item->procent_promocji != 0 AND isset($item->tekst_promocji))
+						@if($item->promocja = 'Tak' && $item->procent_promocji != 0 && isset($item->tekst_promocji))
 						
 							<div class="new_price">{{ $item->cena-($item->cena*2)/100  }} zł</div><div class="old_price"> {{ $item->cena }} zł</div>
 						
-						@elseif($item->promocja = 'Tak' AND !empty($item->tekst_promocji) AND $item->procent_promocji==0)
+						@elseif($item->promocja = 'Tak' && !empty($item->tekst_promocji) && $item->procent_promocji==0)
 						
 						
 							<div class="price">{{ $item->cena }} zł</div><br>
 							<div class="promocja">PROMOCJA</div>
 						
-						@elseif($item->promocja = 'Tak' AND $item->procent_promocji!=0 AND !empty($item->tekst_promocji))
+						@elseif($item->promocja = 'Tak' && $item->procent_promocji!=0 && !empty($item->tekst_promocji))
 						
 							<div class="new_price">{{ $item->promo }} zł</div><div class="old_price"> {{ $item->cena }} zł</div>
 						

@@ -35,9 +35,8 @@
 						<div id="galeria"></div>	
 							<?php 
 							$zdjecie=$items->id;
-							$min = 'min';
-							$katalog = "obrazki/$zdjecie";
-							$katalogminiaturki = "obrazki/$zdjecie$min";
+							$katalog = "pokaz_produkt/miniaturki/$zdjecie";
+							$katalogminiaturki = "pokaz_produkt/miniaturki/$zdjecie";
 							$galeria = opendir( $katalog );
 							while ( $zdjecie = readdir( $galeria ) )
 							{
@@ -46,7 +45,7 @@
 								if ( $odczyt['extension']  == 'jpg' )
 								{
 							
-									echo '<a href="'.$katalog.'/'.$zdjecie.'" class="highslide" onclick="return hs.expand(this)" title="Zdjęcie: '.$zdjecie.'"><img width="200" height="133" src="'.$katalogminiaturki.'/'.$zdjecie.'" alt="Zdjęcie: '.$zdjecie.'" /></a>';
+									echo '<a href="/'.$katalog.'/'.$zdjecie.'" class="highslide" onclick="return hs.expand(this)" title="Zdjęcie: '.$zdjecie.'"><img width="200" height="133" src="/'.$katalogminiaturki.'/'.$zdjecie.'" alt="Zdjęcie: '.$zdjecie.'" /></a>';
 								}
 							
 							}
