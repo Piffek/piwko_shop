@@ -48,21 +48,7 @@ class ProductsAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function addPhoto(Request $request)
-    {
-    	$this->validate($request, [
-    			'image' => 'required|image|mimes:jpeg,jpg|max:2048',
-    	]);
-    	
-    	$imageName = time().'.'.$request->image->getClientOriginalExtension();
-    	$request->image->move(public_path('/pokaz_produkt/miniaturki/'.$request->photo_id), $imageName);
-    	Session::flash('success','Dodano!');
-    	return view('admin.photo.AddPhotoGallery')
-    	->with(compact('imageName'))
-    	->with('photo_id',$request->photo_id);
-    	
-
-    }
+ 
     
     public function store(Request $request)
     {
@@ -137,21 +123,22 @@ class ProductsAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-    	$item = Items::find($id);
-    	$item -> produkt = $request -> input('product');
-    	$item -> wymiary = $request -> input('size');
-    	$item -> cena = $request -> input('price');
-    	$item -> rodzaj = $request -> input('kind');
-    	$item -> przeznaczenie = $request -> input('appropriaton');
-    	$item -> wymiary_ogolne = $request -> input('general_size');
-    	$item -> ilosc = $request -> input('amount');
-    	$item -> promocja = $request -> input('promotion');
-    	$item -> procent_promocji = $request -> input('percent_promotion');
-    	$item -> tekst_promocji = $request -> input('text_promotion');
-    	$item -> opis = $request -> input('desc');
-    	$item -> save();
-    	Session::flash('success','Edytowano');
-    	return redirect()->back();
+    	
+	    	$item = Items::find($id);
+	    	$item -> produkt = $request -> input('product');
+	    	$item -> wymiary = $request -> input('size');
+	    	$item -> cena = $request -> input('price');
+	    	$item -> rodzaj = $request -> input('kind');
+	    	$item -> przeznaczenie = $request -> input('appropriaton');
+	    	$item -> wymiary_ogolne = $request -> input('general_size');
+	    	$item -> ilosc = $request -> input('amount');
+	    	$item -> promocja = $request -> input('promotion');
+	    	$item -> procent_promocji = $request -> input('percent_promotion');
+	    	$item -> tekst_promocji = $request -> input('text_promotion');
+	    	$item -> opis = $request -> input('desc');
+	    	$item -> save();
+	    	
+	    
     }
 
     /**

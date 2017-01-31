@@ -119,13 +119,14 @@ Route::group([
 	Route::get('/admin/this_order/{id}', 'Admin\OrdersAdminController@thisOrder');
 	Route::get('/admin/add_role', 'Admin\RolesAdminController@index');
 	Route::post('/admin/add_role', 'Admin\RolesAdminController@addRole');
-	Route::post('/admin/add_product/photo', 'Admin\ProductsAdminController@addPhoto');
+	Route::post('/admin/add_product/photo', 'Admin\PhotoController@addPhotoDuringAddProduct');
 	Route::get('/admin/edit_product/{id}', 'Admin\ProductsAdminController@edit');
 	Route::get('/admin/chart_product', 'Admin\AdminController@productChart');
 	Route::get('/admin/chart_sold', 'Admin\AdminController@soldChart');
 	Route::get('/admin/chart_delivery', 'Admin\AdminController@deliveryChart');
 	Route::get('/admin/chart_paying', 'Admin\AdminController@paidChart');
-
+	Route::get('/admin/delete_photo/{id}', 'Admin\PhotoController@deletePhotoDuringEdit');
+	Route::post('/admin/add_photo', 'Admin\PhotoController@addPhotoDuringEditProduct');
 });
 
 Auth::routes();

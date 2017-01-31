@@ -6,6 +6,9 @@
   <title>AdminLTE 2 | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{ url('admin/admin_layout/bootstrap/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
@@ -362,7 +365,9 @@
 @yield('content')
 
 <!-- ./wrapper -->
-
+    <script>
+        CKEDITOR.replace( 'desc' );
+    </script>
 <!-- jQuery 2.2.3 -->
 <script src="{{ url('admin/admin_layout/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
