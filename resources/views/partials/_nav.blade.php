@@ -27,8 +27,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Zaloguj</a></li>
-                            <li><a href="{{ url('/register') }}">Zarejestruj</a></li>
+                            <button style="margin-top:7px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Zaloguj</button>
+                         	 <button  style="margin-top:7px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</button>
                             <li><a href=" {{ url('/koszyk_goscia') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
                         @else
                        		
@@ -63,11 +63,35 @@
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                        
                                     </li>
                                 </ul>
                             </li>
                         @endif
                     </ul>
+                    @include('partials._validator')
                 </div>
             </div>
         </nav>
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labellebdy="MyLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+
+      @include('auth.login')
+
+  </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+
+      @include('auth.register')
+
+  </div>
+</div>
+
+
+
+

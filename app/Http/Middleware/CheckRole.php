@@ -17,7 +17,7 @@ class CheckRole
     {
     	if($request->user() === null)
     	{
-    		return redirect('/');
+    		return redirect()->back();
     	}
     	
     	$actions = $request->route()->getAction();
@@ -29,6 +29,6 @@ class CheckRole
         	return $next($request);
     	}
     	
-    	return redirect('/');
+    	return redirect()->back();
     }
 }
