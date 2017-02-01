@@ -25,18 +25,10 @@ class KoszykController extends Controller
     public function index()
     {
     	if (Auth::check())
-    	{
-	    	/*$koszyk = DB::table('items')
-	    	->join('koszyks', 'items.id', '=', 'koszyks.id_produktu')
-	    	->select('items.produkt','koszyks.ilosc','koszyks.cena','koszyks.id')
-	    	->whereid_user(Auth::user()->id)
-	    	->get();*/
-	    	
+    	{  	
 	    	$koszyk = Koszyks::where('id_user',Auth::user()->id)->get();
 	    	return view('koszyk.index',compact('koszyk'));
     	}
-    	
-    	//$koszyk = Koszyks::whereid_user(Auth::user()->id)->get();
     	return view('koszyk.index');
     }
     
@@ -61,19 +53,9 @@ class KoszykController extends Controller
      */
     public function store(Request $request)
     {
-    	//Koszyks::create($request->all());
-    	$add_koszyks = new Koszyks;
-    	$add_koszyks -> id_produktu = $request->id_produktu;
-    	$add_koszyks -> product = $request->product;
-    	$add_koszyks -> cena = $request->cena;
-    	$add_koszyks -> ilosc = $request->ilosc;
-    	$add_koszyks -> id_user = Auth::user()->id;
-    	$add_koszyks -> save();
-    	
+    	Koszyks::create($request->all());
     	return back()->with('status', 'Dodano do koszyka!.');
     	
-    	
-
     }
 
     /**
@@ -113,13 +95,12 @@ class KoszykController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Koszyks  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Koszyks $id)
     {
-    	$koszyk = Koszyks::find($id);
-    	$koszyk->delete();
+    	$id->delete();
     	return back()->with('status', 'Usunięto.');
     }
     

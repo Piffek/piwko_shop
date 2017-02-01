@@ -39,14 +39,7 @@ class Adress_deliveryController extends Controller
      */
     public function store(Request $request)
     {
-
-    	$new_adress = new Add_adress_delivery;
-    	$new_adress ->  id_user = $request-> input('id_user');
-    	$new_adress ->  city = $request-> input('city');
-    	$new_adress -> street = $request-> input('street');
-    	$new_adress -> phone = $request-> input('phone');
-    	$new_adress -> save();
-    	//return back()->with('status', 'Zmieniono dane.');
+    	Add_adress_delivery::create($request->all());
     	Session::flash('success','Dodano Nowy adres.');
     	return redirect()->action('Adress_deliveryController@index');
     }
@@ -88,13 +81,12 @@ class Adress_deliveryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Add_adress_delivery $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Add_adress_delivery $id)
     {
-    	$delete_adres = Add_adress_delivery::find($id);
-    	$delete_adres->delete();
+    	$id->delete();
     	return back()->with('status', 'Usunięto.');
     }
 }

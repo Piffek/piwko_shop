@@ -70,24 +70,12 @@ class DaneController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $id)
     {
-    	
-    	
-    	$dane = User::find($id);
-    	//$dane = new User;
-    	$dane -> surname = $request->input('surname');
-    	$dane ->  email = $request-> input('email');
-    	$dane ->  city = $request-> input('city');
-    	$dane -> street = $request-> input('street');
-    	$dane ->phone= $request-> input('phone');
-    	$dane -> companyname = $request ->input('companyname');
-    	$dane ->nip = $request-> input('nip');
-    	$dane -> save();
-    	//return back()->with('status', 'Zmieniono dane.');
+    	$id->update($request->all());
     	Session::flash('success','Operacja wykonana prawidłowo.');
     	return redirect()->action('DaneController@index');
 

@@ -34,6 +34,7 @@
 						<td>{{$koszyks->cena}}</td>
 						<td>{{$koszyks->ilosc}}</td>
 						<td><form method="POST" action="/koszyk/destroy/{{$koszyks->id}}">
+						<input hidden name="id_user" value="{{Auth::user()->id}}">
 						{!! csrf_field() !!}
 						<input type="submit" value="Usuń"></tr>
 						</form></td>

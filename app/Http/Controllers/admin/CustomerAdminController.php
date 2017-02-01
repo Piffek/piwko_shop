@@ -44,17 +44,31 @@ class CustomerAdminController extends Controller
     
     }
     
-    public function showOneCustomers($user_id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  User  $id
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function showOneCustomers(User $id)
     {
-    	$users = User::where('id', $user_id)->get();
-    	return view('admin.customers.show_one_customers',compact('users'));
+    	$user= clone $id;
+    	return view('admin.customers.show_one_customers',compact('user'));
     	 
     }
     
-    public function editCustomers($user_id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  User  $id
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function editCustomers(User $id)
     {
-    	$users = User::where('id', $user_id)->get();
-    	return view('admin.customers.edit_customers',compact('users'));
+    	$user= clone $id;
+    	return view('admin.customers.edit_customers',compact('user'));
     	
     }
     
@@ -106,22 +120,12 @@ class CustomerAdminController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $user_id)
+    public function update(Request $request, User $id)
     {
-    	$user= User::find($user_id);
-        $user -> name = $request -> input('name');
-        $user -> surname = $request -> input('surname');
-        $user -> email = $request -> input('email');
-        $user -> street = $request -> input('street');
-        $user -> city = $request -> input('city');
-        $user -> phone = $request -> input('phone');
-        $user -> companyname = $request -> input('companyname');
-        $user -> nip = $request -> input('nip');
-        $user -> save();
-        
+    	$id->update($request->all());    
         Session::flash('success','Dane klienta zmieniono pomyślnie');
         return redirect()->back();
     }
@@ -129,15 +133,13 @@ class CustomerAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id)
+    public function destroy(User $id)
     {
-    	$user= User::find($user_id);
-    	$user -> delete();
+    	$id->delete();
     	Session::flash('success','Usunięto klienta');
     	return redirect()->action('Admin\CustomerAdminController@index');
-    	//return view('admin.index');
     }
 }

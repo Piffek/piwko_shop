@@ -11,6 +11,7 @@ use App\Buyings;
 class OrdersAdminController extends Controller
 {
 	
+	
 	public function index($user_id)
 	{
 		$orders_this_customers = Buyings::where('id_user',$user_id)->get();
@@ -23,10 +24,17 @@ class OrdersAdminController extends Controller
 		return view('admin.orders.allOrders',compact('all_orders'));
 	}
 	
-	public function thisOrder($id)
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  Buyings  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function thisOrder(Buyings $id)
 	{
-		$this_orders = Buyings::where('id',$id)->get();
-		return view('admin.orders.thisOrder',compact('this_orders'));
+		$this_order= clone $id;
+		return view('admin.orders.thisOrder',compact('this_order'));
 	}
 
 

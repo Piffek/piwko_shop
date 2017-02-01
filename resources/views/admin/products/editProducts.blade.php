@@ -5,7 +5,7 @@
 
 
 		
-      	@foreach($items as $item)
+
       	
       	
       	
@@ -75,7 +75,7 @@
 				<input id="desc" type="textarea" class="form-control" name="desc" value="{{$item->opis}}">
 			<input type="submit" value="Dodaj"></tr>
 		</div>
-		@endforeach
+
 	</div>
 
 

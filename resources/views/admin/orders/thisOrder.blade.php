@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <div class="row">
-@foreach($this_orders as $this_order)
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
@@ -29,7 +28,6 @@
       </div>
     </div>
   </div>
-@endforeach
 </div>
 
 

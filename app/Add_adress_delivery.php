@@ -9,7 +9,7 @@ class Add_adress_delivery extends Model
 
 	
 	protected $fillable = [
-			'id_user', 'street', 'city', 'phone'
+			'id','id_user','user', 'street', 'city', 'phone',
 	];
 	
 	protected $hidden = [

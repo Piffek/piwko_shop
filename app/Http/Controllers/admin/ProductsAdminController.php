@@ -40,15 +40,16 @@ class ProductsAdminController extends Controller
     {
         //
     }
-
+    
+    
+    
+    
     /**
      * Store a newly created resource in storage.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
- 
     
     public function store(Request $request)
     {
@@ -58,22 +59,9 @@ class ProductsAdminController extends Controller
     	
     	if(Input::file())
     	{
-    		$item = new Items();
-    		$item -> produkt = $request -> product;
-    		$item -> wymiary = $request -> size;
-    		$item -> cena = $request -> price;
-    		$item -> rodzaj = $request -> kind;
-    		$item -> przeznaczenie = $request -> appropriaton;
-    		$item -> wymiary_ogolne = $request -> general_size;
-    		$item -> ilosc = $request -> amount;
-    		$item -> promocja = $request -> promotion;
-    		$item -> procent_promocji = $request -> percent_promotion;
-    		$item -> tekst_promocji = $request -> text_promotion;
-    		$item -> opis = $request -> desc;
-    		 
-    		$item -> save();
+    		Items::create($request->all());
     		
-    		foreach(Items::where('produkt',$request->product)->cursor() as $id)
+    		foreach(Items::where('produkt',$request->produkt)->cursor() as $id)
     		{		
     			File::makeDirectory('pokaz_produkt/miniaturki/'.$id->id);
     			$photo_id = $id->id;
@@ -104,58 +92,40 @@ class ProductsAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Items  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Items $id)
     {
-    	$items = new Items();
-        $items = Items::where('id',$id)->get();
-        return view('admin.products.editProducts',compact('items'));
+    	$item= clone $id;
+        return view('admin.products.editProducts',compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Items  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Items $id)
     {
+    		$id->update($request->all());
     	
-	    	$item = Items::find($id);
-	    	$item -> produkt = $request -> input('product');
-	    	$item -> wymiary = $request -> input('size');
-	    	$item -> cena = $request -> input('price');
-	    	$item -> rodzaj = $request -> input('kind');
-	    	$item -> przeznaczenie = $request -> input('appropriaton');
-	    	$item -> wymiary_ogolne = $request -> input('general_size');
-	    	$item -> ilosc = $request -> input('amount');
-	    	$item -> promocja = $request -> input('promotion');
-	    	$item -> procent_promocji = $request -> input('percent_promotion');
-	    	$item -> tekst_promocji = $request -> input('text_promotion');
-	    	$item -> opis = $request -> input('desc');
-	    	$item -> save();
-	    	
 	    
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Items  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Items $id)
     {
-        $item = Items::find($id);
-        File::deleteDirectory(public_path('/pokaz_produkt/miniaturki/'.$id));
-        File::Delete('zdjecia/'.$id.'.jpg');
-        if(!is_null($item))
-        {
-        	$item->delete();
-        }
+        File::deleteDirectory(public_path('/pokaz_produkt/miniaturki/'.$id->id));
+        File::Delete('zdjecia/'.$id->id.'.jpg');
+        $id->delete();
         Session::flash('success','Usunięto produkt');
         return redirect()->action('Admin\ProductsAdminController@index');
     }
