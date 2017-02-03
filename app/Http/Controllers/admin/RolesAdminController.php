@@ -17,7 +17,8 @@ class RolesAdminController extends Controller
      */
     public function index()
     {
-        return view('admin.roles.add');
+    	$roles = Roles::all();
+        return view('admin.roles.add',compact('roles'));
     }
     
     public function addRole(Request $request)
@@ -67,29 +68,33 @@ class RolesAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Roles  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Roles $id)
     {
-        //
+        $id->update($request->all());
+        Session::flash('success', 'Pomyślnie edytowano role');
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Roles  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Roles $id)
     {
-        //
+        $id->delete();
+        Session::flash('success', 'Usunięto role');
+        return redirect()->back();
     }
 }
