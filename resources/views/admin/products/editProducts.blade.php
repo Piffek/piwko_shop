@@ -1,19 +1,20 @@
 @extends('layouts.admin')
 @section('content')
 <div class="row">
-  <div class="col-md-8 col-md-offset-3">
 
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Edytuj zdjęcia</button>
 		
 
       	
-      	
+      	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
       	
       	<div class="row">
-      		<div class="col-md-3">
+      		<div class="col-md-1 col-md-offset-2">
 	      		<div style="width:300px" class="panel panel-default">
 	      			<div class="panel-body">
-			      		<form method="POST" action="/admin/add_photo" enctype="multipart/form-data">
+			      		<form method="POST" action="/admin/edit_products/add_photo" enctype="multipart/form-data">
 			      			{!! csrf_field() !!}
 							Zdjęcie tego przedmiotu<br>
 							<input type="hidden" class="form-control" name="id" value="{{$item->id}}">
@@ -27,13 +28,34 @@
 					</div>
 				</div>
 			</div>
-		</div>
+
+  
+      		<div class="col-md-1 col-md-offset-4">
+	      		<div style="width:300px" class="panel panel-default">
+	      			<div class="panel-body">
+			      		<form action="{{ url('/admin/edit_products/add_photo_gallery') }}" enctype="multipart/form-data" method="POST">
+			      			{!! csrf_field() !!}
+							Galeria zdjęć przedmiotu<br>
+							<input type="hidden" class="form-control" name="id" value="{{$item->id}}">
+						
+								@foreach (File::allFiles(public_path().'/pokaz_produkt/miniaturki/'.$item->id.'/') as $file)
+								  <img  height="250px" width="250px" src="/pokaz_produkt/miniaturki/{{$item->id}}/{{$file->getRelativePathName() }}" />		
+								<a href="{{url('/admin/edit_products/delete_photo_gallery/'.$item->id.'/'.$file->getRelativePathName().'')}}" class="btn btn-danger" role="button">Usuń</a>
+								@endforeach
+						
+							{!! Form::file('image') !!}
+							
+							<input type="submit" value="Dodaj Zdjęcie" class="btn btn-success"></tr>
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
       	
+     </div>
+</div>  	
       	
-      	
-      	
-      	
-      	
+   <div class="col-md-8 col-md-offset-3">
       	
       	
       	    <form method="POST" action="/admin/edit_product/update/{{$item->id}}">

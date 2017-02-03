@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use File;
-use Input;
 use App\Http\Controllers\Controller;
 use App\Items;
-use Session;
+use File;
+use Illuminate\Http\Request;
 use Image;
+use Input;
+use Session;
 use Storage;
 
 
@@ -75,6 +75,10 @@ class ProductsAdminController extends Controller
     		}
     		Session::flash('success','Dodaj miniaturki');
     		return view('admin.photo.AddPhotoGallery', compact('photo_id'));
+    	}else 
+    	{
+    		Session::flash('success','Cos poszło nie tak');
+    		return redirect()->back();
     	}
     }
 
@@ -98,7 +102,9 @@ class ProductsAdminController extends Controller
     public function edit(Items $id)
     {
     	$item= clone $id;
-        return view('admin.products.editProducts',compact('item'));
+    	$files = File::allFiles('pokaz_produkt/miniaturki/'.$id->id.'');
+  
+        return view('admin.products.editProducts',compact('item','files'));
     }
 
     /**

@@ -22,6 +22,13 @@ class PhotoController extends Controller
 		return redirect()->back();
 	}
 	
+	public function deletePhotoGalleryDuringEdit($id, $file)
+	{
+		File::Delete('pokaz_produkt/miniaturki/'.$id.'/'.$file);
+		Session::flash('success','Pomyslnie usunięto zdjęcie');
+		return redirect()->back();
+	}
+	
 	
 	public function addPhotoDuringEditProduct(Request $request)
 	{
@@ -46,7 +53,7 @@ class PhotoController extends Controller
 		}
 	}
 	
-	public function addPhotoDuringAddProduct(Request $request)
+	public function addPhotoGalleryDuringAddProduct(Request $request)
 	{
 		$this->validate($request, [
 				'image' => 'required|image|mimes:jpeg,jpg|max:2048',
@@ -60,6 +67,17 @@ class PhotoController extends Controller
 		->with('photo_id',$request->photo_id);
 		 
 	
+	}
+	
+	public function editPhotoGalleryDuringEditProduct(Request $request)
+	{
+		$this->validate($request, [
+				'image' => 'required|image|mimes:jpeg,jpg|max:2048',
+		]);
+		$imageName = time().'.'.$request->image->getClientOriginalExtension();
+		$request->image->move(public_path('/pokaz_produkt/miniaturki/'.$request->id), $imageName);
+		Session::flash('success','Dodano nowe zdjęcie do galerii!');
+		return redirect()->back();
 	}
 	
 

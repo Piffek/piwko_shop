@@ -32,24 +32,7 @@ Route::get('/', 'Strona_domowaController@index');
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	Route::post('/koszyk_goscia/{id}', 'ProductController@getAddToBasket');
 	Route::post('/transakcja_gosc', 'ProductController@getSummary');
@@ -57,21 +40,7 @@ Route::get('/', 'Strona_domowaController@index');
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	Route::resource('strona_domowa','Strona_domowaController');
 	Route::get('pokaz_produkt/{id}', 'Pokaz_produktController@index');
@@ -116,17 +85,18 @@ Route::group([
 	Route::post('/admin/edit_product/update/{id}', 'Admin\ProductsAdminController@update');
 	Route::get('/admin/all_product/delete/{id}', 'Admin\ProductsAdminController@destroy');
 	Route::get('/admin/current_orders', 'Admin\OrdersAdminController@allOrders');
-	Route::get('/admin/this_order/{id}', 'Admin\OrdersAdminController@thisOrder');
 	Route::get('/admin/add_role', 'Admin\RolesAdminController@index');
 	Route::post('/admin/add_role', 'Admin\RolesAdminController@addRole');
-	Route::post('/admin/add_product/photo', 'Admin\PhotoController@addPhotoDuringAddProduct');
+	Route::post('/admin/add_product_gallery/photo', 'Admin\PhotoController@addPhotoGalleryDuringAddProduct');
 	Route::get('/admin/edit_product/{id}', 'Admin\ProductsAdminController@edit');
 	Route::get('/admin/chart_product', 'Admin\AdminController@productChart');
 	Route::get('/admin/chart_sold', 'Admin\AdminController@soldChart');
 	Route::get('/admin/chart_delivery', 'Admin\AdminController@deliveryChart');
 	Route::get('/admin/chart_paying', 'Admin\AdminController@paidChart');
 	Route::get('/admin/delete_photo/{id}', 'Admin\PhotoController@deletePhotoDuringEdit');
-	Route::post('/admin/add_photo', 'Admin\PhotoController@addPhotoDuringEditProduct');
+	Route::post('/admin/edit_products/add_photo', 'Admin\PhotoController@addPhotoDuringEditProduct');
+	Route::post('/admin/edit_products/add_photo_gallery', 'Admin\PhotoController@editPhotoGalleryDuringEditProduct');
+	Route::get('/admin/edit_products/delete_photo_gallery/{id}/{file}', 'Admin\PhotoController@deletePhotoGalleryDuringEdit');
 });
 
 Auth::routes();
