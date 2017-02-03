@@ -64,8 +64,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/admin/add_role')}}"><i class="fa fa-circle-o"></i> Dodaj role</a></li>
-            <li><a href="{{url('/admin/edit_role')}}"><i class="fa fa-circle-o"></i> Edytuj role</a></li>
+            <li><a href="{{url('/admin/add_role')}}"><i class="fa fa-circle-o"></i>Zarządzaj rolami</a></li>
           </ul>
         </li>
         <li class="treeview">
