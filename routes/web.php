@@ -86,7 +86,11 @@ Route::group([
 	Route::get('/admin/all_product/delete/{id}', 'Admin\ProductsAdminController@destroy');
 	Route::get('/admin/current_orders', 'Admin\OrdersAdminController@allOrders');
 	Route::get('/admin/add_role', 'Admin\RolesAdminController@index');
+	
 	Route::post('/admin/add_role', 'Admin\RolesAdminController@addRole');
+	Route::post('/admin/edit_role/{id}', 'Admin\RolesAdminController@update');
+	Route::get('/admin/delete_role/{id}', 'Admin\RolesAdminController@destroy');
+	
 	Route::post('/admin/add_product_gallery/photo', 'Admin\PhotoController@addPhotoGalleryDuringAddProduct');
 	Route::get('/admin/edit_product/{id}', 'Admin\ProductsAdminController@edit');
 	Route::get('/admin/chart_product', 'Admin\AdminController@productChart');
