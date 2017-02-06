@@ -91,7 +91,22 @@ class KoszykController extends Controller
     {
         //
     }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Koszyks $id
+     * @return \Illuminate\Http\Response
+     */
 
+    public function changeAmount(Request $request, Koszyks $id)
+    {
+    	$id->update($request->all());
+    	Session::flash('success','zmieniono ilosc.');
+    	return redirect()->back();
+    }
+    
     /**
      * Remove the specified resource from storage.
      *

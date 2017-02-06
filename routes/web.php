@@ -48,6 +48,7 @@ Route::get('/', 'Strona_domowaController@index');
 
 	Route::get('koszyk', ['uses' => 'KoszykController@index']);
 	Route::post('koszyk/destroy/{id}', ['uses' => 'KoszykController@destroy']);
+	Route::post('koszyk/changeAmount/{id}', 'KoszykController@changeAmount');
 	
 	Route::get('transakcja', ['uses' => 'DealController@index']);
 	Route::post('transakcja', ['uses' => 'DealController@index']);

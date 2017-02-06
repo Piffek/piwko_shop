@@ -13,13 +13,11 @@ class ExampleTest extends TestCase
 
 		//$this->be($user);
 		
-		//$user = factory(App\User::class)->create();
+		$user = factory(User::class)->make();
 		
-		/*$this->actingAs($user)
+		$this->actingAs($user)
 		->visit('/dane')
-		->see('Imię i nazwisko')
-		->press('Edytuj dane')
-		;*/
+		->press('Edytuj dane');
 		/*$this->visit('/')
 		->click('zaloguj')
 		->type('test@test.pl','email')

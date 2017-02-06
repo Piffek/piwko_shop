@@ -19,7 +19,10 @@
 				<p>NIP: {{$data_user -> nip}}</p>
 				<td><form method="POST" action="/dane/edit/{{$data_user->id}}">
 				{!! csrf_field() !!}
-				<input type="submit" value="Edytuj dane"></tr>
+				
+				<button id="Edytuj dane" type="submit" class="btn btn-primary">
+                                    Edytuj dane
+                </button>
 			</div>
 		</div>
 		@endforeach
