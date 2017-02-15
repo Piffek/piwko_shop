@@ -22,6 +22,7 @@ class DealController extends Controller
 
     	$data_users = User::whereid(Auth::user()->id)->get();
     	$data_deals = Add_adress_delivery::whereid_user(Auth::user()->id)->get();
+    	$baskets = Koszyks::where('id_user', Auth::user()->id)->get();
     	
     	return View::make('transakcja')
     	
@@ -29,7 +30,8 @@ class DealController extends Controller
     	
     	->with(compact('data_deals'))
     	
-    	->with(compact('basket'));
+    	->with(compact('baskets'));
+    	
     	
     }
 

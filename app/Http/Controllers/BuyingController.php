@@ -45,25 +45,26 @@ class BuyingController extends Controller
     		$street = $request -> street;
     		$id_adress_delivery = $request -> id_adress_delivery;
     	}
+    	
     	$baskets = Koszyks::where('id_user', Auth::user()->id)->get();
     	
     	foreach($baskets as $basket)
     	{
    		
-    		$items = Items::where('id', $basket['id_produktu'])->get();
+    		$items = Items::where('id', $basket->id_produktu)->get();
     		foreach ($items as $item)
     		{
-    			$sum = $item['zakupienia'] + $basket['ilosc'];
-    			$buy = new Items();
-    			Items::where('id', $basket['id_produktu'])->update(array('zakupienia' => $sum));
+	    		$sum = $item->zakupienia + $basket->ilosc;
+	    		$min = $item->ilosc - $basket->ilosc; 
+	    		Items::where('id', $basket->id_produktu)->update(array('zakupienia'=>$sum, 'ilosc'=>$min));
     		}
     		
     		
     		$add_buyings = new Buyings;
-    		$add_buyings -> id_produktu = $basket['id_produktu'];
-    		$add_buyings -> product = $basket['product'];
-    		$add_buyings-> cena = $basket['cena'];
-    		$add_buyings -> ilosc = $basket['ilosc'];
+    		$add_buyings -> id_produktu = $basket->id_produktu;
+    		$add_buyings -> product = $basket->product;
+    		$add_buyings-> cena = $basket->cena;
+    		$add_buyings -> ilosc = $basket->ilosc;
     		$add_buyings -> id_user = Auth::user()->id;
     		$add_buyings -> surname = Auth::user()->surname;
     		$add_buyings -> street = $street;
