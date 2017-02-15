@@ -31,6 +31,9 @@ class BuyingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    
+    
     public function create(Request $request)
     {
     	
@@ -47,19 +50,12 @@ class BuyingController extends Controller
     	}
     	
     	$baskets = Koszyks::where('id_user', Auth::user()->id)->get();
-    	
     	foreach($baskets as $basket)
     	{
-   		
-    		$items = Items::where('id', $basket->id_produktu)->get();
-    		foreach ($items as $item)
-    		{
-	    		$sum = $item->zakupienia + $basket->ilosc;
-	    		$min = $item->ilosc - $basket->ilosc; 
-	    		Items::where('id', $basket->id_produktu)->update(array('zakupienia'=>$sum, 'ilosc'=>$min));
-    		}
+    		//Dodawanie ilosci do tabeli 'zakupienia', odejmowanie zakupionej ilosci od ilosci ogólnej
+    		$this->plusAmountBuyingItemsAndminusAmountItems($basket->id_produktu, $basket->ilosc);
     		
-    		
+    		//Dodawanie do bazy
     		$add_buyings = new Buyings;
     		$add_buyings -> id_produktu = $basket->id_produktu;
     		$add_buyings -> product = $basket->product;
@@ -82,7 +78,16 @@ class BuyingController extends Controller
     }
     
 
-    
+    public function plusAmountBuyingItemsAndminusAmountItems($id_produktu, $basket_amount)
+    {
+    	$items = Items::where('id', $id_produktu)->get();
+    	foreach ($items as $item)
+    	{
+    		$sum = $item->zakupienia + $basket_amount;
+    		$min = $item->ilosc - $basket_amount;
+    		Items::where('id', $id_produktu)->update(array('zakupienia'=>$sum, 'ilosc'=>$min));
+    	}
+    }
 
     /**
      * Store a newly created resource in storage.
