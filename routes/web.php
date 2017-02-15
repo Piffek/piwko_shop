@@ -53,7 +53,12 @@ Route::get('/', 'Strona_domowaController@index');
 	Route::get('transakcja', ['uses' => 'DealController@index']);
 	Route::post('transakcja', ['uses' => 'DealController@index']);
 	
-	Route::post('kupione/store', ['uses' => 'BuyingController@store']);
+	Route::post('kupione/store','BuyingController@store');
+	
+	/*Route::resource('kupione/store', 'BuyingController',
+			['only' => ['store', 'getBuy']]);*/
+	
+	
 	Route::post('kupione/create/', ['uses' => 'BuyingController@create']);
 	Route::get('kupione', ['uses' => 'BuyingController@index']);
 	

@@ -13,7 +13,7 @@
 				Cena:
 					<input style="width:150px" id="price" type="text" class="form-control" name="cena">
 				Ilość:
-					<input style="width:150px" id="amount" type="text" class="form-control" name="ilosc"">
+					<input style="width:150px" id="amount" type="text" class="form-control" name="ilosc">
 			</div>
 			<div class="col-md-3">
 				Rodzaj:

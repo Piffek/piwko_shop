@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Koszyks;
 use View;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -26,7 +27,9 @@ class DealController extends Controller
     	
     	->with(compact('data_users'))
     	
-    	->with(compact('data_deals'));
+    	->with(compact('data_deals'))
+    	
+    	->with(compact('basket'));
     	
     }
 
