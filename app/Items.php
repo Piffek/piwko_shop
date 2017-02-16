@@ -15,5 +15,17 @@ class Items extends Model
 	];
 	
 	protected $table = 'Items';
+	
+	public function decreaseInventory($amount)
+	{
+		$this->ilosc -= $amount;
+		$this->update();
+	}
+	
+	public function recordPurchase($amount)
+	{
+		$this->zakupienia += $amount;
+		$this->update();
+	}
 
 }
