@@ -8,7 +8,7 @@ class Buyings extends Model
 
 	
 	protected $fillable = [
-			'id','id_produktu','product', 'cena', 'ilosc', 'id_user','surname','street','city','nip','companyname' ,'delivery','paying','id_adress_delivery'
+			'id','id_produktu','product', 'price', 'amount', 'id_user','surname','street','city','nip','companyname' ,'delivery','paying','id_adress_delivery'
 			];
 	
 	protected $hidden = [
@@ -16,6 +16,11 @@ class Buyings extends Model
 	];
 	
 	protected $table = 'buyings';
-	
+
+	public function getId()
+	{
+		return $this->id;
+	}
 
 }
+

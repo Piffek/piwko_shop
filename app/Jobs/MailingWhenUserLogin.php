@@ -6,16 +6,13 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\LogOnData;
-use App\RolesHasUser;
 use DB;
+use App\Buyings;
 
-
-class MailingLogon implements ShouldQueue
+class MailingWhenUserLogin implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
-
-	protected $id;
+    protected $id;
     /**
      * Create a new job instance.
      *
@@ -24,7 +21,6 @@ class MailingLogon implements ShouldQueue
     public function __construct($id)
     {
     	$this->id = $id;
-    	
     }
 
     /**
@@ -40,24 +36,22 @@ class MailingLogon implements ShouldQueue
     	->where([
     			['roles_id','=','4'],
     	])->first();
-    	 
-    	$customers = LogOnData::where('id_transaction',$this->id)->get();
     	
+    	$customers = Buyings::where('id',$this->id)->get();
     	
     	foreach ($customers as $customer)
     	{
-    		
-    		$customers_id = LogOnData::where('id',$customer->id)->get();
     	
+    		$customers_id = Buyings::where('id',$customer->id)->get();
+    		 
     		$pdf = \PDF::loadView('emails.bills_logout', array('customers_id' => $customers_id, 'admin_data' =>$admin_data));
     		\Mail::send('emails.thanks_for_buyings', array('customers_id' => $customers_id,'admin_data' =>$admin_data), function($message) use($pdf,$customer)
     		{
     			$message->from('patrykpiwko123412@com', 'John Smith')->subject('Zakup'.$customer->id.'');
     			$message->to('foo@example.com', 'John Smith')->subject('Zakup'.$customer->id.'');
-    			
+    			 
     			$message->attachData($pdf->output(), 'faktura_nr_'.$customer->id.'.pdf');
     		});
     	}
-    	
     }
 }

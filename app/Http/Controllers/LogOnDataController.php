@@ -55,10 +55,10 @@ class LogOnDataController extends Controller
     		$add_logondata -> phone= $request->input('phone');
     		$add_logondata -> companyname= $request->input('companyname');
     		$add_logondata -> nip= $request->input('nip');
-    		$add_logondata -> produkt= $produkt['produkt'];
-    		$add_logondata -> id_transakcji = $produkt['random_id'];
-    		$add_logondata -> ilosc = $produkt['ilosc'];
-    		$add_logondata -> cena = $produkt['cena'];
+    		$add_logondata -> product= $produkt['produkt'];
+    		$add_logondata -> id_transaction = $produkt['random_id'];
+    		$add_logondata -> amount = $produkt['ilosc'];
+    		$add_logondata -> price = $produkt['cena'];
 			$add_logondata -> paying = $request->paying;
 			$add_logondata -> delivery_method = $request->delivery_method;
     		$add_logondata-> save();

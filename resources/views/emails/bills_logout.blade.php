@@ -13,8 +13,11 @@
                     <p>Pieczęć firmy<br></p>
 
 
-
-       				<p><b>Faktura Nr {{$item->id_transakcji}}</b></p>
+					@if(isset($item->id_transakcji))
+       					<p><b>Faktura Nr {{$item->id_transaction}}</b></p>
+       				@else
+       					<p><b>Faktura Nr {{$item->id}}</b></p>
+       				@endif
 
 
 
@@ -30,16 +33,32 @@
                     	 Nr konta: <b>78 140 0000 0000 0000 1234 5678</b><br></br>
                     @endif
                     
-                    @if(empty($item->companyname))
-                   		Nabywca: <b>{{$item->firstname}} {{$item->lastname}}</b><br>
-                   		Ulica: <b>{{$item->billingstreet}}</b><br>
-	                    Miasto: <b>{{$item->billingcity}}</b><br>
-                    @else
-	                    Firma: <b>{{$item->companyname}}</b><br>
-                   		NIP : <b>{{$item->nip}}</b><br></br>
-                   		Ulica: <b>{{$item->billingstreet}}</b><br>
-	                    Miasto: <b>{{$item->billingcity}}</b><br>
-	                @endif
+                    
+                    @if(isset($item->billingstreet))
+	                    @if(empty($item->companyname))
+	                   		Nabywca: <b>{{$item->firstname}} {{$item->lastname}}</b><br>
+	                   			Ulica: <b>{{$item->billingstreet}}</b><br>
+		                    	Miasto: <b>{{$item->billingcity}}</b><br>
+		 
+	                    @else
+		                    Firma: <b>{{$item->companyname}}</b><br>
+	                   		NIP : <b>{{$item->nip}}</b><br></br>
+	                   		Ulica: <b>{{$item->billingstreet}}</b><br>
+		                    Miasto: <b>{{$item->billingcity}}</b><br>
+		                @endif
+		            @else
+		            	@if(empty($item->companyname))
+	                   		Nabywca: <b>{{$item->firstname}} {{$item->lastname}}</b><br>
+	                   			Ulica: <b>{{$item->street}}</b><br>
+		                    	Miasto: <b>{{$item->city}}</b><br>
+		 
+	                    @else
+		                    Firma: <b>{{$item->companyname}}</b><br>
+	                   		NIP : <b>{{$item->nip}}</b><br></br>
+	                   		Ulica: <b>{{$item->street}}</b><br>
+		                    Miasto: <b>{{$item->city}}</b><br>
+		                @endif
+		            @endif
 					<br>
 					<br>
 					
@@ -67,15 +86,15 @@
             <tr>
             
             	<td>{{$item->id}}</td>
-                <td>{{$item->produkt}}</td>
+                <td>{{$item->product}}</td>
                 <td></td>
-                <td>{{$item->ilosc}}</td>
+                <td>{{$item->amount}}</td>
                 <td>szt</td>
-                <td>{{($item->cena)-0.23*($item->cena)}} zł</td>
-                <td>{{($item->cena*$item->ilosc)-0.23*($item->cena*$item->ilosc)}} zł</td>
+                <td>{{($item->price)-0.23*($item->price)}} zł</td>
+                <td>{{($item->price*$item->amount)-0.23*($item->price*$item->amount)}} zł</td>
                 <td>23%</td>
-                <td>{{0.23*($item->cena)}}</td>
-                <td>{{$item->cena*$item->ilosc}} zł</td>                
+                <td>{{0.23*($item->price)}}</td>
+                <td>{{$item->price*$item->amount}} zł</td>                
             </tr>
 
 
@@ -83,7 +102,7 @@
         
 
 
-                <p>Razem do zapłaty: <b>{{$item->cena*$item->ilosc}} zł</b></p>
+                <p>Razem do zapłaty: <b>{{$item->price*$item->amount}} zł</b></p>
    
            @endforeach
 

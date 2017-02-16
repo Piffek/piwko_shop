@@ -5,6 +5,7 @@ use App\Items;
 use App\Koszyks;
 use Illuminate\Support\Facades\Auth;
 use App\Buyings;
+use App\Jobs\MailingWhenUserLogin;
 class StoreCashier
 {
 	public function checkout($adress_delivery)
@@ -17,8 +18,8 @@ class StoreCashier
 			$add_buyings = new Buyings;
 			$add_buyings -> id_produktu = $basket->id_produktu;
 			$add_buyings -> product = $basket->product;
-			$add_buyings-> cena = $basket->cena;
-			$add_buyings -> ilosc = $basket->ilosc;
+			$add_buyings-> price = $basket->cena;
+			$add_buyings -> amount = $basket->ilosc;
 			$add_buyings -> id_user = Auth::user()->id;
 			$add_buyings -> surname = Auth::user()->surname;
 			$add_buyings -> street = $adress_delivery['street'];
@@ -33,6 +34,8 @@ class StoreCashier
 			$items = Items::find($basket->id_produktu);
 			$items->decreaseInventory($basket->ilosc);
 			$items->recordPurchase($basket->ilosc);
+
+			dispatch(new MailingWhenUserLogin($add_buyings->getId()));
 		}
 		Koszyks::whereid_user(Auth::user()->id)->delete();
 		
