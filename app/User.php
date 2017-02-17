@@ -39,6 +39,14 @@ class User extends Authenticatable
     	->withTimestamps();
     }
     
+    
+    
+    public function getEmail($id)
+    {
+    	
+    }
+    
+    
     //sprawdza czy jest to tablica czy string
     public function hasAnyRole($roles)
     {

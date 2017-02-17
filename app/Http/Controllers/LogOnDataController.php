@@ -12,6 +12,7 @@ use DB;
 use Carbon\Carbon;
 use App\Jobs\MailingLogon;
 
+
 class LogOnDataController extends Controller
 {
     /**
@@ -62,7 +63,7 @@ class LogOnDataController extends Controller
 			$add_logondata -> paying = $request->paying;
 			$add_logondata -> delivery_method = $request->delivery_method;
     		$add_logondata-> save();
-    		dispatch(new MailingLogon($produkt['random_id']));
+    		dispatch(new MailingLogon($produkt['random_id'], 'id_transaction', 'LogOnData'));
 
     	}
     	
