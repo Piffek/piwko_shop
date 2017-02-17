@@ -16,4 +16,8 @@ class LogOnData extends Model
 	];
 	
 	protected $table = 'logondata';
+	
+
+	
+	
 }

@@ -68,8 +68,7 @@ class MailingLogon implements ShouldQueue
     			{
     				$userEmail = $customer->email;
     			}
-    			
-    			
+
     			$message->from('patrykpiwko123412@com', 'John Smith')->subject('Zakup'.$customer->id.'');
     			$message->to($userEmail, 'John Smith')->subject('Zakup'.$customer->id.'');
     			

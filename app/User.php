@@ -40,13 +40,6 @@ class User extends Authenticatable
     }
     
     
-    
-    public function getEmail($id)
-    {
-    	
-    }
-    
-    
     //sprawdza czy jest to tablica czy string
     public function hasAnyRole($roles)
     {

@@ -53,9 +53,15 @@ class KoszykController extends Controller
      */
     public function store(Request $request)
     {
-    	Koszyks::create($request->all());
-    	return back()->with('status', 'Dodano do koszyka!.');
-    	
+		$basket = new Koszyks();
+		if($basket->orIsset($request->product))
+		{
+			return back()->with('warning', 'Masz już ten produkt w koszyku.');
+		}else 
+		{
+			Koszyks::create($request->all());
+			return back()->with('status', 'Dodano do koszyka!.');
+		}
     }
 
     /**

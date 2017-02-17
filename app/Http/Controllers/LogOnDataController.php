@@ -33,6 +33,8 @@ class LogOnDataController extends Controller
     public function create(Request $request)
     {	
     	
+  	
+    	
     	$products = session('basket');
     	foreach($products as $produkt)
     	{
