@@ -23,17 +23,18 @@ class AdminController extends Controller
 	{
 		//DB::table('booking')->selectRaw('count(id) as bookings_count, dayofweek(created_at) as weekday')->groupBy('weekday')->get();
 		//return view('admin.chart.productsChart');
-	$day = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->groupBy('weekday')->get();
-
+	$dayChart = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->groupBy('weekday')->get();
+	$day = $dayChart->keyBy('weekday');
 	return view('admin.chart.productsChart',compact('day'));
 
 	}
 	
 	public function soldChart()
 	{
-		$delivery = DB::table('buyings')->selectRaw('count(id) as buyings_count, delivery as deli')->groupBy('deli')->get();
-
-		return view('admin.chart.soldChart',compact('delivery'));
+		$soldChart = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->groupBy('deli')->get();
+		$sold = $soldChart->keyBy('weekday');
+		return view('admin.chart.soldChart',compact('sold'));
+		
 	}
 	
 	public function deliveryChart()

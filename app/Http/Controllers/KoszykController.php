@@ -10,12 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Session;
 
+
 class KoszykController extends Controller
 {
-	
-	
-	
-
+	use MyTrait\ExampleTrait;
 
     /**
      * Display a listing of the resource.
@@ -53,6 +51,7 @@ class KoszykController extends Controller
      */
     public function store(Request $request)
     {
+
 		$basket = new Koszyks();
 		if($basket->orIsset($request->product))
 		{

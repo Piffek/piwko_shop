@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 use DB;
 use View;
 
@@ -34,4 +33,6 @@ class ChartAdmin extends AdminController
 
 		return View::make($this->blade,compact('DPD','UPS','delivery2'));	
 	}
+	
+	
 }
