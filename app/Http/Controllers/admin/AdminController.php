@@ -32,7 +32,7 @@ class AdminController extends Controller
 	
 	public function soldChart()
 	{
-		$soldChart = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->groupBy('deli')->get();
+		$soldChart = DB::table('buyings')->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->groupBy('weekday')->get();
 		$sold = $soldChart->keyBy('weekday');
 		return view('admin.chart.soldChart',compact('sold'));
 		
