@@ -10,51 +10,14 @@ class ProductController extends Controller
 {
 	
 
-public function getAddToBasket(Request $request, $id)
+	public function getAddToBasket(Request $request, $id)
     {
-    	$products = session('basket');
-		if(isset($products))
-		{
-			foreach($products as $product)
-			{
-				$product_id=$product['id'];
-			}
-	
-			
-			if(isset($product_id) && $id === $product_id)
-			{
-				return back()->with('warning','Masz już ten produkt w koszyku');
-			}else
-			{
-		    	$product_from_db = Items::find($id);
-		    	$product['random_id'] = $request->random_id_product;
-		    	$product['id'] = $id;
-		    	$product['produkt'] = $product_from_db->produkt;
-		    	$product['cena'] = $product_from_db->cena;
-		    	$product['ilosc'] = $request->ilosc;
-		    	$product['cena_lacznie'] = $product['cena']*$product['ilosc'];
-		    	
-		
-		    	$request -> session()->push('basket', $product);
-		    	//return redirect()->route('product.index');
-		    	return back()->with('status', 'Dodano do koszyka!.');
-			}
-		}else 
-		{
-			$product_from_db = Items::find($id);
-			$product['random_id'] = $request->random_id_product;
-			$product['id'] = $id;
-			$product['produkt'] = $product_from_db->produkt;
-			$product['cena'] = $product_from_db->cena;
-			$product['ilosc'] = $request->ilosc;
-			$product['cena_lacznie'] = $product['cena']*$product['ilosc'];
-			
-			$request -> session()->push('basket', $product);
-			//return redirect()->route('product.index');
-			return back()->with('status', 'Dodano do koszyka!.');
-		}
+    	$basket = new Items();
+    	$basket->addToBasket($request->all(), $id);
+    	return redirect()->back()->with('success', 'Dodano do koszyka');
 			
     }
+
     
     
     public function getBasket()
@@ -83,13 +46,13 @@ public function getAddToBasket(Request $request, $id)
     	$products = session('basket');
     	foreach ($products as $key => $product)
     	{
-    		if($product['id'] == $id)
+    		if($product['random_id'] == $id)
     		{
     			unset($products[$key]);
     		}
     	}
     	session()->put('basket', $products);
-    	return redirect()->back();
+    	return redirect()->back()->with('success', 'Usunięto');
     	//put back in session array without deleted item
     	//then you can redirect or whatever you need
     

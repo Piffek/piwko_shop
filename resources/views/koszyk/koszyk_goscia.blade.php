@@ -32,7 +32,7 @@
 					   	<td>{{$p['produkt']}}</td>
 						<td>{{$p['cena']}}</td>
 						<td>{{$p['ilosc']}}</td>
-						<td><a href="koszyk_goscia/delete/{{$p['id']}}" class="btn btn-danger pull-right" role="button">Usuń</a></td>
+						<td><a href="koszyk_goscia/delete/{{$p['random_id']}}" class="btn btn-danger pull-right" role="button">Usuń</a></td>
 					</tbody>
 				@endforeach		
 		 </table>
