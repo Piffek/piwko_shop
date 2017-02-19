@@ -94,7 +94,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			Opis:
-				<input id="desc" type="textarea" class="form-control" name="desc" value="{{$item->opis}}">
+			<textarea class="desc" name="desc" >{{$item->desc}}</textarea>
 			<input type="submit" value="Edytuj"></tr>
 		</div>
 

@@ -34,15 +34,16 @@
 					<input style="width:150px" id="text_promotion" type="text" class="form-control" name="text_promotion">
 			
 				</div>
-		</div>
+						</div>
 </div>
 	{!! Form::file('image') !!}
 	
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			Opis:
-				<input id="desc" type="textarea" class="form-control" name="desc">
-			<input type="submit" value="Dodaj"></tr>
+				<textarea class="desc" name="desc"></textarea>
+			<input type="submit" value="Dodaj">
+			</form>
 		</div>
 
 	</div>

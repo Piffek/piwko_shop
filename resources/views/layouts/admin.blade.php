@@ -21,17 +21,15 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ url('admin/admin_layout/dist/css/skins/_all-skins.min.css') }}">
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/iCheck/flat/blue.css') }}">
+
   <!-- Morris chart -->
   <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/morris/morris.css') }}">
   <!-- jvectormap -->
   <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
   <!-- Date Picker -->
   <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/datepicker/datepicker3.css') }}">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/daterangepicker/daterangepicker.css') }}">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+  
+  
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
@@ -48,19 +46,10 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Panel Admina</span>
-    </a>
+
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+  
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -366,16 +355,13 @@
 
 <!-- ./wrapper -->
     <script>
-        CKEDITOR.replace( 'desc' );
+       CKEDITOR.replace('desc');
     </script>
 <!-- jQuery 2.2.3 -->
 <script src="{{ url('admin/admin_layout/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
+
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ url('admin/admin_layout/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Morris.js charts -->
@@ -386,25 +372,13 @@
 <!-- jvectormap -->
 <script src="{{ url('admin/admin_layout/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
 <script src="{{ url('admin/admin_layout/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ url('admin/admin_layout/plugins/knob/jquery.knob.js') }}"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="{{ url('admin/admin_layout/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- datepicker -->
-<script src="{{ url('admin/admin_layout/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{ url('admin/admin_layout/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
-<!-- Slimscroll -->
-<script src="{{ url('admin/admin_layout/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+
+
 <!-- FastClick -->
 <script src="{{ url('admin/admin_layout/plugins/fastclick/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ url('admin/admin_layout/dist/js/app.min.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ url('admin/admin_layout/dist/js/pages/dashboard.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ url('admin/admin_layout/dist/js/demo.js') }}"></script>
+
 
 </body>
 </html>
