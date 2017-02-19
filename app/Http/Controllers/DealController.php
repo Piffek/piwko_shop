@@ -24,7 +24,7 @@ class DealController extends Controller
     	$data_deals = Add_adress_delivery::whereid_user(Auth::user()->id)->get();
     	$baskets = Koszyks::where('id_user', Auth::user()->id)->get();
     	
-    	return View::make('transakcja')
+    	return View::make('transactionPage')
     	
     	->with(compact('data_users'))
     	
