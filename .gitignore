@@ -1,5 +1,5 @@
 /node_modules
-/public/admin/
+
 /vendor
 /.idea
 Homestead.json
