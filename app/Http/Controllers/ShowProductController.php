@@ -1,38 +1,39 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Koszyks;
-use App\User;
 use App\Items;
+use App\User;
+use App\Koszyks;
 use Illuminate\Support\Facades\Auth;
-use DB;
 use Session;
 
-
-class KoszykController extends Controller
+class ShowProductController extends Controller
 {
-	use MyTrait\ExampleTrait;
+	
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Items $items,$id)
     {
-    	if (Auth::check())
-    	{  	
-	    	$koszyk = Koszyks::where('id_user',Auth::user()->id)->get();
-	    	return view('koszyk.index',compact('koszyk'));
+    	//return $id;
+    	$items = Items::whereId($id)->first();
+    	if (Auth::check()) 
+    	{
+    		$user = User::wherename(Auth::user()->name)->get();
+    	
+	    	foreach($user as $users)
+	    	{
+	    		$koszyk = $users->id;
+	    	}
+	    	return view('showProduct.index',['items' => $items ,'koszyk' => $koszyk]);
     	}
-    	return view('koszyk.index');
+    	return view('showProduct.index',['items' => $items]);
+    	
+       
+       
     }
     
-
    
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +41,6 @@ class KoszykController extends Controller
      */
     public function create()
     {
-    	return view('koszyk');
     }
 
     /**
@@ -51,16 +51,7 @@ class KoszykController extends Controller
      */
     public function store(Request $request)
     {
-
-		$basket = new Koszyks();
-		if($basket->orIsset($request->product))
-		{
-			return back()->with('warning', 'Masz już ten produkt w koszyku.');
-		}else 
-		{
-			Koszyks::create($request->all());
-			return back()->with('status', 'Dodano do koszyka!.');
-		}
+        //
     }
 
     /**
@@ -96,33 +87,15 @@ class KoszykController extends Controller
     {
         //
     }
-    
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Koszyks $id
-     * @return \Illuminate\Http\Response
-     */
 
-    public function changeAmount(Request $request, Koszyks $id)
-    {
-    	$id->update($request->all());
-    	Session::flash('success','zmieniono ilosc.');
-    	return redirect()->back();
-    }
-    
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Koszyks  $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Koszyks $id)
+    public function destroy($id)
     {
-    	$id->delete();
-    	return back()->with('status', 'Usunięto.');
+        //
     }
-    
-    
 }

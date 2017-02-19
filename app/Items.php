@@ -8,7 +8,7 @@ use Session;
 class Items extends Model
 {
 	protected $fillable = [
-			'id','produkt','wymiary', 'cena', 'rodzaj', 'przeznaczenie','wymiary_ogolne','ilosc','opis','promocja','procent_promocji' ,'tekst_promocji','zakupienia','id_adress_delivery'
+			'id','product','size', 'price', 'kind', 'intended','general_size','amount','desc','promotion','percent_promotions' ,'text_promotion','buy_amount','id_adress_delivery'
 	];
 	
 	protected $hidden = [
@@ -19,13 +19,13 @@ class Items extends Model
 	
 	public function decreaseInventory($amount)
 	{
-		$this->ilosc -= $amount;
+		$this->amount -= $amount;
 		$this->update();
 	}
 	
 	public function recordPurchase($amount)
 	{
-		$this->zakupienia += $amount;
+		$this->buy_amount += $amount;
 		$this->update();
 	}
 	
@@ -39,10 +39,10 @@ class Items extends Model
 			$product = array(
 					'random_id' => $request['random_id_product'],
 					'id' => $id,
-					'produkt' => $oneProduct['produkt'],
-					'cena' => $oneProduct['cena'],
-					'ilosc' => $request['ilosc'],
-					'cena_lacznie' => $oneProduct['cena']*$request['ilosc'],
+					'product' => $oneProduct['product'],
+					'price' => $oneProduct['price'],
+					'amount' => $request['amount'],
+					'all_price' => $oneProduct['price']*$request['amount'],
 			);
 			session()->push('basket',$product);
 		}

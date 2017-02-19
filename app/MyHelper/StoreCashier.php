@@ -16,10 +16,10 @@ class StoreCashier
 		
 			//Dodawanie do bazy
 			$add_buyings = new Buyings;
-			$add_buyings -> id_produktu = $basket->id_produktu;
+			$add_buyings -> id_product = $basket->id_product;
 			$add_buyings -> product = $basket->product;
-			$add_buyings-> price = $basket->cena;
-			$add_buyings -> amount = $basket->ilosc;
+			$add_buyings-> price = $basket->price;
+			$add_buyings -> amount = $basket->amount;
 			$add_buyings -> id_user = Auth::user()->id;
 			$add_buyings -> surname = Auth::user()->surname;
 			$add_buyings -> street = $adress_delivery['street'];
@@ -31,9 +31,9 @@ class StoreCashier
 			$add_buyings -> paying = $adress_delivery['payment_method'];
 			$add_buyings -> save();
 			
-			$items = Items::find($basket->id_produktu);
-			$items->decreaseInventory($basket->ilosc);
-			$items->recordPurchase($basket->ilosc);
+			$items = Items::find($basket->id_product);
+			$items->decreaseInventory($basket->price);
+			$items->recordPurchase($basket->amount);
 
 			dispatch(new MailingLogon($add_buyings->getId(), 'id' , 'Buyings'));
 		}

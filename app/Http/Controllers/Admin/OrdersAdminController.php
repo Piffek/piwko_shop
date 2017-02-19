@@ -20,7 +20,7 @@ class OrdersAdminController extends Controller
 	
 	public function allOrders()
 	{
-		$all_orders = Buyings::all();
+		$all_orders = Buyings::orderBy('id', 'desc')->get();
 		return view('admin.orders.allOrders',compact('all_orders'));
 	}
 	
@@ -33,10 +33,23 @@ class OrdersAdminController extends Controller
 	 */
 	public function thisOrder(Buyings $id)
 	{
-		$this_order= clone $id;
+		$this_order = clone $id;
 		return view('admin.orders.thisOrder',compact('this_order'));
 	}
-
+	
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  Buyings  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function deleteOrder(Buyings $id)
+	{
+		$id->delete();
+		Session::flash('success','Usunięto zamówienie.');
+		return redirect()->action('Admin\OrdersAdminController@allOrders');
+	}
 
 
 

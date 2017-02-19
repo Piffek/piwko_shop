@@ -8,7 +8,7 @@
 </body>
         @yield('login_and_registered')
 
-asdadad
+
 
 <script src="js/bootstrap.min.js"></script>
 

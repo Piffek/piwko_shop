@@ -38,9 +38,9 @@ class LogOnDataController extends Controller
     	$products = session('basket');
     	foreach($products as $produkt)
     	{
-    		$nazwa_produktu = $produkt['produkt'];
-    		$cena = $produkt['cena'];
-    		$ilosc = $produkt['ilosc'];
+    		$nazwa_produktu = $produkt['product'];
+    		$cena = $produkt['price'];
+    		$ilosc = $produkt['amount'];
     		
     		$add_logondata= new LogOnData;
     		$add_logondata -> firstname = $request->input('firstname');
@@ -58,10 +58,10 @@ class LogOnDataController extends Controller
     		$add_logondata -> phone= $request->input('phone');
     		$add_logondata -> companyname= $request->input('companyname');
     		$add_logondata -> nip= $request->input('nip');
-    		$add_logondata -> product= $produkt['produkt'];
+    		$add_logondata -> product= $produkt['product'];
     		$add_logondata -> id_transaction = $produkt['random_id'];
-    		$add_logondata -> amount = $produkt['ilosc'];
-    		$add_logondata -> price = $produkt['cena'];
+    		$add_logondata -> amount = $produkt['amount'];
+    		$add_logondata -> price = $produkt['price'];
 			$add_logondata -> paying = $request->paying;
 			$add_logondata -> delivery_method = $request->delivery_method;
     		$add_logondata-> save();
@@ -72,7 +72,7 @@ class LogOnDataController extends Controller
     	
     	
     	Session::flash('success','Dziękujemy za zakup produktu, na podany mail została wysłana informacja');
-    	return redirect()->action('Strona_domowaController@index');
+    	return redirect()->action('HomePageController@index');
 
     }
     

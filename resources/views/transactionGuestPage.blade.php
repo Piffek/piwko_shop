@@ -14,7 +14,7 @@
         <hr/>
         <strong>Informacje niezbędne do zakupu.</strong>
         @foreach($products as $product)
-        <h2 class="bg-success">Należność: {{ $product['cena_lacznie'] }} zł za {{$product['produkt']}}</h2>
+        <h2 class="bg-success">Należność: {{ $product['all_price'] }} zł za {{$product['product']}}</h2>
         @endforeach
         <div class="form-group col-md-12 bg-primary">
             <label class="control-label" for="billinginformation">Informacje do wysyłki</label>

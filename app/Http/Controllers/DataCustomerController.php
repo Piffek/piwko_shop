@@ -1,39 +1,27 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Items;
-use App\User;
-use App\Koszyks;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Dane;
 use Session;
 
-class Pokaz_produktController extends Controller
+class DataCustomerController extends Controller
 {
-	
-
-    public function index(Items $items,$id)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-    	//return $id;
-    	$items = Items::whereId($id)->first();
-    	if (Auth::check()) 
-    	{
-    		$user = User::wherename(Auth::user()->name)->get();
-    	
-	    	foreach($user as $users)
-	    	{
-	    		$koszyk = $users->id;
-	    	}
-	    	return view('pokaz_produkt.index',['items' => $items ,'koszyk' => $koszyk]);
-    	}
-    	return view('pokaz_produkt.index',['items' => $items]);
-    	
-       
-       
+        $data_users = User::whereid(Auth::user()->id)->get();
+        return view('data.index',compact('data_users'));
+        
     }
-    
-   
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,6 +29,7 @@ class Pokaz_produktController extends Controller
      */
     public function create()
     {
+    	
     }
 
     /**
@@ -73,19 +62,24 @@ class Pokaz_produktController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$data_users = User::find($id);
+    	return view('data.edit',compact('data_users'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $id)
     {
-        //
+    	$id->update($request->all());
+    	Session::flash('success','Operacja wykonana prawidłowo.');
+    	return redirect()->action('DataCustomerController@index');
+
+    	 
     }
 
     /**

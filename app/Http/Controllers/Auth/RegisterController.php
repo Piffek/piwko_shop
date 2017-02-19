@@ -78,7 +78,7 @@ class RegisterController extends Controller
 	public function confirmEmail($token)
 	{
 		User::whereToken($token)->firstOrFail()->hasVerified();
-		return redirect('login')->with('status', 'Możesz się zalogować.');
+		return redirect('strona_domowa')->with('status', 'Możesz się zalogować.');
 	}
 
 	protected function create(array $data)

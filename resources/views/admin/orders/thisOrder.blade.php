@@ -6,13 +6,13 @@
       <div class="caption">
       	<h4>Numer zamówienia: {{ $this_order-> id }}</h4><br>
       	<h4>Przedmiot zlecenia: {{ $this_order-> product }}</h4><br>
-      	<h4>Cena jednostkowa: {{ $this_order->cena }}</h4><br>
-      	<h4>Ilość: {{ $this_order->ilosc }}</h4><br>
-      	<h4>Kwota zlecenia: {{ $this_order->cena * $this_order->ilosc }}</h4><br>
+      	<h4>Cena jednostkowa: {{ $this_order->price }} zł</h4><br>
+      	<h4>Ilość: {{ $this_order->amount }} szt</h4><br>
+      	<h4>Kwota zlecenia: {{ $this_order->price * $this_order->amount }} zł</h4><br>
       	
         <h4>Wykonane: {{ $this_order -> created_at }}</h4><br>
 
-       <p><a href="{{url('/admin/this_order/'.$this_order->id.'')}}" class="btn btn-primary" role="button">Usuń</a> 
+       <p><a href="{{url('/admin/delete_this_order/'.$this_order->id.'')}}" class="btn btn-primary" role="button">Usuń</a> 
       </div>
     </div>
   </div>

@@ -33,8 +33,8 @@
 						@foreach($buying as $buyings)
 							<tbody>
 							   	<td>{{$buyings->product}}</td>
-								<td>{{$buyings->cena}}</td>
-								<td>{{$buyings->ilosc}}</td>
+								<td>{{$buyings->price}}</td>
+								<td>{{$buyings->amount}}</td>
 								<td>{{$buyings->created_at}}</td>
 								<td><a href="pdf/{{$buyings->id}}">Faktura</a></td>
 							</tbody>

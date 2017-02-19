@@ -13,8 +13,8 @@
                     <p>Pieczęć firmy<br></p>
 
 
-					@if(isset($item->id_transakcji))
-       					<p><b>Faktura Nr {{$item->id_transaction}}</b></p>
+					@if(isset($item->id_transaction))
+       					<p><b>Faktura Nr {{$item->id}}</b></p>
        				@else
        					<p><b>Faktura Nr {{$item->id}}</b></p>
        				@endif

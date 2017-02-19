@@ -5,9 +5,9 @@
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
-      	<h4>Nazwa: {{ $item -> produkt }}</h4><br>
-        <h4>Cena: {{ $item -> cena }}</h4><br>
-        <h4>Ilośc: {{ $item -> ilosc }} szt</h4>
+      	<h4>Nazwa: {{ $item -> product }}</h4><br>
+        <h4>Cena: {{ $item -> price }}</h4><br>
+        <h4>Ilośc: {{ $item -> amount }} szt</h4>
 
        <p><a href="{{url('/admin/edit_product/'.$item->id.'')}}" class="btn btn-primary" role="button">Edytuj</a> 
         <p><a href="{{url('/admin/all_product/delete/'.$item->id.'')}}" class="btn btn-primary" role="button">Usun</a> 

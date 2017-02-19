@@ -61,7 +61,7 @@ class ProductsAdminController extends Controller
     	{
     		Items::create($request->all());
     		
-    		foreach(Items::where('produkt',$request->produkt)->cursor() as $id)
+    		foreach(Items::where('product',$request->product)->cursor() as $id)
     		{		
     			File::makeDirectory('pokaz_produkt/miniaturki/'.$id->id);
     			$photo_id = $id->id;
@@ -116,9 +116,9 @@ class ProductsAdminController extends Controller
      */
     public function update(Request $request, Items $id)
     {
-    		$id->update($request->all());
-    	
-	    
+    	$id->update($request->all());
+    	Session::flash('success','Dane klienta zmieniono pomyślnie');
+    	return redirect()->back();  
     }
 
     /**

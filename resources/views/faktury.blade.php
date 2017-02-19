@@ -65,13 +65,13 @@
                 <td>{!!$item->id!!}</td>
                 <td>{!!$item->product!!}</td>
                 <td></td>
-                <td>{!!$item->ilosc!!}</td>
+                <td>{!!$item->amount!!}</td>
                 <td></td>
-                <td>{!!($item->cena)-0.23*($item->cena)!!}</td>
-                <td>{!!($item->cena*$item->ilosc)-0.23*($item->cena*$item->ilosc)!!}</td>
+                <td>{!!($item->price)-0.23*($item->cena)!!}</td>
+                <td>{!!($item->price*$item->amount)-0.23*($item->price*$item->amount)!!}</td>
                 <td>23%</td>
-                <td>{!!0.23*($item->cena)!!}</td>
-                <td>{!!$item->cena*$item->ilosc!!}</td>                
+                <td>{!!0.23*($item->price)!!}</td>
+                <td>{!!$item->price*$item->amount!!}</td>                
             </tr>
 
         </table>

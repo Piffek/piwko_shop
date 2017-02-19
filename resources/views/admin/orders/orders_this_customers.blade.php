@@ -6,7 +6,9 @@
     <div class="thumbnail">
       <div class="caption">
         <h3>{{ $orders_this_customer-> product }}</h3>
-        <h3>{{ $orders_this_customer -> cena }}</h3>
+        <h3>{{ $orders_this_customer -> price }}</h3>
+        <h3>{{ $orders_this_customer -> created_at }}</h3>
+        <p><a href="{{url('/admin/this_order/'.$orders_this_customer->id.'')}}" class="btn btn-primary" role="button">Szczegóły</a> 
       </div>
     </div>
   </div>

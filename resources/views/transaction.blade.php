@@ -55,11 +55,12 @@
 												</div>
 											</div>
 												{!! csrf_field() !!}
-											<input type="submit" value="Zrealizuj"></tr>
+
 									</div>
 								@else
 									<p>Nie dodałes innych miejsc dostawy</p>
 								@endif
 							@endforeach
+						<input type="submit" value="Zrealizuj"></tr>
 		</div>
 @endsection

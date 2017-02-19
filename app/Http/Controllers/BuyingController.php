@@ -24,7 +24,7 @@ class BuyingController extends Controller
     	
     	
     	//$buying = Buyings::whereid_user(Auth::user()->id)->get();
-    	return view('kupione',compact('buying'));
+    	return view('buying',compact('buying'));
     }
 
     /**

@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function getBasket()
     {
     	$products = session('basket');
-    	return view('koszyk.koszyk_goscia')->with(array(
+    	return view('basket.basketGuestPage')->with(array(
     			'products'    => $products,
     	));
     	//return view('koszyk.index',compact('products'));
@@ -32,7 +32,7 @@ class ProductController extends Controller
     public function getSummary()
     {
     	$products = session('basket');
-    	return view('transakcja_gosc')->with(array(
+    	return view('transactionGuestPage')->with(array(
     			'products' => $products,
     			
     	));

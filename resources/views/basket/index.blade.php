@@ -31,8 +31,8 @@
 				@foreach($koszyk as $koszyks)
 					<tbody>
 					   	<td>{{$koszyks->product}}</td>
-						<td>{{$koszyks->cena}}</td>
-						<td>{{$koszyks->ilosc}}</td>
+						<td>{{$koszyks->price}}</td>
+						<td>{{$koszyks->amount}}</td>
 						<td><a class="btn btn-primary" data-toggle="modal" data-target="#changeAmount">Zmień ilość</a></td>
 						<div class="modal fade bs-example-modal-sm" id="changeAmount" tabindex="-1" role="dialog" >
  							<div class="modal-dialog modal-lg" role="document">
@@ -44,7 +44,7 @@
 									               		<div class="panel-body">
 						 									<form method="POST" action="/koszyk/changeAmount/{{$koszyks->id}}">
 						 										{!! csrf_field() !!}
-						 										<input name="ilosc">
+						 										<input name="amount">
 						 										<input type="submit" value="Zmień">
 															</form>
 														</div>

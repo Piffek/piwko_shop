@@ -62,29 +62,29 @@
 	      	{!! csrf_field() !!}
 	      	<div class="col-md-3">
 		      	Nazwa Produktu:
-					<input style="width:150px" id="product" type="text" class="form-control" name="product" value="{{$item->produkt}}">
+					<input style="width:150px" id="product" type="text" class="form-control" name="product" value="{{$item->product}}">
 				Cena:
-					<input style="width:150px" id="price" type="text" class="form-control" name="price" value="{{$item->cena}}">
+					<input style="width:150px" id="price" type="text" class="form-control" name="price" value="{{$item->price}}">
 				Ilość:
-					<input style="width:150px" id="amount" type="text" class="form-control" name="amount" value="{{$item->ilosc}}">
+					<input style="width:150px" id="amount" type="text" class="form-control" name="amount" value="{{$item->amount}}">
 			</div>
 			<div class="col-md-3">
 				Rodzaj:
-					<input style="width:150px" id="kind" type="text" class="form-control" name="kind" value="{{$item->rodzaj}}">
+					<input style="width:150px" id="kind" type="text" class="form-control" name="kind" value="{{$item->kind}}">
 				Przeznaczenie:
-					<input style="width:150px" id="appropriaton" type="text" class="form-control" name="appropriaton" value="{{$item->przeznaczenie}}">
+					<input style="width:150px" id="appropriaton" type="text" class="form-control" name="intended" value="{{$item->intended}}">
 				Wymiary Ogólne:
-					<input style="width:150px" id="general_size" type="text" class="form-control" name="general_size" value="{{$item->wymiary_ogolne}}">
+					<input style="width:150px" id="general_size" type="text" class="form-control" name="general_size" value="{{$item->general_size}}">
 				Wymiary:
-					<input style="width:150px" id="size" type="text" class="form-control" name="size" value="{{$item->wymiary}}">
+					<input style="width:150px" id="size" type="text" class="form-control" name="size" value="{{$item->size}}">
 			</div>
 			<div class="col-md-3">
 				Promocja:
-					<input style="width:150px" id="promotion" type="text" class="form-control" name="promotion" value="{{$item->promocja}}">
+					<input style="width:150px" id="promotion" type="text" class="form-control" name="promotion" value="{{$item->promotion}}">
 				Procent promocji:
-					<input style="width:150px" id="percent_promotion" type="text" class="form-control" name="percent_promotion" value="{{$item->procent_promocji}}">
+					<input style="width:150px" id="percent_promotion" type="text" class="form-control" name="percent_promotion" value="{{$item->percent_promotion}}">
 				Tekst promocji:
-					<input style="width:150px" id="text_promotion" type="text" class="form-control" name="text_promotion" value="{{$item->tekst_promocji}}">
+					<input style="width:150px" id="text_promotion" type="text" class="form-control" name="text_promotion" value="{{$item->text_promotion}}">
 			
 				</div>
 		</div>
@@ -95,7 +95,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			Opis:
 				<input id="desc" type="textarea" class="form-control" name="desc" value="{{$item->opis}}">
-			<input type="submit" value="Dodaj"></tr>
+			<input type="submit" value="Edytuj"></tr>
 		</div>
 
 	</div>

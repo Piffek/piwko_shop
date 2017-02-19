@@ -17,7 +17,7 @@
 
 
 
-Route::get('/', 'Strona_domowaController@index');
+Route::get('/', 'HomePageController@index');
 
 /*Route::get('/', function () {
 	return 'Laravel5';
@@ -42,13 +42,13 @@ Route::get('/', 'Strona_domowaController@index');
 	
 
 	
-	Route::resource('strona_domowa','Strona_domowaController');
-	Route::get('pokaz_produkt/{id}', 'Pokaz_produktController@index');
-	Route::post('koszyk/store', ['uses' => 'KoszykController@store']);
+	Route::resource('strona_domowa','HomePageController');
+	Route::get('pokaz_produkt/{id}', 'ShowProductController@index');
+	Route::post('koszyk/store', ['uses' => 'BasketController@store']);
 
-	Route::get('koszyk', ['uses' => 'KoszykController@index']);
-	Route::post('koszyk/destroy/{id}', ['uses' => 'KoszykController@destroy']);
-	Route::post('koszyk/changeAmount/{id}', 'KoszykController@changeAmount');
+	Route::get('koszyk', ['uses' => 'BasketController@index']);
+	Route::post('koszyk/destroy/{id}', ['uses' => 'BasketController@destroy']);
+	Route::post('koszyk/changeAmount/{id}', 'BasketController@changeAmount');
 	
 	Route::get('transakcja', ['uses' => 'DealController@index']);
 	Route::post('transakcja', ['uses' => 'DealController@index']);
@@ -62,9 +62,9 @@ Route::get('/', 'Strona_domowaController@index');
 	Route::post('kupione/create/', ['uses' => 'BuyingController@create']);
 	Route::get('kupione', ['uses' => 'BuyingController@index']);
 	
-	Route::get('/dane', 'DaneController@index');
-	Route::post('/dane/update/{id}', 'DaneController@update');
-	Route::post('/dane/edit/{id}', 'DaneController@edit');
+	Route::get('/dane', 'DataCustomerController@index');
+	Route::post('/dane/update/{id}', 'DataCustomerController@update');
+	Route::post('/dane/edit/{id}', 'DataCustomerController@edit');
 	
 	
 	Route::get('dodaj_adres_dostawy', ['uses' => 'Adress_deliveryController@index']);
@@ -76,7 +76,8 @@ Route::group([
 		'middleware' => 'roles',
 		'roles' => ['Admin']
 ], function() {
-	
+	Route::get('/admin/this_order/{id}', 'Admin\OrdersAdminController@thisOrder');
+	Route::get('/admin/delete_this_order/{id}', 'Admin\OrdersAdminController@deleteOrder');
 	Route::get('/admin/strona_domowa','Admin\AdminController@index');
 	Route::get('/admin/customers', 'Admin\CustomerAdminController@index');
 	Route::get('/admin/new_customers', 'Admin\CustomerAdminController@viewNewUser');
