@@ -34,7 +34,7 @@ class HomeController extends Controller
     	}
     	else if($id_roles>0)
     	{
-    		return redirect()->action('HomePageController@index');
+    		return redirect()->action('Strona_domowaController@index');
     	}
     	/*$user_id = $userId = Auth::id();
     	RolesHasUsers::create([

@@ -1,47 +1,46 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Items;
-use App\Basket;
+use App\User;
+use App\Koszyks;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
-class HomePageController extends Controller
+class Pokaz_produktController extends Controller
 {
 	
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-	
-	
-	
-    public function index()
+    public function index(Items $items,$id)
     {
+    	//return $id;
+    	$items = Items::whereId($id)->first();
+    	if (Auth::check()) 
+    	{
+    		$user = User::wherename(Auth::user()->name)->get();
     	
-    	$products= Items::all();
-       return view('homePage',compact('products'));
+	    	foreach($user as $users)
+	    	{
+	    		$koszyk = $users->id;
+	    	}
+	    	return view('pokaz_produkt.index',['items' => $items ,'koszyk' => $koszyk]);
+    	}
+    	return view('pokaz_produkt.index',['items' => $items]);
+    	
+       
+       
     }
-
     
-
+   
     
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-    
-    
-    
-    
     public function create()
     {
-        //
     }
 
     /**

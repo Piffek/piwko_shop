@@ -3,33 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\Dane;
+use App\Items;
+use App\Basket;
 use Session;
 
-class DataCustomersController extends Controller
+class Strona_domowaController extends Controller
 {
+	
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+	
+	
+	
     public function index()
     {
-        $data_users = User::whereid(Auth::user()->id)->get();
-        return view('dane.index',compact('data_users'));
-        
+    	
+    	$products= Items::all();
+       return view('strona_domowa',compact('products'));
     }
 
+    
+
+    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
+    
+    
+    
+    
     public function create()
     {
-    	
+        //
     }
 
     /**
@@ -62,24 +74,19 @@ class DataCustomersController extends Controller
      */
     public function edit($id)
     {
-    	$data_users = User::find($id);
-    	return view('dane.edit',compact('data_users'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  User  $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $id)
+    public function update(Request $request, $id)
     {
-    	$id->update($request->all());
-    	Session::flash('success','Operacja wykonana prawidłowo.');
-    	return redirect()->action('DataCustomersController@index');
-
-    	 
+        //
     }
 
     /**
