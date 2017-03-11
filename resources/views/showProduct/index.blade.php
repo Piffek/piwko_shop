@@ -14,16 +14,20 @@
 					<h2>{{$items->price}}</h1>
 					<h3>{{$items->desc}}</h1>
 @if(Auth::check())
+	@if($items->amount > 0)
 					Ilosc:
 					<form method="post" action="/koszyk/store">
-					{!! csrf_field() !!}
-					<input hidden name="product" value="{{$items->product}}"></td></tr>
-					<input hidden name="price" value="{{$items->price}}"></td></tr>
-					<input hidden name="id_product" value="{{$items->id}}"></td></tr>
-					<input hidden name="id_user" value="{{$koszyk}}"></td></tr>
-					<input for="amount" maxlength="3" type="text" name="amount" required></td></tr>
-					<input type="submit" value="Do koszyka!"><br></tr>
+						{!! csrf_field() !!}
+						<input hidden name="product" value="{{$items->product}}"></td></tr>
+						<input hidden name="price" value="{{$items->price}}"></td></tr>
+						<input hidden name="id_product" value="{{$items->id}}"></td></tr>
+						<input hidden name="id_user" value="{{Auth::user()->id}}"></td></tr>
+						<input for="amount" maxlength="3" type="text" name="amount" required></td></tr>
+						<input type="submit" value="Do koszyka!"><br></tr>
 						<div id="galeria"></div>	
+	@else
+		Tego produktu aktualnie nie ma w magazynie
+	@endif
 @else
 					Ilosc:
 					<form method="post" action="/koszyk_goscia/{{$items->id}}">
