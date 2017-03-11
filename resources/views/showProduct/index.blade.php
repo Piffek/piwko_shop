@@ -29,12 +29,16 @@
 		Tego produktu aktualnie nie ma w magazynie
 	@endif
 @else
+	@if($items->amount > 0)
 					Ilosc:
 					<form method="post" action="/koszyk_goscia/{{$items->id}}">
 					{!! csrf_field() !!}
 					<input type="hidden" name="random_id_product" value='<?php echo rand(0, 1000000); ?>'>
 					<input for="amount" maxlength="3" type="text" name="amount" required></td></tr>
 					<input type="submit" value="Do koszyka!"><br></tr>
+	@else
+		Tego produktu aktualnie nie ma w magazynie
+	@endif
 @endif
 						<div id="galeria"></div>	
 							<?php 
