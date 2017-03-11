@@ -68,9 +68,13 @@
           </ul>
         </li>
         <li class="treeview">
+          <a href="{{url('admin/kinds')}}">
+            <i class="fa fa-dashboard"></i> <span>Zarządzaj kategoriami</span>
+          </a>
+        </li>
+        <li class="treeview">
           <a href="{{url('/admin/newsletter')}}">
             <i class="fa fa-dashboard"></i> <span>Wyślij newsletter</span>
           </a>
-          
         </li>
       </ul>

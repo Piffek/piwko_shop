@@ -108,6 +108,11 @@ Route::group([
 	Route::post('/admin/edit_products/add_photo', 'Admin\PhotoController@addPhotoDuringEditProduct');
 	Route::post('/admin/edit_products/add_photo_gallery', 'Admin\PhotoController@editPhotoGalleryDuringEditProduct');
 	Route::get('/admin/edit_products/delete_photo_gallery/{id}/{file}', 'Admin\PhotoController@deletePhotoGalleryDuringEdit');
+	
+	Route::get('admin/kinds', 'Admin\KindAdminController@index');
+	Route::get('admin/delete_kind/{id}', 'Admin\KindAdminController@deleteKinds');
+	Route::post('admin/add_kind', 'Admin\KindAdminController@addKinds');
+	Route::post('admin/edit_kind/{id}', 'Admin\KindAdminController@editKinds');
 });
 
 Auth::routes();
