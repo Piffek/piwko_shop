@@ -17,7 +17,12 @@
 			</div>
 			<div class="col-md-3">
 				Rodzaj:
-					<input style="width:150px" id="kind" type="text" class="form-control" name="kind">
+					<select name="kind">
+					@foreach($kinds as $kind)
+					  <option value="{{$kind->name}}">{{$kind->name}}</option>
+					@endforeach
+					</select>
+					
 				Przeznaczenie:
 					<input style="width:150px" id="appropriaton" type="text" class="form-control" name="intended">
 				Wymiary Ogólne:

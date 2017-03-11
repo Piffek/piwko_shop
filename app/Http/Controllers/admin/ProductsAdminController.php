@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Kinds;
 use App\Items;
 use File;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class ProductsAdminController extends Controller
     {
         $items = new Items();
         $items = Items::all();
-        return view('admin.products.allProducts',compact('items'));
+        $kind = kinds::all();
+        return view('admin.products.allProducts',compact('items'), compact('kinds'));
     }
     
     public function addProduct()

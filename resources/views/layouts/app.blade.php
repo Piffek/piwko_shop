@@ -9,11 +9,11 @@
 		@foreach($kinds as $kind)
 			<div class="btn-group" role="group">
 				<button id="btnGroupVerticalDrop1" style="width:200px; clear:both;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-					{{$kind->kategoria}}
+					{{$kind->name}}
 					<span class="caret"></span>
 				 </button>
 				<ul class="dropdown-menu" style="width:200px; background-color:#F67777" aria-labelledby="btnGroupVerticalDrop1"> 
-					<li><a href="search.php?wymiary='.$kind->kategoria.'&rodzaj='.$kind->kategoria.'">{{$kind->kategoria}}</a></li>
+					<li><a href="search.php?wymiary='.$kind->name.'&rodzaj='.$kind->name.'">{{$kind->name}}</a></li>
 			 	</ul>
 			</div>
 
