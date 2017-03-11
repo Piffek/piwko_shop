@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Koszyks extends Model
+class Baskets extends Model
 {
 	protected $fillable = [
 			'id','id_product','product', 'price', 'amount', 'id_user', 'updated_at'
@@ -14,7 +14,7 @@ class Koszyks extends Model
 			'remember_token',
 	];
 	
-	protected $table = 'koszyks';
+	protected $table = 'Baskets';
 	
 	
 	public function orIsset($product)

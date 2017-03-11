@@ -2,7 +2,7 @@
 
 namespace App\MyHelper;
 use App\Items;
-use App\Koszyks;
+use App\Baskets;
 use Illuminate\Support\Facades\Auth;
 use App\Buyings;
 use App\Jobs\MailingLogon;
@@ -10,15 +10,15 @@ class StoreCashier
 {
 	public function checkout($adress_delivery)
 	{
-		$baskets = Koszyks::where('id_user', Auth::user()->id)->get();
+		$baskets = Baskets::where('id_user', Auth::user()->id)->get();
 		foreach($baskets as $basket)
 		{
 		
-			//Dodawanie do bazy
+			//Add to db
 			$add_buyings = new Buyings;
 			$add_buyings -> id_product = $basket->id_product;
 			$add_buyings -> product = $basket->product;
-			$add_buyings-> price = $basket->price;
+			$add_buyings-> price = $basket->price*$basket->amount;
 			$add_buyings -> amount = $basket->amount;
 			$add_buyings -> id_user = Auth::user()->id;
 			$add_buyings -> surname = Auth::user()->surname;
@@ -37,7 +37,7 @@ class StoreCashier
 
 			dispatch(new MailingLogon($add_buyings->getId(), 'id' , 'Buyings'));
 		}
-		Koszyks::whereid_user(Auth::user()->id)->delete();
+		Baskets::whereid_user(Auth::user()->id)->delete();
 		
 	}
 }

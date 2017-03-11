@@ -31,7 +31,7 @@
 				@foreach($koszyk as $koszyks)
 					<tbody>
 					   	<td>{{$koszyks->product}}</td>
-						<td>{{$koszyks->price}}</td>
+						<td>{{$koszyks->price*$koszyks->amount}}</td>
 						<td>{{$koszyks->amount}}</td>
 						<td><a class="btn btn-primary" data-toggle="modal" data-target="#changeAmount">Zmień ilość</a></td>
 						<div class="modal fade bs-example-modal-sm" id="changeAmount" tabindex="-1" role="dialog" >

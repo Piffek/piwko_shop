@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Koszyks;
+use App\Baskets;
 use View;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -22,7 +22,7 @@ class DealController extends Controller
 
     	$data_users = User::whereid(Auth::user()->id)->get();
     	$data_deals = Add_adress_delivery::whereid_user(Auth::user()->id)->get();
-    	$baskets = Koszyks::where('id_user', Auth::user()->id)->get();
+    	$baskets = Baskets::where('id_user', Auth::user()->id)->get();
     	
     	return View::make('transaction')
     	

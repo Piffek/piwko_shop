@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Koszyks;
+use App\Baskets;
 use App\User;
 use App\Items;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +24,7 @@ class BasketController extends Controller
     {
     	if (Auth::check())
     	{  	
-	    	$koszyk = Koszyks::where('id_user',Auth::user()->id)->get();
+	    	$koszyk = Baskets::where('id_user',Auth::user()->id)->get();
 	    	return view('basket.index',compact('koszyk'));
     	}
     	return view('basket.index');
@@ -52,13 +52,13 @@ class BasketController extends Controller
     public function store(Request $request)
     {
 
-		$basket = new Koszyks();
+		$basket = new Baskets();
 		if($basket->orIsset($request->product))
 		{
 			return back()->with('warning', 'Masz już ten produkt w koszyku.');
 		}else 
 		{
-			Koszyks::create($request->all());
+			Baskets::create($request->all());
 			return back()->with('status', 'Dodano do koszyka!.');
 		}
     }
@@ -101,11 +101,11 @@ class BasketController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Koszyks $id
+     * @param  Baskets $id
      * @return \Illuminate\Http\Response
      */
 
-    public function changeAmount(Request $request, Koszyks $id)
+    public function changeAmount(Request $request, Baskets $id)
     {
     	$id->update($request->all());
     	Session::flash('success','zmieniono ilosc.');
@@ -115,10 +115,10 @@ class BasketController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Koszyks  $id
+     * @param  Baskets  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Koszyks $id)
+    public function destroy(Baskets $id)
     {
     	$id->delete();
     	return back()->with('status', 'Usunięto.');
