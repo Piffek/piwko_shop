@@ -76,43 +76,43 @@ Route::group([
 		'middleware' => 'roles',
 		'roles' => ['Admin']
 ], function() {
-	Route::get('/admin/this_order/{id}', 'Admin\OrdersAdminController@thisOrder');
-	Route::get('/admin/delete_this_order/{id}', 'Admin\OrdersAdminController@deleteOrder');
-	Route::get('/admin/strona_domowa','Admin\AdminController@index');
-	Route::get('/admin/customers', 'Admin\CustomerAdminController@index');
-	Route::get('/admin/new_customers', 'Admin\CustomerAdminController@viewNewUser');
-	Route::get('/admin/orders_this_customers/{id}', 'Admin\OrdersAdminController@index');
-	Route::get('/admin/edit_customers/{id}', 'Admin\CustomerAdminController@editCustomers');
-	Route::get('/admin/show_one_customers/{id}', 'Admin\CustomerAdminController@showOneCustomers');
-	Route::post('/admin/edit_customers/update/{id}', 'Admin\CustomerAdminController@update');
-	Route::get('/admin/delete_customers/{id}', 'Admin\CustomerAdminController@destroy');
-	Route::get('/admin/add_product', 'Admin\ProductsAdminController@addProduct');
-	Route::get('/admin/all_product', 'Admin\ProductsAdminController@index');
-	Route::post('/admin/add_product/store', 'Admin\ProductsAdminController@store');
-	Route::post('/admin/edit_product/update/{id}', 'Admin\ProductsAdminController@update');
-	Route::get('/admin/all_product/delete/{id}', 'Admin\ProductsAdminController@destroy');
-	Route::get('/admin/current_orders', 'Admin\OrdersAdminController@allOrders');
-	Route::get('/admin/add_role', 'Admin\RolesAdminController@index');
+	Route::get('/admin/this_order/{id}', 'AdminFunctions\OrdersAdminController@thisOrder');
+	Route::get('/admin/delete_this_order/{id}', 'AdminFunctions\OrdersAdminController@deleteOrder');
+	Route::get('/admin/strona_domowa','AdminFunctions\AdminController@index');
+	Route::get('/admin/customers', 'AdminFunctions\CustomerAdminController@index');
+	Route::get('/admin/new_customers', 'AdminFunctions\CustomerAdminController@viewNewUser');
+	Route::get('/admin/orders_this_customers/{id}', 'AdminFunctions\OrdersAdminController@index');
+	Route::get('/admin/edit_customers/{id}', 'AdminFunctions\CustomerAdminController@editCustomers');
+	Route::get('/admin/show_one_customers/{id}', 'AdminFunctions\CustomerAdminController@showOneCustomers');
+	Route::post('/admin/edit_customers/update/{id}', 'AdminFunctions\CustomerAdminController@update');
+	Route::get('/admin/delete_customers/{id}', 'AdminFunctions\CustomerAdminController@destroy');
+	Route::get('/admin/add_product', 'AdminFunctions\ProductsAdminController@addProduct');
+	Route::get('/admin/all_product', 'AdminFunctions\ProductsAdminController@index');
+	Route::post('/admin/add_product/store', 'AdminFunctions\ProductsAdminController@store');
+	Route::post('/admin/edit_product/update/{id}', 'AdminFunctions\ProductsAdminController@update');
+	Route::get('/admin/all_product/delete/{id}', 'AdminFunctions\ProductsAdminController@destroy');
+	Route::get('/admin/current_orders', 'AdminFunctions\OrdersAdminController@allOrders');
+	Route::get('/admin/add_role', 'AdminFunctions\RolesAdminController@index');
 	
-	Route::post('/admin/add_role', 'Admin\RolesAdminController@addRole');
-	Route::post('/admin/edit_role/{id}', 'Admin\RolesAdminController@update');
-	Route::get('/admin/delete_role/{id}', 'Admin\RolesAdminController@destroy');
+	Route::post('/admin/add_role', 'AdminFunctions\RolesAdminController@addRole');
+	Route::post('/admin/edit_role/{id}', 'AdminFunctions\RolesAdminController@update');
+	Route::get('/admin/delete_role/{id}', 'AdminFunctions\RolesAdminController@destroy');
 	
-	Route::post('/admin/add_product_gallery/photo', 'Admin\PhotoController@addPhotoGalleryDuringAddProduct');
-	Route::get('/admin/edit_product/{id}', 'Admin\ProductsAdminController@edit');
-	Route::get('/admin/chart_product', 'Admin\AdminController@productChart');
-	Route::get('/admin/chart_sold', 'Admin\AdminController@soldChart');
-	Route::get('/admin/chart_delivery', 'Admin\AdminController@deliveryChart');
-	Route::get('/admin/chart_paying', 'Admin\AdminController@paidChart');
-	Route::get('/admin/delete_photo/{id}', 'Admin\PhotoController@deletePhotoDuringEdit');
-	Route::post('/admin/edit_products/add_photo', 'Admin\PhotoController@addPhotoDuringEditProduct');
-	Route::post('/admin/edit_products/add_photo_gallery', 'Admin\PhotoController@editPhotoGalleryDuringEditProduct');
-	Route::get('/admin/edit_products/delete_photo_gallery/{id}/{file}', 'Admin\PhotoController@deletePhotoGalleryDuringEdit');
+	Route::post('/admin/add_product_gallery/photo', 'AdminFunctions\PhotoController@addPhotoGalleryDuringAddProduct');
+	Route::get('/admin/edit_product/{id}', 'AdminFunctions\ProductsAdminController@edit');
+	Route::get('/admin/chart_product', 'AdminFunctions\AdminController@productChart');
+	Route::get('/admin/chart_sold', 'AdminFunctions\AdminController@soldChart');
+	Route::get('/admin/chart_delivery', 'AdminFunctions\AdminController@deliveryChart');
+	Route::get('/admin/chart_paying', 'AdminFunctions\AdminController@paidChart');
+	Route::get('/admin/delete_photo/{id}', 'AdminFunctions\PhotoController@deletePhotoDuringEdit');
+	Route::post('/admin/edit_products/add_photo', 'AdminFunctions\PhotoController@addPhotoDuringEditProduct');
+	Route::post('/admin/edit_products/add_photo_gallery', 'AdminFunctions\PhotoController@editPhotoGalleryDuringEditProduct');
+	Route::get('/admin/edit_products/delete_photo_gallery/{id}/{file}', 'AdminFunctions\PhotoController@deletePhotoGalleryDuringEdit');
 	
-	Route::get('admin/kinds', 'Admin\KindAdminController@index');
-	Route::get('admin/delete_kind/{id}', 'Admin\KindAdminController@deleteKinds');
-	Route::post('admin/add_kind', 'Admin\KindAdminController@addKinds');
-	Route::post('admin/edit_kind/{id}', 'Admin\KindAdminController@editKinds');
+	Route::get('admin/kinds', 'AdminFunctions\KindAdminController@index');
+	Route::get('admin/delete_kind/{id}', 'AdminFunctions\KindAdminController@deleteKinds');
+	Route::post('admin/add_kind', 'AdminFunctions\KindAdminController@addKinds');
+	Route::post('admin/edit_kind/{id}', 'AdminFunctions\KindAdminController@editKinds');
 });
 
 Auth::routes();
