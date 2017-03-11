@@ -65,10 +65,10 @@
                 <td>{{$item->product}}</td>
                 <td>{{$item->amount}}</td>
                 <td>szt</td>
-                <td>{{($item->price)*0.23}}zł</td>
-                <td>{{($item->price)-0.23*$item->price}}zł</td>
+                <td>{{($item->price-($item->price*0.23))/$item->amount}}zł</td>
+                <td>{{($item->price-($item->price*0.23))}}zł</td>
                 <td>23%</td>
-                <td>{{($item->price/$item->amount)*0.23}}zł</td>
+                <td>{{$item->price*0.23}} zł</td>
                 <td>{{$item->price}}zł</td>                
             </tr>
 

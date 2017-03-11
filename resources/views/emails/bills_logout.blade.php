@@ -74,7 +74,6 @@
             <tr style="background-color: #bababa;">
                 <th>Numer faktury</th>
                 <th>Nazwa</th>
-                <th>PKWIU</th>
                 <th>Ilość</th>
                 <th>Jm</th>
                 <th>Cena netto</th>
@@ -84,17 +83,15 @@
                 <th>Wartość brutto</th>
             </tr>
             <tr>
-            
-            	<td>{{$item->id}}</td>
+                <td>{{$item->id}}</td>
                 <td>{{$item->product}}</td>
-                <td></td>
                 <td>{{$item->amount}}</td>
                 <td>szt</td>
-                <td>{{($item->price)-0.23*($item->price)}} zł</td>
-                <td>{{($item->price*$item->amount)-0.23*($item->price*$item->amount)}} zł</td>
+                <td>{{($item->price-($item->price*0.23))/$item->amount}}zł</td>
+                <td>{{($item->price-($item->price*0.23))}}zł</td>
                 <td>23%</td>
-                <td>{{0.23*($item->price)}}</td>
-                <td>{{$item->price*$item->amount}} zł</td>                
+                <td>{{$item->price*0.23}} zł</td>
+                <td>{{$item->price}}zł</td>    
             </tr>
 
 

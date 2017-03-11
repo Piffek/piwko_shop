@@ -30,7 +30,7 @@
 				 @foreach($products as $p)
 					<tbody>
 					   	<td>{{$p['product']}}</td>
-						<td>{{$p['price']}}</td>
+						<td>{{$p['price']*$p['amount']}}</td>
 						<td>{{$p['amount']}}</td>
 						<td><a href="koszyk_goscia/delete/{{$p['random_id']}}" class="btn btn-danger pull-right" role="button">Usuń</a></td>
 					</tbody>

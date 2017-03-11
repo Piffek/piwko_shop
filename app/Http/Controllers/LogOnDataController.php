@@ -61,7 +61,7 @@ class LogOnDataController extends Controller
     		$add_logondata -> product= $produkt['product'];
     		$add_logondata -> id_transaction = $produkt['random_id'];
     		$add_logondata -> amount = $produkt['amount'];
-    		$add_logondata -> price = $produkt['price'];
+    		$add_logondata -> price = $produkt['price']*$produkt['amount'];
 			$add_logondata -> paying = $request->paying;
 			$add_logondata -> delivery_method = $request->delivery_method;
     		$add_logondata-> save();
