@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateBasketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-    	Schema::create('items', function (Blueprint $table) {
-    		$table->increments('id');
+    	Schema::create('baskets', function(Blueprint $table){
+    		$table->integer('id');
+    		
+    		$table->integer('id_product')->unsigned()->nullable();
+    		$table->foreign('id_product')->references('id')->on('items')->onDelete('cascade');
+    		
     		$table->string('product');
-    		$table->string('size');
     		$table->integer('price');
-    		$table->string('kind');
-    		$table->string('intended');
-    		$table->string('general_size');
     		$table->integer('amount');
-    		$table->string('promotion');
-    		$table->string('desc');
-    		$table->integer('percent_promotion');
-    		$table->string('text_promotion');
-    		$table->integer('buy_amount');
+    		
+    		$table->integer('id_user')->unsigned()->nullable();
+    		$table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+    		
     		$table->timestamps();
     	});
     }

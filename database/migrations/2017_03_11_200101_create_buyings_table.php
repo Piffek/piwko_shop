@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateBuyingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,21 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-    	Schema::create('items', function (Blueprint $table) {
+    	Schema::create('buyings', function (Blueprint $table) {
     		$table->increments('id');
+    		$table->integer('id_product');
     		$table->string('product');
-    		$table->string('size');
     		$table->integer('price');
-    		$table->string('kind');
-    		$table->string('intended');
-    		$table->string('general_size');
     		$table->integer('amount');
-    		$table->string('promotion');
-    		$table->string('desc');
-    		$table->integer('percent_promotion');
-    		$table->string('text_promotion');
-    		$table->integer('buy_amount');
+    		$table->integer('id_user');
+    		$table->string('surname');
+    		$table->string('street');
+    		$table->string('city');
+    		$table->integer('nip');
+    		$table->string('companyname');
+    		$table->string('delivery');
+    		$table->string('paying');
+    		$table->integer('id_adress_delivery');
     		$table->timestamps();
     	});
     }
