@@ -5,7 +5,8 @@
 
 
 @section('content')
-	<div class="col-md-8 col-md-offset-2">
+<div class="container">
+	<div class="col-md-8">
 		<div class="container">
 	<div class="row">
 		
@@ -193,6 +194,7 @@
 	</div>
 </div>
 	</div>
+</div>
 
  @endsection
  

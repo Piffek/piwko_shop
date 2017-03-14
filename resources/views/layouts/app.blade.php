@@ -1,101 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
-@include('partials._head')
-<body>
-    @include('partials._nav')
-    		@include('partials.flash')
-    		@include('partials._messages')
-	<div class="btn-group-vertical" style="clear:both" role="group" aria-label="Vertical button group">
-		@foreach($kinds as $kind)
-			<div class="btn-group" role="group">
-				<button id="btnGroupVerticalDrop1" style="width:200px; clear:both;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-					{{$kind->name}}
-					<span class="caret"></span>
-				 </button>
-				<ul class="dropdown-menu" style="width:200px; background-color:#F67777" aria-labelledby="btnGroupVerticalDrop1"> 
-					<li><a href="search.php?wymiary='.$kind->name.'&rodzaj='.$kind->name.'">{{$kind->name}}</a></li>
-			 	</ul>
-			</div>
 
-		@endforeach
-		</div>
+    @include('partials._head')
+        
+<html>
+    <body>
+        @include('partials._nav')
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
 
-		<div class ="col-md-10">
-        @yield('content')
+        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+            <div class="header-wrapper">
+                <div class="site-header">
+                    <div class="container">
+                        <div class="site-name">
+                            <h1>Piwko Sklep</h1>
+                        </div>
+                    </div> 
+                </div>
+                <div class="container">
+                <div class="banner">
+                    <div class="carousel slide" id="myCarousel">
+                                    <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <img src="/startLayout/img/banner-image.png" alt="">
+                                <div class="carousel-caption">
+                                    <h1>Nunc dign0 lorem dol</h1>
+                                    <h2>Vivamus vestibulum nulla </h2>
+                                  <a href="#" class="btn">laoreet ipun</a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="/startLayout/img/banner-image.png" alt="">
+                                <div class="carousel-caption">
+                                  <h1>Nunc dign0 lorem dol</h1>
+                                    <h2>Vivamus vestibulum nulla </h2>
+                                  <a href="#" class="btn">laoreet ipun</a>
+                                </div>
+                            </div>
+                            <div class="item active">
+                                <img src="/startLayout/img/banner-image.png" alt="">
+                                <div class="carousel-caption">
+                                  <h1>Nunc dign0 lorem dol</h1>
+                                    <h2>Vivamus vestibulum nulla </h2>
+                                  <a href="#" class="btn">laoreet ipun</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a data-slide="prev" href="#myCarousel" class="carousel-control left"><i class="fw-icon-chevron-left"></i></a>
+                        <a data-slide="next" href="#myCarousel" class="carousel-control right"><i class="fw-icon-chevron-right"></i></a>
+                    </div>
+                </div>
+                </div>
             </div>
-    </div>
-		<div class="clearfix"></div>
-	</div>
+            <div class="container">
+                <div class="featured-blocks">
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <div class="block v-divider border">
+                                <i class="fw-icon-headphones"></i>
+                                <h1></h1>
+                                <p class="last">Morbi interdum mollis</p>
+                            </div>
+                        </div>
+                        <div class="span3">
+                            <div class="block v-divider border">
+                                <i class="fw-icon-refresh"></i>
+                                <h1>aliquam</h1>
+                                <p class="last">Vestibulam dipbus</p>
+                            </div>
+                        </div>
+                        <div class="span3">
+                            <div class="block v-divider border">
+                                <i class="fw-icon-time"></i>
+                                <h1>Nunciden</h1>
+                                <p class="last">Idot crasorma elinit</p>
+                            </div>
+                        </div>
+                        <div class="span3">
+                            <div class="block no-border">
+                                <i class="fw-icon-comments-alt"></i>
+                                <h1>egestasmod</h1>
+                                <p class="last">Felis moodo tortor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+                   
+                          
 
-				
+          @yield('content')
+                       
+                   
+          
+            <div class="footer-wrapper">
+                <div class="container">
+                    <div class="footer-links">
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <div class="copy-rights">
+                                    <span>Copyright (c) 2013</span><br>All rights reserved. 
+                               </div>
+                            </div>
+                            <div class="span3">
+                                <div class="copy-rights">
+                                    <span>Designed by: </span><br><a href="http://www.alltemplateneeds.com">www.alltemplateneeds.com </a>
+                               </div>
+                            </div>
+                            <div class="span3">
+                                <div class="copy-rights">
+                                    <span>Images From:  </span><br>
+                                    <a href="http://www.wallcoo.net">wallcoo.net </a>| <a href="http://www.wallpaperswide.com">wallpaperswide.com</a> 
+                               </div>
+                            </div>
+                            <div class="span3">
+                                <div class="copy-rights">
+                                    <span>Contact  </span><br>
+                                    <a href="#">info@companyname.com</a> 
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="site-footer">
+                        <div class="row-fluid">
+                        <div class="social span3">
+                            <ul>
+                                <li><a href="#"><i class="fw-icon-facebook-sign"></i></a></li>
+                                <li><a href="#"><i class="fw-icon-twitter-sign"></i></a></li>
+                                <li><a href="#"><i class="fw-icon-linkedin-sign"></i></a></li>
+                                <li><a href="#"><i class="fw-icon-pinterest-sign"></i></a></li>
+                                <li><a href="#"><i class="fw-icon-phone-sign"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-menu span9">
+                            <ul>
+                                <li><a href="#">Home :: </a></li>
+                                <li><a href="#"> About :: </a></li>
+                                <li><a href="#"> Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
 
-	<div class="footer">
-	<div class="footer-middle">
-				<div class="container">
-					<div class="col-md-3 footer-middle-in">
-
-						<p>Jesteśmy sklepem z tradycją, działamy od wielu lat.</p>
-					</div>
-					
-					<div class="col-md-3 footer-middle-in">
-						<h6>Information</h6>
-						<ul class=" in">
-							<li><a href="">O nas</a></li>
-							<li><a href="">Zobacz nas!</a></li>
-						</ul>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-md-3 footer-middle-in">
-						<h6>Tagi</h6>
-						<ul class="tag-in">
-							<li><a href="search.php?wymiary=50x50">Roll Up</a></li>
-							<li><a href="search.php?wymiary_scianka=3x3">Ścianka</a></li>
-							<li><a href="search.php?wymiary=85x200">Baner</a></li>
-							<li><a href="search.php?wymiary=65x165">X Banner</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3 footer-middle-in">
-						<h6>Newsletter</h6>
-						<span>Nowe Informacje, zawsze na mailu</span>
-							<form>
-								<input type="text" value="Podaj Swój mail" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Podaj Swój mail';}">
-								<input type="submit" value="Zapisz się">	
-							</form>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			
-		</div>
-
-   
-	<script type="text/javascript">
-		hs.graphicsDir = '/javascript/images/';
-		hs.align = 'center';
-		hs.transitions = ['expand', 'crossfade'];
-		hs.outlineType = 'rounded-white';
-		hs.fadeInOut = true;
-		//hs.dimmingOpacity = 0.75;
-	
-		// Add the controlbar
-		if (hs.addSlideshow) hs.addSlideshow({
-			//slideshowGroup: 'group1',
-			interval: 5000,
-			repeat: false,
-			useControls: true,
-			fixedControls: 'fit',
-			overlayOptions: {
-				opacity: .75,
-				position: 'bottom center',
-				hideOnMouseOut: true
-			}
-		});
-	</script>
-
-
-
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
-</body>
-
+       <script src="/startLayout/js/jquery-1.9.1.js"></script> 
+<script src="/startLayout/js/bootstrap.js"></script>
+<script>
+$('#myCarousel').carousel({
+    interval: 1800
+});
+</script>
+    </body>
 </html>
+
+
+
+

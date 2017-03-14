@@ -5,6 +5,7 @@
 
 
 @section('content')
+<div class="container">
 @if(!Session::has('basket'))
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
@@ -42,6 +43,7 @@
 		<input type="submit" value="Zrealizuj"></tr>
 	</div>	
 	@endif
+</div>
  @endsection
  
                                 
