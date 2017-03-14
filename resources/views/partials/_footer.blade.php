@@ -4,12 +4,12 @@
                         <div class="row-fluid">
                             <div class="span3">
                                 <div class="copy-rights">
-                                    <span>Copyright (c) 2013</span><br>All rights reserved. 
+                                    <span>Copyright (c) 2017</span><br>All rights reserved. 
                                </div>
                             </div>
                             <div class="span3">
                                 <div class="copy-rights">
-                                    <span>Designed by: </span><br><a href="http://www.alltemplateneeds.com">www.alltemplateneeds.com </a>
+                                    <span>Designed by: </span><br><a href="#">Patryk Piwko </a>
                                </div>
                             </div>
                             <div class="span3">
@@ -21,7 +21,7 @@
                             <div class="span3">
                                 <div class="copy-rights">
                                     <span>Contact  </span><br>
-                                    <a href="#">info@companyname.com</a> 
+                                    <a href="#">patryk.piwko1@gmail.com</a> 
                                </div>
                             </div>
                         </div>
