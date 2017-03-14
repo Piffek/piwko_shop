@@ -7,15 +7,14 @@
 @section('content')
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<div class="panel panel-default">
+		<div  class="panel panel-default">
 			<div class="panel-body text-center">
 				<div class="col-md-6 col-md-offset-3">
 					<h1>{{$items->product}}</h1>
-					<h2>{{$items->price}}</h1>
-					<h3>{{$items->desc}}</h1>
+					<h2>{{$items->price}} zł</h2>
+					<h3>{{$items->desc}}</h3>
 @if(Auth::check())
 	@if($items->amount > 0)
-					Ilosc:
 					<form method="post" action="/koszyk/store">
 						{!! csrf_field() !!}
 						<input hidden name="product" value="{{$items->product}}"></td></tr>

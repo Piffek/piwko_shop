@@ -1,5 +1,5 @@
 <!-- dziedziczy po layout -->
-@extends('layouts.app')
+@extends('layouts.onlyBaseLayout')
 
 
 
@@ -22,7 +22,7 @@
                                                      
                                                     <p class="no-space">
                                                     <img src="zdjecia/{{$item->id}}.jpg"  alt="">
-                                                    {{ $item->kind}} 
+                                                    {{ $item->kind}} <br>
                                                      Sprzedanych: {{ $item->buy_amount }} szt<br>
                                                     @if($item->amount > 0)
 					
@@ -33,7 +33,7 @@
 														@elseif($item->promotion = 'Tak' && !empty($item->text_promotion) && $item->percent_promotion==0)
 														
 														
-															{{ $item->price }} zł<br>
+															{{ $item->price }} zł
 															<div class="promocja">PROMOCJA</div>
 														
 														@elseif($item->promotion = 'Tak' && $item->percent_promotion!=0 && !empty($item->text_promotion))

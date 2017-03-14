@@ -2,7 +2,12 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-
+          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/strona_domowa') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -68,23 +73,22 @@
         </nav>
 
 
-<div style="height:25%" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labellebdy="MyLargeModalLabel">
-
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria="false" aria-labellebdy="MyLargeModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
 
       @include('auth.login')
+	</div>
 
 
 </div>
 
 
-<div style="height:60%"  class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-
-
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
       @include('auth.register')
-
-
-</div>
+	</div>
 </div>
 
 
 
+</div>

@@ -5,6 +5,7 @@
 
 
 @section('content')
+<div class="container">
 @if(Auth::check())
 	@if (count($koszyk) === 0)
 	<div class="col-md-8 col-md-offset-2">
@@ -65,16 +66,16 @@
 	@endif
 		</table>
 		</div>	
-		<form method="POST" action="/transakcja">
-		{!! csrf_field() !!}
-		<input type="submit" value="Zrealizuj"></tr>
-		</form>
-</div>
+			<form method="POST" action="/transakcja">
+				{!! csrf_field() !!}
+				<input type="submit" value="Zrealizuj"></tr>
+			</form>
+	</div>
 @else
 
 
 @endif
-
+</div>
 
 				
 @endsection

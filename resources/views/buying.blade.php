@@ -5,7 +5,7 @@
 
 
 @section('content')
-
+<div class="container">
 	@if (count($buying) === 0)
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
@@ -38,10 +38,11 @@
 								<td>{{$buyings->created_at}}</td>
 								<td><a href="pdf/{{$buyings->id}}">Faktura</a></td>
 							</tbody>
-						@endforeach		
-			</table>
-					
-		</div>	
-	@endif
+						@endforeach
+					</table>
+							{{ $buying->links() }}	
+				</div>	
+			@endif
+		</div>
 </div>
 @endsection

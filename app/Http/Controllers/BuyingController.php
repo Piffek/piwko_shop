@@ -20,7 +20,7 @@ class BuyingController extends Controller
      */
     public function index(Request $request)
     {
-    	$buying = Buyings::where('id_user',Auth::user()->id)->get();
+    	$buying = Buyings::where('id_user',Auth::user()->id)->paginate('10');
     	
     	
     	//$buying = Buyings::whereid_user(Auth::user()->id)->get();
