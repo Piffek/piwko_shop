@@ -7,6 +7,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+Shop create in laravel.
+Practicality:
+<b>Customer Panel:</b><br>
+-Register with mail approval.<br>
+-Buying by not login user.<br>
+-Buying by login user.<br>
+-Send bill in queue.<br>
+<b>Admin panel:</b><br>
+-Add or delete users, products, roles, categories.<br>
+-Change roles, categories.<br>
+-Chart sold products.<br>
+-Chart users.<br>
+-Chart delivery and way payment.<br>
+
 <b>MUST HAVE!</b><br>
 1.Laravel 5.3<br>
 2.Bootstrap 3
