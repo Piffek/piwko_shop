@@ -8,12 +8,14 @@
 </p>
 
 Shop create in laravel.
-Practicality:
+Practicality:<br>
 <b>Customer Panel:</b><br>
 -Register with mail approval.<br>
 -Buying by not login user.<br>
 -Buying by login user.<br>
+-Show bills.
 -Send bill in queue.<br>
+-Basket.<br>
 <b>Admin panel:</b><br>
 -Add or delete users, products, roles, categories.<br>
 -Change roles, categories.<br>
