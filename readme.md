@@ -13,9 +13,9 @@
 
 ## Install
 1.Use git clone https://github.com/Piffek/piwko_shop.git<br>
-2.Create laravel 5.3 project.
-3.Copy this file to laravel project.
-4.Config database and env file.
+2.Create laravel 5.3 project.<br>
+3.Copy this file to laravel project.<br>
+4.Config database and env file.<br>
 5.Cretate migration.
 
 
