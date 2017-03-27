@@ -13,8 +13,8 @@ class CreateRolesHasUsersTable extends Migration
      */
     public function up()
     {
-    	Schema::create('roles_has_user', function(Blueprint $table){
-    		$table->integer('id');
+    	Schema::create('roles_has_users', function(Blueprint $table){
+    		$table->increments('id');
     	
     		$table->integer('users_id')->unsigned();
     		$table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');

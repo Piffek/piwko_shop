@@ -25,6 +25,7 @@
 							<div class="panel-body"> 
 								<div class="container">
 								<form method="POST" action="/kupione/create">
+								{!! csrf_field() !!}
 								<h3>Sposób dostawy</h3>
 									DPD<input name="delivery" type="checkbox" value="DPD" >
 									<br>UPS<input name="delivery" type="checkbox" value="UPS">
@@ -54,7 +55,6 @@
 													<input name="id_adress_delivery" type="checkbox" value="{{$data_deal->id}}">
 												</div>
 											</div>
-												{!! csrf_field() !!}
 
 									</div>
 								@else

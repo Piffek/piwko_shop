@@ -32,7 +32,7 @@ class StoreCashier
 			$add_buyings -> save();
 			
 			$items = Items::find($basket->id_product);
-			$items->decreaseInventory($basket->price);
+			$items->decreaseInventory($basket->amount);
 			$items->recordPurchase($basket->amount);
 
 			dispatch(new MailingLogon($add_buyings->getId(), 'id' , 'Buyings'));

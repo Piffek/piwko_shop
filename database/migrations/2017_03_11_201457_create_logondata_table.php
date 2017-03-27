@@ -24,6 +24,7 @@ class CreateLogondataTable extends Migration
     		$table->string('firstnameonaccount');
     		$table->string('lastnameonaccount');
     		$table->integer('cardnumber');
+    		$table->string('billingcity');
     		$table->string('billingstreet');
     		$table->string('billingpostcode');
     		$table->integer('phone');

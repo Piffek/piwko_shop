@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKindsTable extends Migration
+class CreateAddAdressDelivery extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateKindsTable extends Migration
      */
 	public function up()
 	{
-		Schema::create('kinds', function(Blueprint $table){
+		Schema::create('add_adress_delivery', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('name');
+			$table->integer('id_user')->unsigned();
+			$table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+			$table->string('user');
+			$table->string('street');
+			$table->string('city');
+			$table->string('phone');
 			$table->timestamps();
 		});
 	}

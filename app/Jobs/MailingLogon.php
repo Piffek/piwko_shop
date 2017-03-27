@@ -43,7 +43,7 @@ class MailingLogon implements ShouldQueue
     	->join('users', 'roles_has_users.users_id', '=', 'users.id')
     	->select('users.*')
     	->where([
-    			['roles_id','=','4'],
+    			['roles_id','=','2'],
     	])->first();
     	 
 

@@ -9,4 +9,5 @@ class RolesHasUsers extends Model
 	protected $fillable = [
 			'users_id', 'roles_id',
 	];
+	
 }

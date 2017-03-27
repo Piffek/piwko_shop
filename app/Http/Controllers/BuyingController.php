@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\MyHelper\StoreCashier;
 use Illuminate\Support\Facades\Auth;
 use App\Buyings;
-use App\Koszyks;
 use App\User;
 use Session;
 use App\Items;

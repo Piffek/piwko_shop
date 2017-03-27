@@ -8,7 +8,7 @@ use Session;
 class Items extends Model
 {
 	protected $fillable = [
-			'id','product','size', 'price', 'kind', 'intended','general_size','amount','desc','promotion','percent_promotions' ,'text_promotion','buy_amount',
+			'id','product','size', 'price', 'kind', 'intended','general_size','amount','desc','promotion','percent_promotion' ,'text_promotion','buy_amount',
 	];
 	
 	protected $hidden = [

@@ -14,7 +14,7 @@ class CreateBasketsTable extends Migration
     public function up()
     {
     	Schema::create('baskets', function(Blueprint $table){
-    		$table->integer('id');
+    		$table->increments('id');
     		
     		$table->integer('id_product')->unsigned()->nullable();
     		$table->foreign('id_product')->references('id')->on('items')->onDelete('cascade');
