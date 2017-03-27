@@ -10,6 +10,7 @@ use App\User;
 use App\Mail\ConfirmationAccount;
 use DB;
 use Carbon\Carbon;
+use App\Items;
 use App\Jobs\MailingLogon;
 
 
@@ -38,9 +39,6 @@ class LogOnDataController extends Controller
     	$products = session('basket');
     	foreach($products as $produkt)
     	{
-    		$nazwa_produktu = $produkt['product'];
-    		$cena = $produkt['price'];
-    		$ilosc = $produkt['amount'];
     		
     		$add_logondata= new LogOnData;
     		$add_logondata -> firstname = $request->input('firstname');
@@ -65,6 +63,10 @@ class LogOnDataController extends Controller
 			$add_logondata -> paying = $request->paying;
 			$add_logondata -> delivery_method = $request->delivery_method;
     		$add_logondata-> save();
+    		
+    		$items = Items::find($produkt['id']);
+    		$items->decreaseInventory($produkt['amount']);
+    		$items->recordPurchase($produkt['amount']);
     		dispatch(new MailingLogon($produkt['random_id'], 'id_transaction', 'LogOnData'));
 
     	}
