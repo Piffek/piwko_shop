@@ -70,7 +70,7 @@ class LogOnDataController extends Controller
     	}
     	
     	
-    	
+    	session()->forget('basket');
     	Session::flash('success','Dziękujemy za zakup produktu, na podany mail została wysłana informacja');
     	return redirect()->action('HomePageController@index');
 
