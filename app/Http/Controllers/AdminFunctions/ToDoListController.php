@@ -23,9 +23,17 @@ class ToDoListController extends Controller
         ->with($todolist);
     }
     
-    public function addRole(Request $request)
+    
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addToDoList(Request $request)
     {
-
+		ToDoList::create($request->all());
     }
 
     /**
