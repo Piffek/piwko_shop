@@ -11,6 +11,7 @@
 
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{ url('admin/admin_layout/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('admin/myCSS.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -358,6 +359,7 @@
        CKEDITOR.replace('desc');
     </script>
 <!-- jQuery 2.2.3 -->
+<script type="text/javascript" src="{{ url('/js/addToDoList.js')}}"></script>
 <script src="{{ url('admin/admin_layout/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>

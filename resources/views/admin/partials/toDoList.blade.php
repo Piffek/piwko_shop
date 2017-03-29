@@ -17,12 +17,21 @@
              </li>  
 		@endforeach
 </ul>
-            </div>
             <div class="box-footer clearfix no-border">
-              <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i>Dodat zadanie</button>
+              <button id="addTask" type="button" class="btn btn-default pull-right" onclick="showToDoField()"><i class="fa fa-plus"></i>Dodaj zadanie</button>
             </div>
-          </div>
+              
+	              <div class="col-sm-12 col-md-12">
+			          <form id="hiddenDo" method="POST">
+			             {!! csrf_field() !!}
+			          	<label>Wykonane do </label><br><input id="textWhen" type="text" name="when"></input><br>
+			      		<label>Zadanie </label><br><textarea id="textarea"  name="what"></textarea><br>
+			      		<input type="hidden" value="{{Auth::user()->id }}" name="id_user"></input>
+			          <button type="submit" id="submitDo" value="Dodaj" name="submitDo" oneclick="addListToDb()">Dodaj</button>
+			          </form>
+		       	</div>
+        
 {{ $todolist->links() }}
-
+</div>
 
 
