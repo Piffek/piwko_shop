@@ -67,6 +67,7 @@ class LogOnDataController extends Controller
     		$items = Items::find($produkt['id']);
     		$items->decreaseInventory($produkt['amount']);
     		$items->recordPurchase($produkt['amount']);
+    		
     		dispatch(new MailingLogon($produkt['random_id'], 'id_transaction', 'LogOnData'));
 
     	}
