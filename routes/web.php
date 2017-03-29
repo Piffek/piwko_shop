@@ -113,6 +113,8 @@ Route::group([
 	Route::get('admin/delete_kind/{id}', 'AdminFunctions\KindAdminController@deleteKinds');
 	Route::post('admin/add_kind', 'AdminFunctions\KindAdminController@addKinds');
 	Route::post('admin/edit_kind/{id}', 'AdminFunctions\KindAdminController@editKinds');
+	
+	Route::post('admin/addToDoList', 'AdminFunctions\ToDoListController@addToDoList');
 });
 
 Auth::routes();
