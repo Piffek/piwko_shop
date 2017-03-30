@@ -19,9 +19,6 @@
 
 Route::get('/', 'HomePageController@index');
 
-/*Route::get('/', function () {
-	return 'Laravel5';
-});*/
 
 	Route::get('koszyk_goscia', ['uses' => 'ProductController@getBasket']);
 	Route::get('koszyk_goscia',[
@@ -114,7 +111,10 @@ Route::group([
 	Route::post('admin/add_kind', 'AdminFunctions\KindAdminController@addKinds');
 	Route::post('admin/edit_kind/{id}', 'AdminFunctions\KindAdminController@editKinds');
 	
-	Route::post('admin/addToDoList', 'AdminFunctions\ToDoListController@addToDoList');
+	Route::post('admin/addToDoList',[
+			'uses' => 'AdminFunctions\ToDoListController@addToDoList',
+			'as' => 'addToDoList',		
+	]);
 });
 
 Auth::routes();
@@ -138,10 +138,6 @@ Route::get('/pdf/{id}', function ($id) {
 	->where([
 			['roles_id','=','4'],
 	])->get();
-	//return $id;
-
-	//$buying= App\Buyings::whereid($id)->get();
-	//$users = App\User::whereid(Auth::user()->id)->get();
 	
 	$pdf=PDF::loadView('faktury',['buying'=>$buying], ['admin_data'=> $admin_data]);
 	return $pdf->download('faktura_VAT_'.$id.'.pdf');
