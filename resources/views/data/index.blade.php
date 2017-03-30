@@ -17,9 +17,10 @@
 						<p>Telefon: {{$data_user -> phone}}</p>
 						<p>Firma: {{$data_user -> companyname}}</p>
 						<p>NIP: {{$data_user -> nip}}</p>
-						<td><form method="POST" action="/dane/edit/{{$data_user->id}}">
-						{!! csrf_field() !!}
-						<button id="Edytuj dane" type="submit" class="btn btn-primary">Edytuj dane</button>
+						<form method="POST" action="/dane/edit/{{$data_user->id}}">
+							{!! csrf_field() !!}
+							<button id="Edytuj dane" type="submit" class="btn btn-primary">Edytuj dane</button>
+						</form>
 					</div>
 				</div>
 			@endforeach

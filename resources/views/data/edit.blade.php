@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-
-
-
-
 @section('content')
 <div class="container">
 	<div style="text-align:center;" class ="col-md-3 col-md-offset-4">
