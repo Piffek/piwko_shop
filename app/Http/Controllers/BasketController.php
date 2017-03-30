@@ -58,7 +58,7 @@ class BasketController extends Controller
 			return back()->with('warning', 'Masz już ten produkt w koszyku.');
 		}else 
 		{
-			Baskets::create($request->all());
+			Baskets::create(['id_user'=>Auth::id()] + $request->all());
 			return back()->with('status', 'Dodano do koszyka!.');
 		}
     }
