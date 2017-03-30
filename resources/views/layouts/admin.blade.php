@@ -363,7 +363,8 @@
 <script type="text/javascript">
 var url = '{{ route('addToDoList') }}';
 </script>
-<script type="text/javascript" src="{{ url('/js/addToDoList.js')}}"></script>
+<script type="text/javascript" src="{{ url('/js/showToDoListField.js')}}"></script>
+<script type="text/javascript" src="{{ url('/js/addToDoListToDB.js')}}"></script>
 <script src="{{ url('admin/admin_layout/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
