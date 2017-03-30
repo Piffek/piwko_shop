@@ -9,13 +9,11 @@
 			@else
 				Proszę wybrać zdjęcie do galerii
 			@endif
-	
 			<form action="{{ url('/admin/add_product_gallery/photo') }}" enctype="multipart/form-data" method="POST">
 				{{ csrf_field() }}
-
-					<input id="size" type="hidden" class="form-control" name="photo_id" value="{{$photo_id}}">
-					<input type="file" name="image" />
-					<button type="submit" class="btn btn-success">Dodaj</button>
+				<input id="size" type="hidden" class="form-control" name="photo_id" value="{{$photo_id}}">
+				<input type="file" name="image" />
+				<button type="submit" class="btn btn-success">Dodaj</button>
 			</form>
 		</div>
 	</div>
