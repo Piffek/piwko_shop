@@ -119,7 +119,7 @@ class ProductsAdminController extends Controller
     public function update(Request $request, Items $id)
     {
     	$id->update($request->all());
-    	Session::flash('success','Dane klienta zmieniono pomyślnie');
+    	Session::flash('success','Dane produktu zmieniono pomyślnie');
     	return redirect()->back();  
     }
 

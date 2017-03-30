@@ -98,18 +98,18 @@ Route::group([
 	Route::get('/admin/chart_paying', 'AdminFunctions\AdminController@paidChart');
 	Route::get('/admin/chart_sold', 'AdminFunctions\AdminController@soldChart');
 	
-	/*Route::post('admin/addToDoList',[
+	Route::post('admin/addToDoList',[
 			'uses' => 'AdminFunctions\ToDoListController@addToDoList',
 			'as' => 'addToDoList',		
-	]);*/
+	]);
 	
-	Route::post('admin/addToDoList', function()
+	/*Route::post('admin/addToDoList', function()
 	{
 		if(Request::ajax())
 		{
 			return 'data is exist';
 		}
-	})->name('addToDoList');
+	})->name('addToDoList');*/
 });
 
 Auth::routes();
