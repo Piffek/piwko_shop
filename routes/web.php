@@ -25,91 +25,78 @@ Route::get('/', 'HomePageController@index');
 			'uses' => 'ProductController@getBasket',
 			'as' => 'product.index'
 	]);
-	Route::post('/transakcja_gosc/create', 'LogOnDataController@create');
 	
-	
-	
-
-	
-	Route::post('/koszyk_goscia/{id}', 'ProductController@getAddToBasket');
-	Route::post('/transakcja_gosc', 'ProductController@getSummary');
 	Route::get('koszyk_goscia/delete/{id}', ['uses' => 'ProductController@delete']);
+	Route::post('/koszyk_goscia/{id}', 'ProductController@getAddToBasket');
+	Route::post('/transakcja_gosc/create', 'LogOnDataController@create');
+	Route::post('/transakcja_gosc', 'ProductController@getSummary');
 	
-	
-	
-
-	
-	Route::resource('strona_domowa','HomePageController');
 	Route::get('pokaz_produkt/{id}', 'ShowProductController@index');
-	Route::post('koszyk/store', ['uses' => 'BasketController@store']);
+	Route::resource('strona_domowa','HomePageController');
 
-	Route::get('koszyk', ['uses' => 'BasketController@index']);
 	Route::post('koszyk/destroy/{id}', ['uses' => 'BasketController@destroy']);
 	Route::post('koszyk/changeAmount/{id}', 'BasketController@changeAmount');
-	
-	Route::get('transakcja', ['uses' => 'DealController@index']);
-	Route::post('transakcja', ['uses' => 'DealController@index']);
-	
-	Route::post('kupione/store','BuyingController@store');
-	
-	/*Route::resource('kupione/store', 'BuyingController',
-			['only' => ['store', 'getBuy']]);*/
-	
+	Route::post('koszyk/store', ['uses' => 'BasketController@store']);
+	Route::get('koszyk', ['uses' => 'BasketController@index']);
 	
 	Route::post('kupione/create/', ['uses' => 'BuyingController@create']);
+	Route::post('transakcja', ['uses' => 'DealController@index']);
+	Route::get('transakcja', ['uses' => 'DealController@index']);
 	Route::get('kupione', ['uses' => 'BuyingController@index']);
+	Route::post('kupione/store','BuyingController@store');
 	
-	Route::get('/dane', 'DataCustomerController@index');
 	Route::post('/dane/update/{id}', 'DataCustomerController@update');
 	Route::post('/dane/edit/{id}', 'DataCustomerController@edit');
+	Route::get('/dane', 'DataCustomerController@index');
 	
 	
-	Route::get('dodaj_adres_dostawy', ['uses' => 'Adress_deliveryController@index']);
 	Route::post('dodaj_adres_dostawy/destroy/{id}', ['uses' => 'Adress_deliveryController@destroy']);
 	Route::post('dodaj_adres_dostawy/store', ['uses' => 'Adress_deliveryController@store']);
-
+	Route::get('dodaj_adres_dostawy', ['uses' => 'Adress_deliveryController@index']);
 
 Route::group([
 		'middleware' => 'roles',
 		'roles' => ['Admin']
 ], function() {
-	Route::get('/admin/this_order/{id}', 'AdminFunctions\OrdersAdminController@thisOrder');
-	Route::get('/admin/delete_this_order/{id}', 'AdminFunctions\OrdersAdminController@deleteOrder');
-	Route::get('/admin/strona_domowa','AdminFunctions\AdminController@index');
-	Route::get('/admin/customers', 'AdminFunctions\CustomerAdminController@index');
-	Route::get('/admin/new_customers', 'AdminFunctions\CustomerAdminController@viewNewUser');
-	Route::get('/admin/orders_this_customers/{id}', 'AdminFunctions\OrdersAdminController@index');
-	Route::get('/admin/edit_customers/{id}', 'AdminFunctions\CustomerAdminController@editCustomers');
 	Route::get('/admin/show_one_customers/{id}', 'AdminFunctions\CustomerAdminController@showOneCustomers');
 	Route::post('/admin/edit_customers/update/{id}', 'AdminFunctions\CustomerAdminController@update');
+	Route::get('/admin/edit_customers/{id}', 'AdminFunctions\CustomerAdminController@editCustomers');
+	Route::get('/admin/delete_this_order/{id}', 'AdminFunctions\OrdersAdminController@deleteOrder');
+	Route::get('/admin/orders_this_customers/{id}', 'AdminFunctions\OrdersAdminController@index');
 	Route::get('/admin/delete_customers/{id}', 'AdminFunctions\CustomerAdminController@destroy');
-	Route::get('/admin/add_product', 'AdminFunctions\ProductsAdminController@addProduct');
-	Route::get('/admin/all_product', 'AdminFunctions\ProductsAdminController@index');
-	Route::post('/admin/add_product/store', 'AdminFunctions\ProductsAdminController@store');
+	Route::get('/admin/new_customers', 'AdminFunctions\CustomerAdminController@viewNewUser');
+	Route::get('/admin/this_order/{id}', 'AdminFunctions\OrdersAdminController@thisOrder');
+	Route::get('/admin/customers', 'AdminFunctions\CustomerAdminController@index');
+	Route::get('/admin/strona_domowa','AdminFunctions\AdminController@index');
+	
 	Route::post('/admin/edit_product/update/{id}', 'AdminFunctions\ProductsAdminController@update');
 	Route::get('/admin/all_product/delete/{id}', 'AdminFunctions\ProductsAdminController@destroy');
+	Route::post('/admin/add_product/store', 'AdminFunctions\ProductsAdminController@store');
 	Route::get('/admin/current_orders', 'AdminFunctions\OrdersAdminController@allOrders');
+	Route::get('/admin/add_product', 'AdminFunctions\ProductsAdminController@addProduct');
+	Route::get('/admin/all_product', 'AdminFunctions\ProductsAdminController@index');
 	Route::get('/admin/add_role', 'AdminFunctions\RolesAdminController@index');
 	
-	Route::post('/admin/add_role', 'AdminFunctions\RolesAdminController@addRole');
-	Route::post('/admin/edit_role/{id}', 'AdminFunctions\RolesAdminController@update');
 	Route::get('/admin/delete_role/{id}', 'AdminFunctions\RolesAdminController@destroy');
+	Route::post('/admin/edit_role/{id}', 'AdminFunctions\RolesAdminController@update');
+	Route::post('/admin/add_role', 'AdminFunctions\RolesAdminController@addRole');
 	
-	Route::post('/admin/add_product_gallery/photo', 'AdminFunctions\PhotoController@addPhotoGalleryDuringAddProduct');
-	Route::get('/admin/edit_product/{id}', 'AdminFunctions\ProductsAdminController@edit');
-	Route::get('/admin/chart_product', 'AdminFunctions\AdminController@productChart');
-	Route::get('/admin/chart_sold', 'AdminFunctions\AdminController@soldChart');
-	Route::get('/admin/chart_delivery', 'AdminFunctions\AdminController@deliveryChart');
-	Route::get('/admin/chart_paying', 'AdminFunctions\AdminController@paidChart');
-	Route::get('/admin/delete_photo/{id}', 'AdminFunctions\PhotoController@deletePhotoDuringEdit');
-	Route::post('/admin/edit_products/add_photo', 'AdminFunctions\PhotoController@addPhotoDuringEditProduct');
-	Route::post('/admin/edit_products/add_photo_gallery', 'AdminFunctions\PhotoController@editPhotoGalleryDuringEditProduct');
 	Route::get('/admin/edit_products/delete_photo_gallery/{id}/{file}', 'AdminFunctions\PhotoController@deletePhotoGalleryDuringEdit');
+	Route::post('/admin/edit_products/add_photo_gallery', 'AdminFunctions\PhotoController@editPhotoGalleryDuringEditProduct');
+	Route::post('/admin/add_product_gallery/photo', 'AdminFunctions\PhotoController@addPhotoGalleryDuringAddProduct');
+	Route::post('/admin/edit_products/add_photo', 'AdminFunctions\PhotoController@addPhotoDuringEditProduct');
+	Route::get('/admin/delete_photo/{id}', 'AdminFunctions\PhotoController@deletePhotoDuringEdit');
+	Route::get('/admin/edit_product/{id}', 'AdminFunctions\ProductsAdminController@edit');
 	
-	Route::get('admin/kinds', 'AdminFunctions\KindAdminController@index');
 	Route::get('admin/delete_kind/{id}', 'AdminFunctions\KindAdminController@deleteKinds');
-	Route::post('admin/add_kind', 'AdminFunctions\KindAdminController@addKinds');
 	Route::post('admin/edit_kind/{id}', 'AdminFunctions\KindAdminController@editKinds');
+	Route::post('admin/add_kind', 'AdminFunctions\KindAdminController@addKinds');
+	Route::get('admin/kinds', 'AdminFunctions\KindAdminController@index');
+	
+	Route::get('/admin/chart_delivery', 'AdminFunctions\AdminController@deliveryChart');
+	Route::get('/admin/chart_product', 'AdminFunctions\AdminController@productChart');
+	Route::get('/admin/chart_paying', 'AdminFunctions\AdminController@paidChart');
+	Route::get('/admin/chart_sold', 'AdminFunctions\AdminController@soldChart');
 	
 	Route::post('admin/addToDoList',[
 			'uses' => 'AdminFunctions\ToDoListController@addToDoList',
