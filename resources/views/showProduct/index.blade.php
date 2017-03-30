@@ -16,7 +16,6 @@
 						<input hidden name="product" value="{{$items->product}}"></td></tr>
 						<input hidden name="price" value="{{$items->price}}"></td></tr>
 						<input hidden name="id_product" value="{{$items->id}}"></td></tr>
-						<input hidden name="id_user" value="{{Auth::user()->id}}"></td></tr>
 						<input for="amount" maxlength="3" type="text" name="amount" required></td></tr>
 						<input type="submit" value="Do koszyka!"><br></tr>
 						<div id="galeria"></div>	

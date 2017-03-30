@@ -22,12 +22,12 @@
             </div>
               
 	              <div class="col-sm-12 col-md-12">
-			          <form id="hiddenDo" method="POST">
+			          <form id="hiddenDo">
 			             {!! csrf_field() !!}
 			          	<label>Wykonane do </label><br><input id="textWhen" type="text" name="when"></input><br>
 			      		<label>Zadanie </label><br><textarea id="textarea"  name="what"></textarea><br>
-			      		<input type="hidden" value="{{Auth::user()->id }}" name="id_user"></input>
-			          <button type="submit" id="submitDo" value="Dodaj" name="submitDo" oneclick="addListToDb()">Dodaj</button>
+			      		<input type="hidden" value="{{Auth::user()->id }}" id="id_user" name="id_user"></input>
+			          <button type="button" id="submitDo" name="submitDo" onclick="addListToDb()">Dodaj</button>
 			          </form>
 		       	</div>
         
