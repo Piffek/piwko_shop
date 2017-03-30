@@ -9,9 +9,7 @@
       	<h4>Cena jednostkowa: {{ $this_order->price }} zł</h4><br>
       	<h4>Ilość: {{ $this_order->amount }} szt</h4><br>
       	<h4>Kwota zlecenia: {{ $this_order->price * $this_order->amount }} zł</h4><br>
-      	
         <h4>Wykonane: {{ $this_order -> created_at }}</h4><br>
-
        <p><a href="{{url('/admin/delete_this_order/'.$this_order->id.'')}}" class="btn btn-primary" role="button">Usuń</a> 
       </div>
     </div>
@@ -24,7 +22,7 @@
       	<h4>Miasto: {{ $this_order->city }}</h4><br>
       	<h4>Ulica: {{ $this_order->street }}</h4><br>
       	<h4>Dostawa: {{ $this_order->delivery  }}</h4><br>
-		<h4>Metoda płatności: {{ $this_order -> paying }}</h4><br>
+	<h4>Metoda płatności: {{ $this_order -> paying }}</h4><br>
       </div>
     </div>
   </div>
