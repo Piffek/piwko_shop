@@ -39,7 +39,7 @@ class Adress_deliveryController extends Controller
      */
     public function store(Request $request)
     {
-    	Add_adress_delivery::create($request->all());
+    	Add_adress_delivery::create(['id_user'=>Auth::id()] + $request->all());
     	Session::flash('success','Dodano Nowy adres.');
     	return redirect()->action('Adress_deliveryController@index');
     }

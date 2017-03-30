@@ -13,7 +13,6 @@
 				<div class="panel-body"> 
 					<form method="post" action="/dodaj_adres_dostawy/store">
 					{!! csrf_field() !!}
-						<input hidden name="id_user" value="{{Auth::user()->id}}"></td></tr>
 					 Ulica: <input style="width:150px" id="street" type="text" class="form-control" name="street" required autofocus>
 					 Miasto: <input style="width:150px" id="city" type="text" class="form-control" name="city"  required autofocus>
 					 Telefon: <input style="width:150px" id="phone" type="text" class="form-control" name="phone"  required autofocus>
