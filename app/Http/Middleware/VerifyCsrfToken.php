@@ -14,15 +14,6 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
     ];
-    /**
-     * Determine if the session and input CSRF tokens match.
-     * 
-     *	@param \Illuminate\Http\Request $request 17     
-     *  @return bool
-     */
-    protected function tokensMatch($request)
-    {         
-    	$token = $request->ajax() ? $request->header('X-CSRF-Token') : $request->input('_token');
-    	return $request->session()->token() == $token;
-    }
+
+   
 }
