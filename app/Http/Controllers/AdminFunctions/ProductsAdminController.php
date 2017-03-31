@@ -135,6 +135,6 @@ class ProductsAdminController extends Controller
         File::Delete('zdjecia/'.$id->id.'.jpg');
         $id->delete();
         Session::flash('success','Usunięto produkt');
-        return redirect()->action('Admin\ProductsAdminController@index');
+        return redirect()->action('AdminFunctions\ProductsAdminController@index');
     }
 }
