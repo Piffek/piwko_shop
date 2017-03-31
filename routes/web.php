@@ -70,7 +70,7 @@ Route::group([
 	Route::get('/admin/strona_domowa','AdminFunctions\AdminController@index');
 	
 	Route::post('/admin/edit_product/update/{id}', 'AdminFunctions\ProductsAdminController@update');
-	Route::get('/admin/all_product/delete/{id}', 'AdminFunctions\ProductsAdminController@destroy');
+	Route::get('/admin/product/delete/{id}', 'AdminFunctions\ProductsAdminController@destroy');
 	Route::post('/admin/add_product/store', 'AdminFunctions\ProductsAdminController@store');
 	Route::get('/admin/current_orders', 'AdminFunctions\OrdersAdminController@allOrders');
 	Route::get('/admin/add_product', 'AdminFunctions\ProductsAdminController@addProduct');

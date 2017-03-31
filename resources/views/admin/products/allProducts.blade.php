@@ -10,7 +10,7 @@
         <h4>Ilośc: {{ $item -> amount }} szt</h4>
 
        <p><a href="{{url('/admin/edit_product/'.$item->id.'')}}" class="btn btn-primary" role="button">Edytuj</a> 
-        <p><a href="{{url('/admin/all_product/delete/'.$item->id.'')}}" class="btn btn-primary" role="button">Usun</a> 
+        <p><a href="{{url('/admin/product/delete/'.$item->id.'')}}" class="btn btn-primary" role="button">Usun</a> 
       </div>
     </div>
   </div>
