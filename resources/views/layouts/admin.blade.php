@@ -362,7 +362,9 @@
 <!-- jQuery 2.2.3 -->
 <script type="text/javascript">
 var url = '{{ route('addToDoList') }}';
+var urlshowToDoList = '{{ route('showToDoList') }}';
 </script>
+
 <script type="text/javascript" src="{{ url('/js/showToDoListField.js')}}"></script>
 <script type="text/javascript" src="{{ url('/js/addToDoListToDB.js')}}"></script>
 <script src="{{ url('admin/admin_layout/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>

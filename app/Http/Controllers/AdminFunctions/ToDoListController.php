@@ -18,9 +18,13 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-    	$todolist = ToDoList::paginate(15);
-        return view('admin.products.addProducts')
-        ->with($todolist);
+    	$todolist = ToDoList::all();
+        return $todolist;
+    }
+    
+    public function showToDoList()
+    {
+
     }
     
     

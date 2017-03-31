@@ -103,13 +103,10 @@ Route::group([
 			'as' => 'addToDoList',		
 	]);
 	
-	/*Route::post('admin/addToDoList', function()
-	{
-		if(Request::ajax())
-		{
-			return 'data is exist';
-		}
-	})->name('addToDoList');*/
+	Route::get('admin/showToDoList',[
+			'uses' => 'AdminFunctions\ToDoListController@index',
+			'as' => 'showToDoList',
+	]);
 });
 
 Auth::routes();

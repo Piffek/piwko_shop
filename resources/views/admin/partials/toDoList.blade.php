@@ -1,4 +1,5 @@
             
+
 <div class="box-body">
 	<ul class="todo-list">
 		@foreach($todolist as $task)
@@ -16,6 +17,7 @@
                 </div>
              </li>  
 		@endforeach
+		{{ $todolist->links() }}
 </ul>
             <div class="box-footer clearfix no-border">
               <button id="addTask" type="button" class="btn btn-default pull-right" onclick="showToDoField()"><i class="fa fa-plus"></i>Dodaj zadanie</button>
@@ -31,7 +33,6 @@
 			          </form>
 		       	</div>
         
-{{ $todolist->links() }}
-</div>
 
+</div>
 
