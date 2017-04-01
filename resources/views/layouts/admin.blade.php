@@ -22,9 +22,6 @@
 
   <link rel="stylesheet" href="{{ url('admin/admin_layout/dist/css/skins/_all-skins.min.css') }}">
 
-  <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
-
-  <link rel="stylesheet" href="{{ url('admin/admin_layout/plugins/datepicker/datepicker3.css') }}">
   
   
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -321,14 +318,9 @@ var urlshowToDoList = '{{ route('showToDoList') }}';
 
 </script>
 
-<script src="{{ url('admin/admin_layout/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-<script src="{{ url('admin/admin_layout/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="{{ url('admin/admin_layout/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="{{ url('admin/admin_layout/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ url('admin/admin_layout/plugins/fastclick/fastclick.js') }}"></script>
 <script src="{{ url('admin/admin_layout/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ url('admin/admin_layout/plugins/morris/morris.min.js') }}"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="{{ url('admin/admin_layout/dist/js/app.min.js') }}"></script>
 

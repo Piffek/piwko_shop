@@ -59,14 +59,15 @@
 						<input type="submit" value="Usuń"></tr>
 						</form></td>
 					</tbody>
-					@endforeach		
-		@endif
-		</table>
-	</div>	
-		<form method="POST" action="/transakcja">
-			{!! csrf_field() !!}
+					@endforeach	
+				</table>
+					</div>	
+			<form method="POST" action="/transakcja">
+				{!! csrf_field() !!}
 			<input type="submit" value="Zrealizuj"></tr>
-		</form>
+			</form>	
+		@endif
+		
 	</div>
 @else
 @endif
