@@ -26,7 +26,6 @@ class ProductController extends Controller
     	return view('basket.basketGuestPage')->with(array(
     			'products'    => $products,
     	));
-    	//return view('koszyk.index',compact('products'));
     }
     
     public function getSummary()
@@ -36,7 +35,6 @@ class ProductController extends Controller
     			'products' => $products,
     			
     	));
-    	//return dd($products);
     }
     
     
@@ -53,8 +51,6 @@ class ProductController extends Controller
     	}
     	session()->put('basket', $products);
     	return redirect()->back()->with('success', 'Usunięto');
-    	//put back in session array without deleted item
-    	//then you can redirect or whatever you need
     
     }
 }

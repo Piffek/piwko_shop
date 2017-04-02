@@ -16,9 +16,6 @@ class ShowProductController extends Controller
     {
     	$items = Items::whereId($id)->first();
     	return view('showProduct.index',['items' => $items]);
-    	
-       
-       
     }
     
    

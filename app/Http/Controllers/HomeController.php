@@ -36,11 +36,5 @@ class HomeController extends Controller
     	{
     		return redirect()->action('HomePageController@index');
     	}
-    	/*$user_id = $userId = Auth::id();
-    	RolesHasUsers::create([
-    			'users_id' =>  $user_id,
-    			'roles_id' => '6',
-    	]);
-        return view('home');*/
     }
 }
