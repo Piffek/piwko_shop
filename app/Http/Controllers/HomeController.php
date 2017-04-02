@@ -29,7 +29,6 @@ class HomeController extends Controller
     		$add_roles -> users_id = Auth::user()->id;
     		$add_roles -> roles_id = '1';
     		$add_roles->save();
-    	
     		return view('home');
     	}
     	else if($id_roles>0)

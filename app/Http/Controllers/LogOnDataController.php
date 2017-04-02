@@ -4,14 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mail;
-use App\LogOnData;
 use Session;
-use App\User;
-use App\Mail\ConfirmationAccount;
-use DB;
-use Carbon\Carbon;
-use App\Items;
-use App\Jobs\MailingLogon;
+use App\MyHelper\StoreCashierUsersNotVerification;
 
 
 class LogOnDataController extends Controller
@@ -31,49 +25,31 @@ class LogOnDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request, StoreCashierUsersNotVerification $cashier)
     {	
     	
-  	
+    	$dataNotVerificationUsers = array(
+    			'firstname' => $request->input('firstname'),
+    			'lastname' => $request->input('lastname'), 
+    			'email' => $request->input('email'),
+    			'city' => $request->input('city'),
+    			'street' => $request->input('street'),
+    			'postcode' => $request->input('firstnameonaccount'),
+    			'firstnameonaccount' => $request->input('firstnameonaccount'),
+    			'lastnameonaccount' => $request->input('lastnameonaccount'), 
+    			'cardnumber' => $request->input('cardnumber'), 
+    			'billingstreet' =>  $request->input('billingstreet'),
+    			'billingcity' => $request->input('billingcity'), 
+    			'billingpostcode' => $request->input('billingpostcode'),
+    			'phone' => $request->input('phone'),
+    			'companyname' => $request->input('companyname'),
+    			'nip' => $request->input('nip'),
+    			'paying' => $request->paying,
+    			'delivery_method' => $request->delivery_method,
+    	);
     	
-    	$products = session('basket');
-    	foreach($products as $produkt)
-    	{
-    		
-    		$add_logondata= new LogOnData;
-    		$add_logondata -> firstname = $request->input('firstname');
-    		$add_logondata -> lastname= $request->input('lastname');
-    		$add_logondata -> email = $request->input('email');
-    		$add_logondata -> street = $request->input('street');
-    		$add_logondata -> city= $request->input('city');
-    		$add_logondata -> postcode = $request->input('postcode');
-    		$add_logondata -> firstnameonaccount= $request->input('firstnameonaccount');
-    		$add_logondata -> lastnameonaccount= $request->input('lastnameonaccount');
-    		$add_logondata -> cardnumber= $request->input('cardnumber');
-    		$add_logondata -> billingstreet= $request->input('billingstreet');
-    		$add_logondata -> billingcity= $request->input('billingcity');
-    		$add_logondata -> billingpostcode= $request->input('billingpostcode');
-    		$add_logondata -> phone= $request->input('phone');
-    		$add_logondata -> companyname= $request->input('companyname');
-    		$add_logondata -> nip= $request->input('nip');
-    		$add_logondata -> product= $produkt['product'];
-    		$add_logondata -> id_transaction = $produkt['random_id'];
-    		$add_logondata -> amount = $produkt['amount'];
-    		$add_logondata -> price = $produkt['price']*$produkt['amount'];
-			$add_logondata -> paying = $request->paying;
-			$add_logondata -> delivery_method = $request->delivery_method;
-    		$add_logondata-> save();
-    		
-    		$items = Items::find($produkt['id']);
-    		$items->decreaseInventory($produkt['amount']);
-    		$items->recordPurchase($produkt['amount']);
-    		
-    		dispatch(new MailingLogon($produkt['random_id'], 'id_transaction', 'LogOnData'));
-
-    	}
+    	$cashier->checkout($dataNotVerificationUsers);
     	
-    	
-    	session()->forget('basket');
     	Session::flash('success','Dziękujemy za zakup produktu, na podany mail została wysłana informacja');
     	return redirect()->action('HomePageController@index');
 

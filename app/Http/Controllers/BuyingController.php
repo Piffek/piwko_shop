@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Buyings;
 use App\User;
 use Session;
-use App\Items;
 
 class BuyingController extends Controller
 {
@@ -20,9 +19,6 @@ class BuyingController extends Controller
     public function index(Request $request)
     {
     	$buying = Buyings::where('id_user',Auth::user()->id)->paginate('10');
-    	
-    	
-    	//$buying = Buyings::whereid_user(Auth::user()->id)->get();
     	return view('buying',compact('buying'));
     }
 
@@ -31,9 +27,6 @@ class BuyingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    
-    
     public function create(Request $request, StoreCashier $cashier)
     {
 

@@ -29,9 +29,6 @@ class Items extends Model
 		$this->update();
 	}
 	
-	
-	
-	
 	public function addToBasket($request, $id)
 	{
 		foreach($this->where('id',$id)->get() as $oneProduct)
