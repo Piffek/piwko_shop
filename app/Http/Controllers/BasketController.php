@@ -24,8 +24,8 @@ class BasketController extends Controller
     {
     	if (Auth::check())
     	{  	
-	    	$koszyk = Baskets::where('id_user',Auth::user()->id)->get();
-	    	return view('basket.index',compact('koszyk'));
+	    	$basket = Baskets::where('id_user',Auth::user()->id)->get();
+	    	return view('basket.index',compact('basket'));
     	}
     	return view('basket.index');
     }

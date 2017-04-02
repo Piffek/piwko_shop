@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
 @if(Auth::check())
-	@if (count($koszyk) === 0)
+	@if (count($basket) === 0)
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 		  <div class="panel-heading">Koszyk</div>
@@ -16,7 +16,7 @@
 			</table>
 		</div>
 	</div>
-		@elseif (count($koszyk) > 0)
+		@elseif (count($basket) > 0)
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 			  <div class="panel-heading">Koszyk</div>
@@ -28,13 +28,20 @@
 						<th>Ilosc</th>
 						</tr>
 					</thread>
-					@foreach($koszyk as $koszyks)
+					@foreach($basket as $baskets)
 					<tbody>
-						<td>{{$koszyks->product}}</td>
-						<td>{{$koszyks->price*$koszyks->amount}}</td>
-						<td>{{$koszyks->amount}}</td>
-						<td><a class="btn btn-primary" data-toggle="modal" data-target="#changeAmount">Zmień ilość</a></td>
-						<div class="modal fade bs-example-modal-sm" id="changeAmount" tabindex="-1" role="dialog" >
+						<td>{{$baskets->product}}</td>
+						<td>{{$baskets->price*$baskets->amount}}</td>
+						<td>{{$baskets->amount}}</td>
+						<td><a class="btn btn-primary" data-toggle="modal" data-target="#changeAmount{{$baskets->id }}">Zmień ilość </a></td>
+						<td>
+							<form method="POST" action="/koszyk/destroy/{{$baskets->id}}">
+							{!! csrf_field() !!}
+							<input type="submit" value="Usuń"></tr>
+							</form>
+						</td>
+					</tbody>
+					<div class="modal fade bs-example-modal-sm" id="changeAmount{{$baskets->id}}" tabindex="-1" role="dialog" >
 							<div class="modal-dialog modal-lg" role="document">
 								<div class="container">
 									<div class="row">
@@ -42,11 +49,11 @@
 										       <div class="panel panel-default">
 											       <div class="panel-heading">Zmień ilosc</div>
 											       <div class="panel-body">
-														<form method="POST" action="/koszyk/changeAmount/{{$koszyks->id}}">
-														{!! csrf_field() !!}
-														<input name="amount">
-														<input type="submit" value="Zmień">
-													</form>
+														<form method="POST" action="/koszyk/changeAmount/{{$baskets->id}}">
+															{!! csrf_field() !!}
+															<input name="amount">
+															<input type="submit" value="Zmień">
+														</form>
 												</div>
 											</div>
 										</div>
@@ -54,11 +61,6 @@
 								</div>
 							</div>
 						</div>	
-						<td><form method="POST" action="/koszyk/destroy/{{$koszyks->id}}">
-						{!! csrf_field() !!}
-						<input type="submit" value="Usuń"></tr>
-						</form></td>
-					</tbody>
 					@endforeach	
 				</table>
 					</div>	
