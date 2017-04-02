@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Items;
 use App\User;
-use App\Koszyks;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
