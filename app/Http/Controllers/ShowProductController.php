@@ -14,18 +14,7 @@ class ShowProductController extends Controller
 
     public function index(Items $items,$id)
     {
-    	//return $id;
     	$items = Items::whereId($id)->first();
-    	if (Auth::check()) 
-    	{
-    		$user = User::wherename(Auth::user()->name)->get();
-    	
-	    	foreach($user as $users)
-	    	{
-	    		$koszyk = $users->id;
-	    	}
-	    	return view('showProduct.index',['items' => $items ,'koszyk' => $koszyk]);
-    	}
     	return view('showProduct.index',['items' => $items]);
     	
        
