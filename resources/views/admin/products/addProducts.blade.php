@@ -2,48 +2,46 @@
 @section('content')
 <div class="row">
    <div class="col-md-8 col-md-offset-3">
-      	    <form enctype="multipart/form-data" method="POST" action="/admin/add_product/store">
-	      	{!! csrf_field() !!}
-	      	<div class="col-md-3">
-		      		Nazwa Produktu:
-					<input style="width:150px" id="product" type="text" class="form-control" name="product">
-				Cena:
-					<input style="width:150px" id="price" type="text" class="form-control" name="price">
-				Ilość:
-					<input style="width:150px" id="amount" type="text" class="form-control" name="amount">
-		</div>
-		<div class="col-md-3">
-			Rodzaj:
-				<select name="kind">
-					@foreach($kinds as $kind)
-					  <option value="{{$kind->name}}">{{$kind->name}}</option>
-					@endforeach
-				</select>
-			Przeznaczenie:
-				<input style="width:150px" id="appropriaton" type="text" class="form-control" name="intended">
-			Wymiary Ogólne:
-				<input style="width:150px" id="general_size" type="text" class="form-control" name="general_size">
-			Wymiary:
-				<input style="width:150px" id="size" type="text" class="form-control" name="size">
-		</div>
-		<div class="col-md-3">
-			Promocja:
-				<input style="width:150px" id="promotion" type="text" class="form-control" name="promotion">
-			Procent promocji:
-				<input style="width:150px" id="percent_promotion" type="text" class="form-control" name="percent_promotion">
-			Tekst promocji:
-				<input style="width:150px" id="text_promotion" type="text" class="form-control" name="text_promotion">
-
-		</div>
-	</div>
-</div>
-	{!! Form::file('image') !!}
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			Opis:
-				<textarea class="desc" name="desc"></textarea>
-			<input type="submit" value="Dodaj">
-		</form>
+   			{!! Form::open(['route' => 'adminAddProductStore','files' => true]) !!}
+   				<div class="col-md-3">
+	   				{!! Form::label('Nazwa Produktu') !!}<br>
+					{!! Form::text('product') !!}<br>
+					{!! Form::label('Cena') !!}<br>
+					{!! Form::text('price') !!}<br>
+					{!! Form::label('Ilosc') !!}<br>
+					{!! Form::text('amount') !!}<br>
+				</div>
+				<div class="col-md-3">
+					Rodzaj:
+					<select name="kind">
+						@foreach($kinds as $kind)
+						  <option value="{{$kind->name}}">{{$kind->name}}</option>
+						@endforeach
+					</select>
+	   				{!! Form::label('Przeznaczenie') !!}<br>
+					{!! Form::text('intended') !!}<br>
+					{!! Form::label('Wymiary Ogólne') !!}<br>
+					{!! Form::text('general_size') !!}<br>
+					{!! Form::label('Wymiary') !!}<br>
+					{!! Form::text('size') !!}<br>
+				</div>
+				<div class="col-md-3">
+	   				{!! Form::label('Promocja') !!}<br>
+					{!! Form::text('promotion') !!}<br>
+					{!! Form::label('Procent Promocji') !!}<br>
+					{!! Form::text('percent_promotion') !!}<br>
+					{!! Form::label('Tekst Promocji') !!}<br>
+					{!! Form::text('text_promotion') !!}<br>
+				</div>
+				{!! Form::file('image') !!}
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						{!! Form::label('Opis') !!}<br>
+						{!! Form::text('desc') !!}<br>
+					</div>
+				</div>
+				{!! Form::submit('Dodaj') !!}
+			{!! Form::close() !!}
 	</div>
 </div>
 

@@ -24,8 +24,7 @@
 						<h3 class="panel-title">Wybierz sposób płatnosci i dostawy</h3> </div>
 							<div class="panel-body"> 
 								<div class="container">
-								<form method="POST" action="/kupione/create">
-								{!! csrf_field() !!}
+								{!! Form::open(['route' => 'buyingCreate']) !!}
 								<h3>Sposób dostawy</h3>
 									DPD<input name="delivery" type="checkbox" value="DPD" >
 									<br>UPS<input name="delivery" type="checkbox" value="UPS">
@@ -38,29 +37,32 @@
 									
 		</div>
 		<div class ="col-md-3 col-md-offset-8">
-							@foreach($data_deals as $data_deal)
-								@if(count($data_deal->id) > 0)
-								<div class="panel panel-info"> 
-									<div class="panel-heading">
-										<h3 class="panel-title">Wybierz inne dane dostawy</h3> </div>
-											<div class="panel-body"> 
-												<div class="container">
-													{!! csrf_field() !!}
-													<p>Miasto: {{$data_deal -> city}}
-													<input hidden name="city" value="{{$data_deal -> city}}" ></p>
-													<p>Ulica:  {{$data_deal -> street}}
-													<input hidden name="street" value="{{$data_deal -> street}}" ></p>
-													<p>Telefon: {{$data_deal -> phone}}
-													<input hidden name="phone" value="{{$data_deal -> phone}}" ></p>
-													<input name="id_adress_delivery" type="checkbox" value="{{$data_deal->id}}">
-												</div>
-											</div>
+			@foreach($data_deals as $data_deal)
+				@if(count($data_deal->id) > 0)
+				<div class="panel panel-info"> 
+					<div class="panel-heading">
+						<h3 class="panel-title">Wybierz inne dane dostawy</h3> </div>
+							<div class="panel-body"> 
+								<div class="container">
+									Miasto:<br>
+									{!! Form::label($data_deal -> city) !!}
+									{!! Form::hidden('city',$data_deal -> city) !!}<br>
+									Ulica:<br>
+									{!! Form::label($data_deal -> street) !!}
+									{!! Form::hidden('street',$data_deal -> street) !!}<br>
+									Telefon:<br>
+									{!! Form::label($data_deal -> phone) !!}
+									{!! Form::hidden('phone',$data_deal -> phone) !!}
+									{!! Form::checkbox('id_adress_delivery',$data_deal->id) !!}
+								</div>
+							</div>
 
-									</div>
-								@else
-									<p>Nie dodałes innych miejsc dostawy</p>
-								@endif
-							@endforeach
-						<input type="submit" value="Zrealizuj"></tr>
-		</div>
+					</div>
+				@else
+					<p>Nie dodałes innych miejsc dostawy</p>
+				@endif
+			@endforeach
+							{!! Form::submit('Dodaj') !!}
+		{!! Form::close() !!}
+
 @endsection

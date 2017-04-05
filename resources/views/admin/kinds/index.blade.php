@@ -8,14 +8,13 @@
     	<div class="panel panel-info">
 		<div class="panel-heading">
 		    @foreach($kinds as $kind)
-			     <form method="post" action="/admin/edit_kind/{{$kind->id}}">
-				{!! csrf_field() !!}
-			      <p>Nazwa: <input style="width:150px" id="role_name" type="text" class="form-control" name="name" value="{{ $kind ->name }}">
-				  <input type="submit" class="btn btn-success" value="Zapisz">
-			     </form>
-				  <a href="/admin/delete_kind/{{$kind->id}}" class="btn btn-danger">Usuń</a>
+		    	{!! Form::open(['route' => ['editKind', $kind->id ]]) !!}
+					{!! Form::label('Nazwa') !!}<br>
+					{!! Form::text('name',$kind ->name ) !!}<br>
+				  	{!! Form::submit('Zapisz',['class'=>'btn btn-success']) !!}
+				  <a href="{{route('adminDeleteKind',['id'=>$kind->id])}}" class="btn btn-danger">Usuń</a><br>
+				  {!! Form::close() !!}
 		     @endforeach
-     			</form>
     		 </div>
      	</div>
     </div>
@@ -29,11 +28,11 @@
 		<div class="panel panel-info">
 			<div class="panel-heading"> 
 				<h3 class="panel-title">Dodaj nowa kategorie</h3> </div>
-				<form method="post" action="/admin/add_kind">
-					{!! csrf_field() !!}
-					<p>Nazwa: <input style="width:150px" id="kind" type="text" class="form-control" name="name"><br>
-					<input type="submit" class="btn btn-success" value="Zapisz"></tr>
-				</form>
+				{!! Form::open(['route' => 'addKind']) !!}
+					{!! Form::label('Nazwa') !!}
+					{!! Form::text('name') !!}<br>
+					{!! Form::submit('Zapisz') !!}
+				{!! Form::close() !!}
 			</div>
 		</div>
 	 </div>

@@ -1,13 +1,13 @@
       <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <li class="active treeview">
-          <a href="{{url('/admin/strona_domowa')}}">
+          <a href="{{route('adminStartPage')}}">
             <i class="fa fa-dashboard"></i> <span>Strona domowa</span>
           </a>
           
         </li>
          <li class="treeview">
-          <a href="{{url('/admin/customers')}}">
+          <a href="{{route('adminCustomers')}}">
             <i class="fa fa-dashboard"></i> <span>Zarządzaj klientami</span>
           </a>
           
@@ -23,8 +23,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/admin/add_product')}}"><i class="fa fa-circle-o"></i> Dodaj Produkt</a></li>
-            <li><a href="{{url('/admin/all_product')}}"><i class="fa fa-circle-o"></i> Pokaż wszytskie</a></li>
+            <li><a href="{{route('adminAddProduct')}}"><i class="fa fa-circle-o"></i> Dodaj Produkt</a></li>
+            <li><a href="{{route('adminAllProduct')}}"><i class="fa fa-circle-o"></i> Pokaż wszytskie</a></li>
           </ul>
         </li>
        <li>
@@ -36,7 +36,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-				<li><a href="{{url('/admin/current_orders')}}"><i class="fa fa-circle-o"></i> Bieżące zamówienia</a></li>
+				<li><a href="{{route('adminCurrentOrders')}}"><i class="fa fa-circle-o"></i> Bieżące zamówienia</a></li>
 				<li><a href="{{url('/admin/chart/accomplish_orders')}}"><i class="fa fa-circle-o"></i> Zrealizowane</a></li>
 				
           </ul>
@@ -50,10 +50,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/admin/chart_product')}}"><i class="fa fa-circle-o"></i> Wykres Produktów</a></li>
-            <li><a href="{{url('/admin/chart_sold')}}"><i class="fa fa-circle-o"></i> Wykres sprzedaży</a></li>
-            <li><a href="{{url('/admin/chart_delivery')}}"><i class="fa fa-circle-o"></i> Wykres dostaw</a></li>
-            <li><a href="{{url('/admin/chart_paying')}}"><i class="fa fa-circle-o"></i> Wykres płatności</a></li>
+            <li><a href="{{route('chartProduct')}}"><i class="fa fa-circle-o"></i> Wykres Produktów</a></li>
+            <li><a href="{{route('chartSold')}}"><i class="fa fa-circle-o"></i> Wykres sprzedaży</a></li>
+            <li><a href="{{route('chartDelivery')}}"><i class="fa fa-circle-o"></i> Wykres dostaw</a></li>
+            <li><a href="{{route('chartPaying')}}"><i class="fa fa-circle-o"></i> Wykres płatności</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -64,11 +64,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/admin/add_role')}}"><i class="fa fa-circle-o"></i>Zarządzaj rolami</a></li>
+            <li><a href="{{route('addRole')}}"><i class="fa fa-circle-o"></i>Zarządzaj rolami</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="{{url('admin/kinds')}}">
+          <a href="{{route('kinds')}}">
             <i class="fa fa-dashboard"></i> <span>Zarządzaj kategoriami</span>
           </a>
         </li>

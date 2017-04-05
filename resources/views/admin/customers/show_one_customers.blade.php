@@ -18,8 +18,8 @@
 						<p>Telefon: {{$user -> phone}}</p>
 						<p>Firma: {{$user -> companyname}}</p>
 						<p>NIP: {{$user -> nip}}</p>
-						<a href="{{url('/admin/edit_customers/'.$user->id.'')}}" class="btn btn-primary" role="button">Edytuj</a>
-						<a href="{{url('/admin/delete_customers/'.$user->id.'')}}" class="btn btn-danger" role="button">Usuń</a>
+						<a href="{{route('adminEditOneCustomer',['id'=>$user->id])}}" class="btn btn-primary" role="button">Edytuj</a>
+						<a href="{{route('adminDeleteOneCustomer',['id'=>$user->id])}}" class="btn btn-danger" role="button">Usuń</a>
 					</div>
 				</div>
 		</div>

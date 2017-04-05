@@ -32,15 +32,13 @@
 					   	<td>{{$p['product']}}</td>
 						<td>{{$p['price']*$p['amount']}}</td>
 						<td>{{$p['amount']}}</td>
-						<td><a href="{{route('delete_basket_guest',['id'=>$p['random_id']])}}" class="btn btn-danger pull-right" role="button">Usuń</a></td>
+						<td><a href="{{route('deleteBasketGuest',['id'=>$p['random_id']])}}" class="btn btn-danger pull-right" role="button">Usuń</a></td>
 					</tbody>
 				@endforeach		
 			</table>
 		</div>	
-		<form method="POST" action="/transakcja_gosc">
-			{!! csrf_field() !!}
-			<input type="submit" value="Zrealizuj"></tr>
-		</form>
+		<a href="{{route('guestTransaction')}}">Zrealizuj</a>
+		
 	</div>	
 @endif
 </div>

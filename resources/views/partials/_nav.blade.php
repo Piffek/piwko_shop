@@ -27,11 +27,11 @@
                             <a style="margin-top:7px;" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">zaloguj</a>
                        
                          	 <a style="margin-top:7px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</a>
-                            <li><a href="{{route('basket_guest')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
+                            <li><a href="{{route('basketGuest')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
                         @else
                        		
 							
-                        	<li><a href=" {{ url('/koszyk') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                        	<li><a href=" {{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
                         		</span>Koszyk</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">
@@ -46,14 +46,14 @@
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-                                        <a href="{{ url('/dane') }}">
+                                        <a href="{{ route('data') }}">
                                             Twoje Dane
                                         </a>
                                         
-                                        <a href="{{ url('/dodaj_adres_dostawy') }}">
+                                        <a href="{{ route('showAdressDelivery') }}">
                                             Dodaj adres dostawy
                                         </a>
-                                        <a href="{{ url('/kupione') }}">
+                                        <a href="{{ route('buying') }}">
                                             Historia Zakupów
                                         </a>
                                         

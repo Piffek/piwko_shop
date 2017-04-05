@@ -11,13 +11,15 @@
 		<div class="panel-heading"> 
 			<h3 class="panel-title">Dodaj adres dostawy</h3> </div>
 				<div class="panel-body"> 
-					<form method="post" action="/dodaj_adres_dostawy/store">
-					{!! csrf_field() !!}
-					 Ulica: <input style="width:150px" id="street" type="text" class="form-control" name="street" required autofocus>
-					 Miasto: <input style="width:150px" id="city" type="text" class="form-control" name="city"  required autofocus>
-					 Telefon: <input style="width:150px" id="phone" type="text" class="form-control" name="phone"  required autofocus>
-					 <input type="submit" value="Dodaj"></tr>
-					</form>
+					{!! Form::open(['route' => 'addAdressDelivery']) !!}
+						{!! Form::label('Ulica') !!}
+						{!! Form::text('street') !!}
+						{!! Form::label('Miasto') !!}
+						{!! Form::text('city') !!}
+						{!! Form::label('Telefon') !!}
+						{!! Form::text('phone') !!}
+						{!! Form::submit('Dodaj') !!}
+					{!! Form::close() !!}
 				</div>
 			</div>
 		</div>
@@ -51,10 +53,7 @@
 								<td>{{$add_adres->city}}</td>
 								<td>{{$add_adres->phone}}</td>
 								<td>{{$add_adres->created_at}}</td>
-								<td><form method="POST" action="/dodaj_adres_dostawy/destroy/{{$add_adres->id}}">
-								{!! csrf_field() !!}
-								<input type="submit" value="Usuń"></tr>
-								</form></td>
+								<td><a href="{{route('deleteAdressDelivery',['id'=>$add_adres->id])}}">Usuń</a></td></tr>
 						@endforeach		
 													</tbody>
 				</table>

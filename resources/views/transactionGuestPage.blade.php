@@ -23,7 +23,7 @@
 		        
 
 			
-		        {!! Form::open(['route'=>['guest_transaction', 'method' => 'POST']]) !!}
+		        {!! Form::open(['route'=>['guestTransactionCreate', 'method' => 'POST']]) !!}
 		        <select name='delivery_method'>
 				<option value="">Forma dostawy</option>
 				  <option value="DPD">DPD</option>

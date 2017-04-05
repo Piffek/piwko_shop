@@ -48,7 +48,7 @@ class OrdersAdminController extends Controller
 	{
 		$id->delete();
 		Session::flash('success','Usunięto zamówienie.');
-		return redirect()->action('Admin\OrdersAdminController@allOrders');
+		return redirect()->action('AdminFunctions\OrdersAdminController@allOrders');
 	}
 
 

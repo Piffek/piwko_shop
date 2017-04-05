@@ -104,9 +104,10 @@ class ProductsAdminController extends Controller
     public function edit(Items $id)
     {
     	$item= clone $id;
+    	$kinds=Kinds::all();
     	$files = File::allFiles('pokaz_produkt/miniaturki/'.$id->id.'');
   
-        return view('admin.products.editProducts',compact('item','files'));
+        return view('admin.products.editProducts',compact('item','files','kinds'));
     }
 
     /**

@@ -35,10 +35,7 @@
 						<td>{{$baskets->amount}}</td>
 						<td><a class="btn btn-primary" data-toggle="modal" data-target="#changeAmount{{$baskets->id }}">Zmień ilość </a></td>
 						<td>
-							<form method="POST" action="/koszyk/destroy/{{$baskets->id}}">
-							{!! csrf_field() !!}
-							<input type="submit" value="Usuń"></tr>
-							</form>
+							<a href="{{route('basketDestroy',['id'=>$baskets->id]) }}">Usuń</a>
 						</td>
 					</tbody>
 					<div class="modal fade bs-example-modal-sm" id="changeAmount{{$baskets->id}}" tabindex="-1" role="dialog" >
@@ -49,11 +46,11 @@
 										       <div class="panel panel-default">
 											       <div class="panel-heading">Zmień ilosc</div>
 											       <div class="panel-body">
-														<form method="POST" action="/koszyk/changeAmount/{{$baskets->id}}">
-															{!! csrf_field() !!}
-															<input name="amount">
-															<input type="submit" value="Zmień">
-														</form>
+												       	{!! Form::open(['route' => ['changeAmount', $baskets->id ]]) !!}
+															{!! Form::label('Ilosc') !!}
+															{!! Form::text('amount') !!}
+															{!! Form::submit('Zmień') !!}
+														{!! Form::close() !!}
 												</div>
 											</div>
 										</div>
@@ -64,9 +61,7 @@
 					@endforeach	
 				</table>
 					</div>	
-			<form method="POST" action="/transakcja">
-				{!! csrf_field() !!}
-			<input type="submit" value="Zrealizuj"></tr>
+			<a href="{{route('transaction')}}">Zrealizuj</a>
 			</form>	
 		@endif
 		

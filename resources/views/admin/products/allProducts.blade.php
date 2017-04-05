@@ -9,8 +9,8 @@
         <h4>Cena: {{ $item -> price }}</h4><br>
         <h4>Ilośc: {{ $item -> amount }} szt</h4>
 
-       <p><a href="{{url('/admin/edit_product/'.$item->id.'')}}" class="btn btn-primary" role="button">Edytuj</a> 
-        <p><a href="{{url('/admin/product/delete/'.$item->id.'')}}" class="btn btn-primary" role="button">Usun</a> 
+       <p><a href="{{route('adminEditProduct', ['id'=>$item->id])}}" class="btn btn-primary" role="button">Edytuj</a> 
+       <p><a href="{{route('adminDeleteProduct',['id'=>$item->id])}}" class="btn btn-primary" role="button">Usun</a> 
       </div>
     </div>
   </div>

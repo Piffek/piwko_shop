@@ -14,17 +14,17 @@
       		<div class="col-md-1 col-md-offset-2">
 	      		<div style="width:300px" class="panel panel-default">
 	      			<div class="panel-body">
-			      		<form method="POST" action="/admin/edit_products/add_photo" enctype="multipart/form-data">
+	      				{!! Form::open(['route' => 'addPhotoDuringEdit', 'files' => true]) !!}
 			      			{!! csrf_field() !!}
 							Zdjęcie tego przedmiotu<br>
-							<input type="hidden" class="form-control" name="id" value="{{$item->id}}">
+							{!!Form::hidden('id',$item->id) !!}
 							@if(file_exists(public_path().'/zdjecia/'.$item->id.'.jpg' ))
 								<img  height="250px" width="250px" src="/zdjecia/{{$item->id}}.jpg" />
 							@endif
 							{!! Form::file('image') !!}
-							<a href="{{url('/admin/delete_photo/'.$item->id.'')}}" class="btn btn-danger" role="button">Usuń</a>
-							<input type="submit" value="Dodaj Zdjęcie" class="btn btn-success"></tr>
-						</form>
+							<a href="{{route('adminDeletePhoto', ['id'=>$item->id])}}" class="btn btn-danger" role="button">Usuń</a>
+							{!! Form::submit('Dodaj') !!}
+						{!! Form::close() !!}
 					</div>
 				</div>
 			</div>
@@ -33,20 +33,16 @@
       		<div class="col-md-1 col-md-offset-4">
 	      		<div style="width:300px" class="panel panel-default">
 	      			<div class="panel-body">
-			      		<form action="{{ url('/admin/edit_products/add_photo_gallery') }}" enctype="multipart/form-data" method="POST">
-			      			{!! csrf_field() !!}
+	      				{!! Form::open(['route' => 'editPhotoGalleryDuringEdit', 'files' => true]) !!}
 							Galeria zdjęć przedmiotu<br>
-							<input type="hidden" class="form-control" name="id" value="{{$item->id}}">
-						
+							{!! Form::hidden('id', $item->id) !!}
 								@foreach (File::allFiles(public_path().'/pokaz_produkt/miniaturki/'.$item->id.'/') as $file)
 								  <img  height="250px" width="250px" src="/pokaz_produkt/miniaturki/{{$item->id}}/{{$file->getRelativePathName() }}" />		
-								<a href="{{url('/admin/edit_products/delete_photo_gallery/'.$item->id.'/'.$file->getRelativePathName().'')}}" class="btn btn-danger" role="button">Usuń</a>
+								<a href="{{route('deletePhotoGalleryDuringEdit', ['id'=>$item->id, 'file'=>$file->getRelativePathName()])}}" class="btn btn-danger" role="button">Usuń</a>
 								@endforeach
-						
 							{!! Form::file('image') !!}
-							
-							<input type="submit" value="Dodaj Zdjęcie" class="btn btn-success"></tr>
-						</form>
+							{!! Form::submit('Dodaj') !!}
+						{!! Form::close() !!}
 					</div>
 				</div>
 			</div>
@@ -57,35 +53,37 @@
       	
    <div class="col-md-8 col-md-offset-3">
       	
-      	
-      	    <form method="POST" action="/admin/edit_product/update/{{$item->id}}">
-	      	{!! csrf_field() !!}
+      		{!! Form::open(['route' => ['adminEditProductUpdate', $item->id ]]) !!}
 	      	<div class="col-md-3">
-		      	Nazwa Produktu:
-					<input style="width:150px" id="product" type="text" class="form-control" name="product" value="{{$item->product}}">
-				Cena:
-					<input style="width:150px" id="price" type="text" class="form-control" name="price" value="{{$item->price}}">
-				Ilość:
-					<input style="width:150px" id="amount" type="text" class="form-control" name="amount" value="{{$item->amount}}">
+	      		{!! Form::label('Nazwa Produktu') !!}<br>
+				{!! Form::text('product', $item->product) !!}<br>
+				{!! Form::label('Cena') !!}<br>
+				{!! Form::text('price', $item->price) !!}<br>
+				{!! Form::label('Ilosc') !!}<br>
+				{!! Form::text('amount',$item->amount) !!}<br>
 			</div>
 			<div class="col-md-3">
 				Rodzaj:
-					<input style="width:150px" id="kind" type="text" class="form-control" name="kind" value="{{$item->kind}}">
-				Przeznaczenie:
-					<input style="width:150px" id="appropriaton" type="text" class="form-control" name="intended" value="{{$item->intended}}">
-				Wymiary Ogólne:
-					<input style="width:150px" id="general_size" type="text" class="form-control" name="general_size" value="{{$item->general_size}}">
-				Wymiary:
-					<input style="width:150px" id="size" type="text" class="form-control" name="size" value="{{$item->size}}">
+				<select name="kind">
+				  <option value="{{$item->kind}}">{{$item->kind}}</option>
+					@foreach($kinds as $kind)
+					  <option value="{{$kind->name}}">{{$kind->name}}</option>
+					@endforeach
+				</select><br>
+   				{!! Form::label('Przeznaczenie') !!}<br>
+				{!! Form::text('intended', $item->intended) !!}<br>
+				{!! Form::label('Wymiary Ogólne') !!}<br>
+				{!! Form::text('general_size', $item->general_size) !!}<br>
+				{!! Form::label('Wymiary') !!}<br>
+				{!! Form::text('size', $item->size) !!}<br>
 			</div>
 			<div class="col-md-3">
-				Promocja:
-					<input style="width:150px" id="promotion" type="text" class="form-control" name="promotion" value="{{$item->promotion}}">
-				Procent promocji:
-					<input style="width:150px" id="percent_promotion" type="text" class="form-control" name="percent_promotion" value="{{$item->percent_promotion}}">
-				Tekst promocji:
-					<input style="width:150px" id="text_promotion" type="text" class="form-control" name="text_promotion" value="{{$item->text_promotion}}">
-			
+				!! Form::label('Promocja') !!}<br>
+				{!! Form::text('promotion',$item->promotion) !!}<br>
+				{!! Form::label('Procent Promocji') !!}<br>
+				{!! Form::text('percent_promotion',$item->percent_promotion) !!}<br>
+				{!! Form::label('Tekst Promocji') !!}<br>
+				{!! Form::text('text_promotion',$item->text_promotion) !!}<br>
 				</div>
 		</div>
 </div>
@@ -93,13 +91,13 @@
 	
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			Opis:
-			<textarea class="desc" name="desc" >{{$item->desc}}</textarea>
-			<input type="submit" value="Edytuj"></tr>
+				{!! Form::label('Opis') !!}<br>
+				{!! Form::text('desc',$item->desc) !!}<br>
 		</div>
 
 	</div>
-
+				{!! Form::submit('Edytuj') !!}
+			{!! Form::close() !!}
 
 
 @endsection

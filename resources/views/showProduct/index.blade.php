@@ -37,7 +37,7 @@
 						@elseif ($items->promotion = 'Nie')
 							{{ $items->price }} zł
 					@endif	
-						{!! Form::open(['route'=>['add_to_basket']]) !!}
+						{!! Form::open(['route'=>['addToBasket']]) !!}
 							{!! Form::hidden('product', $items->product) !!}
 							{!! Form::hidden('price', $items->price) !!}
 							{!! Form::hidden('id_product', $items->id) !!}
@@ -51,7 +51,7 @@
 				@else
 					@if($items->amount > 0)
 						Ilosc:
-						{!! Form::open(['route' => ['add_to_guest_basket', $items->id ]]) !!}
+						{!! Form::open(['route' => ['addToGuestBasket', $items->id ]]) !!}
 							{!! Form::hidden('random_id_product', rand(0, 1000000)) !!}
 							{!! Form::text('amount') !!}
 							{!! Form::submit('Do koszyka!') !!}

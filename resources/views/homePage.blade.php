@@ -53,7 +53,7 @@
 													</p>
                                                  </div>
                                                  <div class="read-more">
-                                                    <a href="pokaz_produkt/{{$item->id}}">Zamów produkt<i class="fw-icon-arrow-right"></i></a>
+                                                    <a href="{{route('showProduct',['id'=>$item->id])}}">Zamów produkt<i class="fw-icon-arrow-right"></i></a>
                                                  </div>
                                             </div>
                                      

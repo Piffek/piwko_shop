@@ -4,22 +4,27 @@
 	<div class ="col-md-3 col-md-offset-4">
 		<div class="panel panel-info">
 			<div class="panel-heading"> <h3 class="panel-title">Edytuj</h3> </div>
-			      <form method="post" action="/admin/edit_customers/update/{{$user->id}}">
-					{!! csrf_field() !!}
-					<p>Nick: <input style="width:150px" id="name" type="text" class="form-control" name="name" value="{{$user->name}}">
-					 <p>Imię i nazwisko: <input style="width:150px" id="surname" type="text" class="form-control" name="surname" value="{{$user->surname}}">
-					 <p>E-mail: <input style="width:150px" id="email" type="text" class="form-control" name="email" value="{{$user->email}}">
-					 <p>Ulica: <input style="width:150px" id="street" type="text" class="form-control" name="street" value="{{$user->street}}">
-					 <p>Miasto: <input style="width:150px" id="city" type="text" class="form-control" name="city" value="{{$user->city}}">
-					 <p>Telefon: <input style="width:150px" id="phone" type="text" class="form-control" name="phone" value="{{$user->phone}}" >
-					 <p>Firma: <input style="width:150px" id="companyname" type="text" class="form-control" name="companyname" value="{{$user->companyname}}">
-					 <p>NIP: <input style="width:150px" id="nip" type="text" class="form-control" name="nip" value="{{$user->nip}}">
+				{!! Form::open(['route' => ['adminEditCustomers', $user->id ]]) !!}
+					{!! Form::label('Nick') !!}<br>
+					{!! Form::text('name',$user->name) !!}<br>
+					{!! Form::label('Imię i nazwisko') !!}<br>
+					{!! Form::text('surname',$user->surname) !!}<br>
+					{!! Form::label('Email') !!}<br>
+					{!! Form::text('email',$user->email) !!}<br>
+					{!! Form::label('Ulica') !!}<br>
+					{!! Form::text('street',$user->street) !!}<br>
+					{!! Form::label('Miasto') !!}<br>
+					{!! Form::text('city',$user->city) !!}<br>
+					{!! Form::label('Telefon') !!}<br>
+					{!! Form::text('phone',$user->phone) !!}<br>
+					{!! Form::label('Firma') !!}<br>
+					{!! Form::text('companyname',$user->companyname) !!}<br>
+					{!! Form::label('NIP') !!}<br>
+					{!! Form::text('nip',$user->nip) !!}<br>
 					<br>
-					<input type="submit" class="btn btn-success" value="Zapisz"></tr>
-					</p>
-				</form>
-				<form method="POST" action="/admin/edit_roles_customers/{{$user->id}}">
-				{!! csrf_field() !!}
+					{!! Form::submit('Zmień') !!}
+				{!! Form::close() !!}
+				{!! Form::open(['route' => ['adminEditRolesCustomers', $user->id ]]) !!}
 				<select name="roles_id">
 					 @foreach($rolesHas as $roleUser)
 						 <option>{{ $roleUser->name }}</option>
@@ -28,8 +33,8 @@
 							<option value="{{ $role->id }}">{{ $role->name }}</option>
 					 @endforeach
 				</select>
-				<input type="submit" class="btn btn-success" value="Zmień role"></tr>
-				</form>
+				{!! Form::submit('Zmień') !!}
+			{!! Form::close() !!}
 		</div>
 	 </div>
   </div>

@@ -8,24 +8,23 @@
 				<h3 class="panel-title">Twoje dane</h3>
 			</div>
 			<div class="panel-body"> 
-				<form method="post" action="/dane/update/{{$data_users->id}}">
-					{!! csrf_field() !!}
-					 Imię i nazwisko: <br>
-					 <input style="width:150px" id="surname" type="text" class="form-control" name="surname" value="{{$data_users->surname}}" required autofocus><br>
-					 E-mail:<br>
-					  <input style="width:150px" id="email" type="text" class="form-control" name="email" value="{{$data_users->email}}" required autofocus><br>
-					 Ulica: <br>
-					 <input style="width:150px" id="street" type="text" class="form-control" name="street" value="{{$data_users->street}}" required autofocus><br>
-					 Miasto: <br>
-					 <input style="width:150px" id="city" type="text" class="form-control" name="city" value="{{$data_users->city}}" required autofocus><br>
-					 Telefon: <br>
-					 <input style="width:150px" id="phone" type="text" class="form-control" name="phone" value="{{$data_users->phone}}" required autofocus><br>
-					 Firma: <br>
-					 <input style="width:150px" id="companyname" type="text" class="form-control" name="companyname" value="{{$data_users->companyname}}" required autofocus><br>
-					 NIP: <br>
-					 <input style="width:150px" id="nip" type="text" class="form-control" name="nip" value="{{$data_users->nip}}" required autofocus><br>
-					<input type="submit" value="Zapisz"></tr>
-				</form>
+			{!! Form::open(['route' => ['updateData', $data_users->id ]]) !!}
+				{!! Form::label('Imię i nazwisko') !!}
+				{!! Form::text('surname',$data_users->surname) !!}<br>
+				{!! Form::label('Email') !!}<br>
+				{!! Form::text('email',$data_users->email) !!}<br>
+				{!! Form::label('Ulica') !!}<br>
+				{!! Form::text('street',$data_users->street) !!}<br>
+				{!! Form::label('Miasto') !!}<br>
+				{!! Form::text('city',$data_users->city) !!}<br>
+				{!! Form::label('Telefon') !!}<br>
+				{!! Form::text('phone',$data_users->phone) !!}<br>
+				{!! Form::label('Firma') !!}<br>
+				{!! Form::text('companyname',$data_users->companyname) !!}<br>
+				{!! Form::label('NIP') !!}<br>
+				{!! Form::text('nip',$data_users->nip) !!}<br>
+				{!! Form::submit('Zmień') !!}
+			{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
