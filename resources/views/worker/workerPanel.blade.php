@@ -8,9 +8,8 @@
 							ID_transakcji: {{ $state->id }}<br>
 							Porodukt: {{ $state->product }}<br>
 							Liczba sztuk: {{ $state->amount }}<br>
-							<a href="/pdf/{{$state->id}}">Faktura</a><br>
-							<form method="POST" action="/worker/changeState/{{$state->id}}">
-								{!! csrf_field() !!}
+							<a href="{{route('billsPDF',['id'=>$state->id])}}">Faktura</a><br>
+							{!! Form::open(['route' => ['workerChangeState', $state->id]]) !!}
 								<select name="state">
 									<option>{{ $state->state }}</option>
 									<option>W trakcie przyjęcia</option>
@@ -18,8 +17,8 @@
 									<option>W doręczeniu</option>
 									<option>Zrealizowano</option>
 								</select>
-								<input type="submit" value="zmień">
-							</form>
+							{!! Form::submit('Zmień',['class'=>'btn btn-success']) !!}
+						{!! Form::close() !!}
 						</div>
 					</div>
 			</div>

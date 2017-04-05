@@ -111,7 +111,11 @@ Route::group([
 		'roles' => ['Worker']
 ], function() {
 	Route::get('/worker/show_worker_panel' ,'WorkerFunctions\WorkerController@showPanel');
-	Route::post('/worker/changeState/{id}' ,'WorkerFunctions\WorkerController@changeState');
+	Route::post('/worker/changeState/{id}' ,[
+			'as'=>'workerChangeState',
+			'uses'=>'WorkerFunctions\WorkerController@changeState'
+			
+	]);
 });
 
 Route::group([
