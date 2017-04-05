@@ -36,6 +36,7 @@ class CreateLogondataTable extends Migration
     		$table->integer('id_transaction');
     		$table->string('paying');
     		$table->string('delivery_method');
+    		$table->string('state');
     		$table->timestamps();
     	});
     }
