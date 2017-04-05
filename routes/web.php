@@ -53,6 +53,13 @@ Route::get('/', 'HomePageController@index');
 	Route::post('dodaj_adres_dostawy/destroy/{id}', ['uses' => 'Adress_deliveryController@destroy']);
 	Route::post('dodaj_adres_dostawy/store', ['uses' => 'Adress_deliveryController@store']);
 	Route::get('dodaj_adres_dostawy', ['uses' => 'Adress_deliveryController@index']);
+	
+Route::group([
+		'middleware' => 'roles',
+		'roles' => ['Worker']
+], function() {
+	Route::get('/worker/show_worker_panel' ,'WorkerFunction\WorkerController@showPanel');
+});
 
 Route::group([
 		'middleware' => 'roles',
