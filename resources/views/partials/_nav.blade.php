@@ -27,7 +27,7 @@
                             <a style="margin-top:7px;" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">zaloguj</a>
                        
                          	 <a style="margin-top:7px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</a>
-                            <li><a href=" {{ url('/koszyk_goscia') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
+                            <li><a href="{{route('basket_guest')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
                         @else
                        		
 							

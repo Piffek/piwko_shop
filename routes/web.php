@@ -20,14 +20,11 @@
 Route::get('/', 'HomePageController@index');
 
 
-	Route::get('koszyk_goscia', ['uses' => 'ProductController@getBasket']);
-	Route::get('koszyk_goscia',[
-			'uses' => 'ProductController@getBasket',
-			'as' => 'product.index'
-	]);
+	Route::get('koszyk_goscia',['as' => 'basket_guest','uses'=> 'ProductController@getBasket']);
+	Route::get('koszyk_goscia/delete/{id}', ['as'=>'delete_basket_guest','uses' => 'ProductController@delete']);
+	Route::post('/koszyk_goscia/{id}',['as' => 'add_to_guest_basket', 'uses'=> 'ProductController@getAddToBasket']);
+	Route::post('koszyk/store', ['as'=>'add_to_basket','uses' => 'BasketController@store']);
 	
-	Route::get('koszyk_goscia/delete/{id}', ['uses' => 'ProductController@delete']);
-	Route::post('/koszyk_goscia/{id}', 'ProductController@getAddToBasket');
 	Route::post('/transakcja_gosc/create', 'LogOnDataController@create');
 	Route::post('/transakcja_gosc', 'ProductController@getSummary');
 	
@@ -36,7 +33,6 @@ Route::get('/', 'HomePageController@index');
 
 	Route::post('koszyk/destroy/{id}', ['uses' => 'BasketController@destroy']);
 	Route::post('koszyk/changeAmount/{id}', 'BasketController@changeAmount');
-	Route::post('koszyk/store', ['uses' => 'BasketController@store']);
 	Route::get('koszyk', ['uses' => 'BasketController@index']);
 	
 	Route::post('kupione/create/', ['uses' => 'BuyingController@create']);

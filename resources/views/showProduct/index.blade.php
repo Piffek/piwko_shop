@@ -36,27 +36,26 @@
 							{{ $items->price }} zł
 						@elseif ($items->promotion = 'Nie')
 							{{ $items->price }} zł
-					@endif				
-					<form method="post" action="/koszyk/store">
-						{!! csrf_field() !!}
-						<input hidden name="product" value="{{$items->product}}"></td></tr>
-						<input hidden name="price" value="{{$items->price}}"></td></tr>
-						<input hidden name="id_product" value="{{$items->id}}"></td></tr>
-						<input for="amount" maxlength="3" type="text" name="amount" required></td></tr>
-						<input type="submit" value="Do koszyka!"><br></tr>
-						<div id="galeria"></div>	
-					</form>
+					@endif	
+						{!! Form::open(['route'=>['add_to_basket']]) !!}
+							{!! Form::hidden('product', $items->product) !!}
+							{!! Form::hidden('price', $items->price) !!}
+							{!! Form::hidden('id_product', $items->id) !!}
+							{!! Form::text('amount') !!}
+							{!! Form::submit('Do koszyka!') !!}
+							<div id="galeria"></div>	
+						{!! Form::close() !!}			
 					@else
 						Tego produktu aktualnie nie ma w magazynie
 					@endif
 				@else
 					@if($items->amount > 0)
-					Ilosc:
-					<form method="post" action="/koszyk_goscia/{{$items->id}}">
-					{!! csrf_field() !!}
-					<input type="hidden" name="random_id_product" value='<?php echo rand(0, 1000000); ?>'>
-					<input for="amount" maxlength="3" type="text" name="amount" required></td></tr>
-					<input type="submit" value="Do koszyka!"><br></tr>
+						Ilosc:
+						{!! Form::open(['route' => ['add_to_guest_basket', $items->id ]]) !!}
+							{!! Form::hidden('random_id_product', rand(0, 1000000)) !!}
+							{!! Form::text('amount') !!}
+							{!! Form::submit('Do koszyka!') !!}
+						{!! Form::close() !!}
 					@else
 						Tego produktu aktualnie nie ma w magazynie
 					@endif

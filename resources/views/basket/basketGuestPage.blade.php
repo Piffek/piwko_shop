@@ -32,7 +32,7 @@
 					   	<td>{{$p['product']}}</td>
 						<td>{{$p['price']*$p['amount']}}</td>
 						<td>{{$p['amount']}}</td>
-						<td><a href="koszyk_goscia/delete/{{$p['random_id']}}" class="btn btn-danger pull-right" role="button">Usuń</a></td>
+						<td><a href="{{route('delete_basket_guest',['id'=>$p['random_id']])}}" class="btn btn-danger pull-right" role="button">Usuń</a></td>
 					</tbody>
 				@endforeach		
 			</table>
