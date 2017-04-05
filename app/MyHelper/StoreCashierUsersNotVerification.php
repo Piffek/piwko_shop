@@ -35,7 +35,7 @@ class StoreCashierUsersNotVerification
 			$add_logondata -> nip= $dataNotVerificationUsers['nip'];
 			$add_logondata -> product= $produkt['product'];
 			$add_logondata -> amount = $produkt['amount'];
-			$add_buyings -> state = 'W realizacji';
+			$add_logondata -> state = 'W realizacji';
 			$add_logondata-> save();
 			
 			$items = Items::find($produkt['id']);

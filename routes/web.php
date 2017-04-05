@@ -25,7 +25,7 @@ Route::get('/', 'HomePageController@index');
 	Route::post('/koszyk_goscia/{id}',['as' => 'add_to_guest_basket', 'uses'=> 'ProductController@getAddToBasket']);
 	Route::post('koszyk/store', ['as'=>'add_to_basket','uses' => 'BasketController@store']);
 	
-	Route::post('/transakcja_gosc/create', 'LogOnDataController@create');
+	Route::post('/transakcja_gosc/create',['as'=>'guest_transaction', 'uses'=>'LogOnDataController@create']);
 	Route::post('/transakcja_gosc', 'ProductController@getSummary');
 	
 	Route::get('pokaz_produkt/{id}', 'ShowProductController@index');
