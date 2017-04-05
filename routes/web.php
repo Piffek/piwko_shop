@@ -59,6 +59,7 @@ Route::group([
 		'roles' => ['Worker']
 ], function() {
 	Route::get('/worker/show_worker_panel' ,'WorkerFunctions\WorkerController@showPanel');
+	Route::post('/worker/changeState/{id}' ,'WorkerFunctions\WorkerController@changeState');
 });
 
 Route::group([
@@ -129,7 +130,6 @@ Route::get('/pdf/{id}', function ($id) {
 	
 	$buying = App\Buyings::where([
 			['id','=',$id],
-			['id_user','=',Auth::user()->id]
 	])->get();
 	
 	$admin_data =  DB::table('roles_has_users')
@@ -143,5 +143,6 @@ Route::get('/pdf/{id}', function ($id) {
 	return $pdf->download('faktura_VAT_'.$id.'.pdf');
 	
 });
+
 
 
