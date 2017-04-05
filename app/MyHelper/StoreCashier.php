@@ -30,6 +30,7 @@ class StoreCashier
 			$add_buyings -> product = $basket->product;
 			$add_buyings -> amount = $basket->amount;
 			$add_buyings -> nip = Auth::user()->nip;
+			$add_buyings -> state = 'W realizacji';
 			$add_buyings -> save();
 			
 			$items = Items::find($basket->id_product);

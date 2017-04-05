@@ -18,6 +18,18 @@
 					<input type="submit" class="btn btn-success" value="Zapisz"></tr>
 					</p>
 				</form>
+				<form method="POST" action="/admin/edit_roles_customers/{{$user->id}}">
+				{!! csrf_field() !!}
+				<select name="roles_id">
+					 @foreach($rolesHas as $roleUser)
+						 <option>{{ $roleUser->name }}</option>
+					 @endforeach
+					 @foreach($roles as $role)
+							<option value="{{ $role->id }}">{{ $role->name }}</option>
+					 @endforeach
+				</select>
+				<input type="submit" class="btn btn-success" value="Zmień role"></tr>
+				</form>
 		</div>
 	 </div>
   </div>

@@ -8,7 +8,7 @@ class Buyings extends Model
 
 	
 	protected $fillable = [
-			'id','id_product','product', 'price', 'amount', 'id_user','surname','street','city','nip','companyname' ,'delivery','paying','id_adress_delivery'
+			'id','id_product','product', 'price', 'amount', 'id_user','surname','street','city','nip','companyname' ,'delivery','paying','id_adress_delivery', 'state'
 			];
 	
 	protected $hidden = [

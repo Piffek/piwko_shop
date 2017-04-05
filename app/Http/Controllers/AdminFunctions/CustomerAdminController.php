@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\AdminFunctions;
 
 use Illuminate\Http\Request;
+use App\Roles;
 use App\Http\Controllers\Controller;
 use App\User;
 use View;
 use Carbon\Carbon;
 use Session;
+use App\RolesHasUsers;
 
 class CustomerAdminController extends Controller
 {
@@ -68,7 +70,12 @@ class CustomerAdminController extends Controller
     public function editCustomers(User $id)
     {
     	$user= clone $id;
-    	return view('admin.customers.edit_customers',compact('user'));
+    	$rolesHas = User::find($user->id)->roles;
+    	$roles = Roles::all();
+    	return view('admin.customers.edit_customers')
+    	->with('user',$user) 
+    	->with('rolesHas',$rolesHas)
+    	->with('roles',$roles);
     	
     }
     
@@ -114,6 +121,16 @@ class CustomerAdminController extends Controller
     public function edit($id)
     {
         //
+    }
+    
+
+    public function changeRole(Request $request, $id)
+    {    	
+    	$role = RolesHasUsers::where('users_id', $id)->first();
+    	$role->roles_id = $request->roles_id;
+		$role->update();
+		Session::flash('success', 'Zmieniono role');
+		return redirect()->back();
     }
 
     /**

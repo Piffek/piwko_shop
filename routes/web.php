@@ -58,7 +58,7 @@ Route::group([
 		'middleware' => 'roles',
 		'roles' => ['Worker']
 ], function() {
-	Route::get('/worker/show_worker_panel' ,'WorkerFunction\WorkerController@showPanel');
+	Route::get('/worker/show_worker_panel' ,'WorkerFunctions\WorkerController@showPanel');
 });
 
 Route::group([
@@ -66,6 +66,7 @@ Route::group([
 		'roles' => ['Admin']
 ], function() {
 	Route::get('/admin/show_one_customers/{id}', 'AdminFunctions\CustomerAdminController@showOneCustomers');
+	Route::post('/admin/edit_roles_customers/{id}', 'AdminFunctions\CustomerAdminController@changeRole');
 	Route::post('/admin/edit_customers/update/{id}', 'AdminFunctions\CustomerAdminController@update');
 	Route::get('/admin/edit_customers/{id}', 'AdminFunctions\CustomerAdminController@editCustomers');
 	Route::get('/admin/delete_this_order/{id}', 'AdminFunctions\OrdersAdminController@deleteOrder');
