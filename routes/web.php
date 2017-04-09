@@ -20,6 +20,11 @@
 Route::get('/', 'HomePageController@index');
 
 
+	Route::get('/{photo}',[
+			'as' => 'getPhoto.homePage',
+			'uses'=>'AdminFunctions\PhotoController@getItemPhoto'
+	]);
+
 	Route::get('koszyk_goscia',[
 			'as' => 'basketGuest',
 			'uses'=> 'ProductController@getBasket'

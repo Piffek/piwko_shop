@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\AdminFunctions;
 
 use Illuminate\Http\Request;
-use File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Input;
 use App\Http\Controllers\Controller;
 use App\Items;
 use Session;
 use Image;
-use Storage;
 
 
 class PhotoController extends Controller
@@ -41,11 +41,11 @@ class PhotoController extends Controller
 			
 			foreach(Items::where('id',$request->input('id'))->cursor() as $id)
 			{
+				$file = $request->file('image');
 				$photo_id = $id->id;
 				$image = Input::File('image');
 				$filename = $id->id . '.' . $image->getClientOriginalExtension();
-				$path = public_path('zdjecia/'. $filename);
-				Image::make($image->getRealPath())->resize(200, 200)->save($path);
+				Storage::disk('item')->put($filename, File::get($file));
 			}
 			
 			Session::flash('success','Dodano zdjęcie');
@@ -78,6 +78,12 @@ class PhotoController extends Controller
 		$request->image->move(public_path('/pokaz_produkt/miniaturki/'.$request->id), $imageName);
 		Session::flash('success','Dodano nowe zdjęcie do galerii!');
 		return redirect()->back();
+	}
+	
+	public function getItemPhoto($file)
+	{
+		$image = Storage::disk('item')->get($file);
+		return $image;
 	}
 	
 

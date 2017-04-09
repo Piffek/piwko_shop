@@ -22,6 +22,7 @@
                                                      
                                                     <p class="no-space">
                                                     <img src="zdjecia/{{$item->id}}.jpg"  alt="">
+ 													<img src="{{route('getPhoto.homePage', ['photo'=> $item->id])}}.jpg">
                                                     {{ $item->kind}} <br>
                                                      Sprzedanych: {{ $item->buy_amount }} szt<br>
                                                     @if($item->amount > 0)

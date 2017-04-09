@@ -78,7 +78,7 @@
 				{!! Form::text('size', $item->size) !!}<br>
 			</div>
 			<div class="col-md-3">
-				!! Form::label('Promocja') !!}<br>
+				{!! Form::label('Promocja') !!}<br>
 				{!! Form::text('promotion',$item->promotion) !!}<br>
 				{!! Form::label('Procent Promocji') !!}<br>
 				{!! Form::text('percent_promotion',$item->percent_promotion) !!}<br>
