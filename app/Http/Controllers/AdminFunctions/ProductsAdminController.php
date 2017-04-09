@@ -64,16 +64,13 @@ class ProductsAdminController extends Controller
     		Items::create($request->all());
     		
     		foreach(Items::where('product',$request->product)->cursor() as $id)
-    		{		
+    		{	
+    			Storage::makeDirectory($directory);
     			File::makeDirectory('pokaz_produkt/miniaturki/'.$id->id);
-    			$photo_id = $id->id;
+    			$file = $request->file('image');
 	    		$image = Input::File('image');
 	    		$filename = $id->id . '.' . $image->getClientOriginalExtension();
-	    		$path = public_path('zdjecia/'. $filename);
-	    		Image::make($image->getRealPath())->resize(200, 200)->save($path);
-
-		    
-    	
+	    		Storage::disk('item')->put($filename, File::get($file));
     		}
     		Session::flash('success','Dodaj miniaturki');
     		return view('admin.photo.AddPhotoGallery', compact('photo_id'));
@@ -133,7 +130,7 @@ class ProductsAdminController extends Controller
     public function destroy(Items $id)
     {
         File::deleteDirectory(public_path('/pokaz_produkt/miniaturki/'.$id->id));
-        File::Delete('zdjecia/'.$id->id.'.jpg');
+        Storage::disk('item')->delete($id->id.'.jpg');
         $id->delete();
         Session::flash('success','Usunięto produkt');
         return redirect()->action('AdminFunctions\ProductsAdminController@index');

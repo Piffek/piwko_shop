@@ -53,6 +53,11 @@ return [
     		'root' => storage_path('app/public/item')
     	],
 
+    	'minItem' => [
+    			'driver' => 'local',
+    			'root' => storage_path('app/public/minItem')
+    	],
+    		
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

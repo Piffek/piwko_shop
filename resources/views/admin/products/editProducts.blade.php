@@ -19,7 +19,7 @@
 							Zdjęcie tego przedmiotu<br>
 							{!!Form::hidden('id',$item->id) !!}
 							@if(file_exists(public_path().'/zdjecia/'.$item->id.'.jpg' ))
-								<img  height="250px" width="250px" src="/zdjecia/{{$item->id}}.jpg" />
+									<img  height="250px" width="250px"  src="{{route('getPhoto.homePage', ['photo'=> $item->id])}}.jpg" >
 							@endif
 							{!! Form::file('image') !!}
 							<a href="{{route('adminDeletePhoto', ['id'=>$item->id])}}" class="btn btn-danger" role="button">Usuń</a>
