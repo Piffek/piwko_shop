@@ -17,7 +17,7 @@
 						<p>Telefon: {{$data_user -> phone}}</p>
 						<p>Firma: {{$data_user -> companyname}}</p>
 						<p>NIP: {{$data_user -> nip}}</p>
-						<a href="{{route('editData',['id'=>$data_user->id])}}">Edytuj dane</a>
+						<a class='btn btn-warning' href="{{route('editData',['id'=>$data_user->id])}}">Edytuj dane</a>
 					</div>
 				</div>
 			@endforeach
