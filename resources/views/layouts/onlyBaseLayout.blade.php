@@ -4,7 +4,8 @@
 <html lang="{{ config('app.locale') }}">
     @include('partials._head')
     <body>
-        @include('partials._nav')     
+        @include('partials._nav')  
+        @include('partials._messages')      
                           
 <div class="header-wrapper">
                 <div class="site-header">

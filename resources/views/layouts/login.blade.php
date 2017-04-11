@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 @include('partials._head')
 <body>
     @include('partials._nav')
@@ -7,8 +7,6 @@
     		@include('partials._messages')
 </body>
         @yield('login_and_registered')
-
-asdadad
 
 <script src="js/bootstrap.min.js"></script>
 

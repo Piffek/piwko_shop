@@ -19,19 +19,13 @@
 
 Route::get('/', 'HomePageController@index');
 
-
-	Route::get('/{photo}',[
-			'as' => 'getPhoto.homePage',
-			'uses'=>'AdminFunctions\PhotoController@getItemPhoto'
-	]);
-
 	Route::get('koszyk_goscia',[
 			'as' => 'basketGuest',
 			'uses'=> 'ProductController@getBasket'
 	]);
 	Route::get('koszyk_goscia/delete/{id}', [
-			'as'=>'deleteBasketGuest','
-			uses' => 'ProductController@delete'
+			'as'=>'deleteBasketGuest',
+			'uses' => 'ProductController@delete'
 	]);
 	Route::post('/koszyk_goscia/{id}',[
 			'as' => 'addToGuestBasket', 
@@ -309,6 +303,11 @@ Route::get('/pdf/{id}', function ($id) {
 	return $pdf->download('faktura_VAT_'.$id.'.pdf');
 	
 })->name('billsPDF');
+
+Route::get('/{photo}',[
+		'as' => 'getPhoto.homePage',
+		'uses'=>'AdminFunctions\PhotoController@getItemPhoto'
+]);
 
 
 

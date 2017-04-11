@@ -5,13 +5,11 @@
 	</head>
     <body>
         @include('partials._nav')
-
-
+	    @include('partials._messages')
+		@include('partials._validator')
+    	@include('partials.flash')   
 		@include('partials._menu_top')
-		
-        @include('partials._messages')
-    	@include('partials._validator')
-    	@include('partials.flash')          
+	       
                           
 
           @yield('content')

@@ -59,7 +59,7 @@ class BasketController extends Controller
 		}else 
 		{
 			Baskets::create(['id_user'=>Auth::id()] + $request->all());
-			return back()->with('status', 'Dodano do koszyka!.');
+			return back()->with('success', 'Dodano do koszyka!.');
 		}
     }
 

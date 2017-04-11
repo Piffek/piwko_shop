@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function getBasket()
     {
     	$products = session('basket');
-    	return view('basket.basketGuestPage')->with(array(
+    	return view('basket.index')->with(array(
     			'products'    => $products,
     	));
     }
