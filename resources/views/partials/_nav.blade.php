@@ -34,7 +34,7 @@
                             	<li><a href=" {{ route('adminStartPage') }}">
                         			Admin</a></li>
                             	<li class="dropdown">
-                              @endif
+                            @endif
                         	<li><a href=" {{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
                         		</span>Koszyk</a></li>
                             <li class="dropdown">
@@ -49,7 +49,7 @@
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Wyloguj
                                         </a>
                                         <a href="{{ route('data') }}">
                                             Twoje Dane

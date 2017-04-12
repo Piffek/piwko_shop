@@ -1,4 +1,4 @@
-    <meta charset="utf-8">
+       <meta charset="utf-8">
     
 	<script type="text/javascript" src="/javascript/highslide-with-gallery.js"></script>
     <!-- CSRF Token -->
@@ -29,6 +29,3 @@
 
         
     </script>
-    
-
-</script>
