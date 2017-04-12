@@ -25,14 +25,17 @@ Practicality:<br>
 
 <b>MUST HAVE!</b><br>
 1.Laravel 5.3<br>
-2.Bootstrap 3
+2.Bootstrap 3<br>
+3.Laravel collective <br>
+4.DOMpdf - problem with PHP 7.0 but on PHP 5.6 work.
 
 ## Install
 1.Use git clone https://github.com/Piffek/piwko_shop.git<br>
 2.Create laravel 5.3 project.<br>
-3.Copy this file to laravel project.<br>
-4.Config database and env file.<br>
-5.Cretate migration.
+3.Copy files to laravel project.<br>
+4.Config database and .env file.<br>
+5.Install recomended app by composer. <br>
+6.Cretate migration.
 
 
 
