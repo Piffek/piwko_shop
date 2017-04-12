@@ -21,7 +21,7 @@
                                                     {{ $item->product }}
                                                      
                                                     <p class="no-space">
- 													<img height="220px" width="400px"  src="{{route('getPhoto.homePage', ['photo'=> $item->id])}}.jpg">
+ 													<img height="220px" width="400px"  src="{{route('getPhotohomePage', ['photo'=> $item->id])}}.jpg">
                                                     {{ $item->kind}} <br>
                                                      Sprzedanych: {{ $item->buy_amount }} szt<br>
                                                     @if($item->amount > 0)

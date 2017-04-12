@@ -30,9 +30,14 @@
                             <li><a href="{{route('basketGuest')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
                         @else
                        		
-							@if(Auth::user()->getRolesUser()->name === "Admin")
+							@if(Auth::user()->getRolesUser()->id === 1)
                             	<li><a href=" {{ route('adminStartPage') }}">
                         			Admin</a></li>
+                            	<li class="dropdown">
+                            @endif
+                            @if(Auth::user()->getRolesUser()->id === 2)
+                            	<li><a href=" {{ route('showWorkerPanel') }}">
+                        			Pracownik</a></li>
                             	<li class="dropdown">
                             @endif
                         	<li><a href=" {{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">

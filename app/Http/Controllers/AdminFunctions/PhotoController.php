@@ -83,8 +83,6 @@ class PhotoController extends Controller
 	public function getItemPhoto($file)
 	{
 		$image = Storage::disk('item')->get($file);
-		return $image;
-		return response($image,200)->header('Content-Type', 'image/jpeg');
 	}
 	
 

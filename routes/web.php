@@ -109,7 +109,10 @@ Route::group([
 		'middleware' => 'roles',
 		'roles' => ['Worker']
 ], function() {
-	Route::get('/worker/show_worker_panel' ,'WorkerFunctions\WorkerController@showPanel');
+	Route::get('/worker/show_worker_panel' ,[
+			'as'=>'showWorkerPanel',
+			'uses'=>'WorkerFunctions\WorkerController@showPanel']);
+	
 	Route::post('/worker/changeState/{id}' ,[
 			'as'=>'workerChangeState',
 			'uses'=>'WorkerFunctions\WorkerController@changeState'
@@ -304,8 +307,8 @@ Route::get('/pdf/{id}', function ($id) {
 	
 })->name('billsPDF');
 
-Route::get('/{photo}',[
-		'as' => 'getPhoto.homePage',
+Route::get('/getPhoto/{photo}',[
+		'as' => 'getPhotohomePage',
 		'uses'=>'AdminFunctions\PhotoController@getItemPhoto'
 ]);
 
