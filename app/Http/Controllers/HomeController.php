@@ -31,7 +31,11 @@ class HomeController extends Controller
     		$add_roles->save();
     		return view('home');
     	}
-    	else if($id_roles>0)
+    	else if($id_roles===0)
+    	{
+    		return redirect()->action('AdminFunctions/AdminController@index');
+    	}
+    	else
     	{
     		return redirect()->action('HomePageController@index');
     	}

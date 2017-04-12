@@ -30,7 +30,11 @@
                             <li><a href="{{route('basketGuest')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
                         @else
                        		
-							
+							@if(Auth::user()->getRolesUser()->name === "Admin")
+                            	<li><a href=" {{ route('adminStartPage') }}">
+                        			Admin</a></li>
+                            	<li class="dropdown">
+                              @endif
                         	<li><a href=" {{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
                         		</span>Koszyk</a></li>
                             <li class="dropdown">
@@ -38,6 +42,7 @@
  									 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 	{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
+                            
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>

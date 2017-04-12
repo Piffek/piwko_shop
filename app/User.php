@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -37,6 +38,14 @@ class User extends Authenticatable
     {
     	return $this->belongsToMany(Roles::class, 'roles_has_users','users_id', 'roles_id')
     	->withTimestamps();
+    }
+    
+    public function getRolesUser()
+    {
+    	foreach(Auth::user()->roles as $role)
+    	{
+    		return $role;
+    	}
     }
     
     
