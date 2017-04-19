@@ -4,6 +4,8 @@ namespace App\MyHelper;
 use App\Items;
 use App\Jobs\MailingLogon;
 use App\LogOnData;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailToOwner;
 
 class StoreCashierUsersNotVerification
 {
@@ -41,7 +43,7 @@ class StoreCashierUsersNotVerification
 			$items = Items::find($produkt['id']);
 			$items->decreaseInventory($produkt['amount']);
 			$items->recordPurchase($produkt['amount']);
-			
+			//Mail::to('patrykpiwko123412@gmail.com')->send(new MailToOwner($produkt['product'], $produkt['amount'], $dataNotVerificationUsers['lastnameonaccount']));
 			dispatch(new MailingLogon($produkt['random_id'], 'id_transaction', 'LogOnData'));
 		}
 		session()->forget('basket');

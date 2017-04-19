@@ -6,9 +6,6 @@ use App\Baskets;
 use Illuminate\Support\Facades\Auth;
 use App\Buyings;
 use App\Jobs\MailingLogon;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MailToOwner;
-
 class StoreCashier
 {
 	public function checkout($adress_delivery)
@@ -39,8 +36,8 @@ class StoreCashier
 			$items = Items::find($basket->id_product);
 			$items->decreaseInventory($basket->amount);
 			$items->recordPurchase($basket->amount);
+
 			dispatch(new MailingLogon($add_buyings->getId(), 'id' , 'Buyings'));
-			//Mail::to('patrykpiwko123412@gmail.com')->send(new MailToOwner($basket->product, $basket->amount, Auth::user()->name));
 		}
 		Baskets::whereid_user(Auth::user()->id)->delete();
 		

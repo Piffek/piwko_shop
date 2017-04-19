@@ -1,0 +1,10 @@
+2017-04-14 13:01:20,846 CRIT Supervisor running as root (no user in config file)
+2017-04-14 13:01:20,847 WARN No file matches via include "/etc/supervisor/conf.d/*.conf"
+2017-04-14 13:01:20,868 INFO RPC interface 'supervisor' initialized
+2017-04-14 13:01:20,873 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2017-04-14 13:01:20,874 INFO supervisord started with pid 2371
+2017-04-14 13:50:29,448 CRIT Supervisor running as root (no user in config file)
+2017-04-14 13:50:29,453 WARN No file matches via include "/etc/supervisor/conf.d/*.conf"
+2017-04-14 13:50:29,455 INFO RPC interface 'supervisor' initialized
+2017-04-14 13:50:29,455 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2017-04-14 13:50:29,456 INFO supervisord started with pid 2371

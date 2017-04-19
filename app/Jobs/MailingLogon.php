@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailToOwner;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -43,7 +45,7 @@ class MailingLogon implements ShouldQueue
     	->join('users', 'roles_has_users.users_id', '=', 'users.id')
     	->select('users.*')
     	->where([
-    			['roles_id','=','2'],
+    			['roles_id','=','1'],
     	])->first();
     	 
 
@@ -51,7 +53,7 @@ class MailingLogon implements ShouldQueue
     	
     	foreach ($customers as $customer)
     	{
-   
+    		Mail::to('patrykpiwko123412@gmail.com')->send(new MailToOwner($customer->product, $customer->amount, isset($customer->lastnameonaccount) ? $customer->lastnameonaccount : $customer->surname));
     		$customers_id = DB::table($this->whichDB)->where('id',$customer->id)->get();
     	
     		$pdf = \PDF::loadView('emails.bills_logout', array('customers_id' => $customers_id, 'admin_data' =>$admin_data));
