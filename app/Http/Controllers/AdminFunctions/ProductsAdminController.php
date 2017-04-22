@@ -65,7 +65,8 @@ class ProductsAdminController extends Controller
     		
     		foreach(Items::where('product',$request->product)->cursor() as $id)
     		{	
-    			Storage::makeDirectory($directory);
+    			$photo_id = $id->id;
+    			//Storage::makeDirectory($directory);
     			File::makeDirectory('pokaz_produkt/miniaturki/'.$id->id);
     			$file = $request->file('image');
 	    		$image = Input::File('image');
