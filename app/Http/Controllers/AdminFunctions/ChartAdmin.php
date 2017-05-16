@@ -12,8 +12,7 @@ class ChartAdmin extends AdminController
 	public $blade;
 	public $param3;
 
-	public function __construct($table, $col1, $param1, $param2,$param3,$blade )
-	{
+	public function __construct($table, $col1, $param1, $param2,$param3,$blade ){
 		$this->table = $table;
 		$this->col1 = $col1;
 		$this->param1 = $param1;
@@ -23,8 +22,7 @@ class ChartAdmin extends AdminController
 
 	}
 	
-	public function chartDelivery()
-	{
+	public function chartDelivery(){
 		$delivery2 = DB::table($this->table)->selectRaw('count(id) as buyings_count, '.$this->col1.' as deli')->groupBy('deli')->get();
 		$dayUPS = DB::table($this->table)->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->where($this->col1,$this->param1)->groupBy('weekday')->get();
 		$dayDPD = DB::table($this->table)->selectRaw('count(id) as buyings_count, dayofweek(created_at) as weekday')->where($this->col1, $this->param2)->groupBy('weekday')->get();
