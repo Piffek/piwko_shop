@@ -11,13 +11,9 @@ use App\Mail\MailToOwner;
 
 class StoreCashier
 {
-	public function checkout($adress_delivery)
-	{
+	public function checkout($adress_delivery){
 		$baskets = Baskets::where('id_user', Auth::user()->id)->get();
-		foreach($baskets as $basket)
-		{
-		
-			//Add to db
+		foreach($baskets as $basket){
 			$add_buyings = new Buyings;
 			$add_buyings -> id_adress_delivery = $adress_delivery['adress_delivery'];
 			$add_buyings -> delivery = $adress_delivery['delivery_method'];
@@ -40,7 +36,6 @@ class StoreCashier
 			$items->decreaseInventory($basket->amount);
 			$items->recordPurchase($basket->amount);
 			dispatch(new MailingLogon($add_buyings->getId(), 'id' , 'Buyings'));
-			//Mail::to('patrykpiwko123412@gmail.com')->send(new MailToOwner($basket->product, $basket->amount, Auth::user()->name));
 		}
 		Baskets::whereid_user(Auth::user()->id)->delete();
 		
