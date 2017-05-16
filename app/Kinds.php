@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kinds extends Model
 {
-
 	protected $fillable = [
-			'id','name'
+	    'id','name'
 	];
-
-
 	protected $table = 'kinds';
 }

@@ -35,8 +35,7 @@ class RegisterController extends Controller
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
+	public function __construct(){
 		$this->middleware('guest');
 		
 	}
@@ -46,44 +45,38 @@ class RegisterController extends Controller
 	 * @param  array  $data
 	 * @return \Illuminate\Contracts\Validation\Validator
 	 */
-	protected function validator(array $data)
-	{
+	protected function validator(array $data){
 		return Validator::make($data, [
-				'name' => 'required|max:255',
-				'email' => 'required|email|max:255|unique:users',
-				'password' => 'required|min:6|confirmed',
+			'name' => 'required|max:255',
+			'email' => 'required|email|max:255|unique:users',
+			'password' => 'required|min:6|confirmed',
 		]);
 	}
 
 
 
-	public function register(Request $request)
-	{
+	public function register(Request $request){
 		
 		$this->validator($request->all())->validate();
 		event(new Registered($user = $this->create($request->all())));
-
 		Mail::to($user->email)->send(new ConfirmationAccount($user));
-
+		
 		return back()->with('status', 'Na podany mail, została wysłana wiadomość aktywacyjna.');
-		// $this->guard()->login($user);
-		// return redirect($this->redirectPath());
 	}
+	
 	/**
 	 * Confirm a user's email address.
 	 *
 	 * @param  string $token
 	 * @return mixed
 	 */
-	public function confirmEmail($token)
-	{
+	public function confirmEmail($token){
 		User::whereToken($token)->firstOrFail()->hasVerified();
 		return redirect('strona_domowa')->with('status', 'Możesz się zalogować.');
 	}
 
 	protected function create(array $data)
 	{
-		
 		return User::create([
 				'name' => $data['name'],
 				'email' => $data['email'],
@@ -97,9 +90,6 @@ class RegisterController extends Controller
 				'activated' => $data['activated'],
 
 		]);
-		
-		//$id = Auth::User()->id;
-
 	}
 
 }

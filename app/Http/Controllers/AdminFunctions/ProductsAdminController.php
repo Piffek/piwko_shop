@@ -15,58 +15,29 @@ use Storage;
 
 class ProductsAdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+
+    public function index(){
         $items = new Items();
         $items = Items::all();
         $kind = kinds::all();
+	    
         return view('admin.products.allProducts',compact('items'), compact('kinds'));
     }
     
-    public function addProduct()
-    {
+    public function addProduct(){
     	return view('admin.products.addProducts');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-    
-    
-    
-    
-    /**
-     * Store a newly created resource in storage.
-     * 
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    
-    public function store(Request $request)
-    {
+    public function store(Request $request){
     	$this->validate($request, [
     			'image' => 'required|image|mimes:jpeg,jpg|max:2048',
     	]);
     	
-    	if(Input::file())
-    	{
+    	if(Input::file()){
     		Items::create($request->all());
     		
-    		foreach(Items::where('product',$request->product)->cursor() as $id)
-    		{	
+    		foreach(Items::where('product',$request->product)->cursor() as $id){	
     			$photo_id = $id->id;
-    			//Storage::makeDirectory($directory);
     			File::makeDirectory('pokaz_produkt/miniaturki/'.$id->id);
     			$file = $request->file('image');
 	    		$image = Input::File('image');
@@ -75,22 +46,10 @@ class ProductsAdminController extends Controller
     		}
     		Session::flash('success','Dodaj miniaturki');
     		return view('admin.photo.AddPhotoGallery', compact('photo_id'));
-    	}else 
-    	{
+    	}else {
     		Session::flash('success','Cos poszło nie tak');
     		return redirect()->back();
     	}
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -99,8 +58,7 @@ class ProductsAdminController extends Controller
      * @param  Items  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Items $id)
-    {
+    public function edit(Items $id){
     	$item= clone $id;
     	$kinds=Kinds::all();
     	$files = File::allFiles('pokaz_produkt/miniaturki/'.$id->id.'');
@@ -115,8 +73,7 @@ class ProductsAdminController extends Controller
      * @param  Items  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Items $id)
-    {
+    public function update(Request $request, Items $id){
     	$id->update($request->all());
     	Session::flash('success','Dane produktu zmieniono pomyślnie');
     	return redirect()->back();  
@@ -128,8 +85,7 @@ class ProductsAdminController extends Controller
      * @param  Items  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Items $id)
-    {
+    public function destroy(Items $id){
         File::deleteDirectory(public_path('/pokaz_produkt/miniaturki/'.$id->id));
         Storage::disk('item')->delete($id->id.'.jpg');
         $id->delete();

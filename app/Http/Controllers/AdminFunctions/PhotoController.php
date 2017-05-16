@@ -15,32 +15,27 @@ use Image;
 class PhotoController extends Controller
 {
 	
-	public function deletePhotoDuringEdit($id)
-	{
+	public function deletePhotoDuringEdit($id){
 		Storage::disk('item')->delete($id.'.jpg');
-		Session::flash('success','Pomyslnie usunięto zdjęcie');
+		Session::flash('success', 'Pomyslnie usunięto zdjęcie');
 		return redirect()->back();
 	}
 	
-	public function deletePhotoGalleryDuringEdit($id, $file)
-	{
+	public function deletePhotoGalleryDuringEdit($id, $file){
 		File::Delete('pokaz_produkt/miniaturki/'.$id.'/'.$file);
-		Session::flash('success','Pomyslnie usunięto zdjęcie');
+		Session::flash('success', 'Pomyslnie usunięto zdjęcie');
 		return redirect()->back();
 	}
 	
 	
-	public function addPhotoDuringEditProduct(Request $request)
-	{
+	public function addPhotoDuringEditProduct(Request $request){
 		$this->validate($request, [
 				'image' => 'required|image|mimes:jpeg,jpg|max:2048',
 		]);
 		 
-		if(Input::file())
-		{
+		if(Input::file()){
 			
-			foreach(Items::where('id',$request->input('id'))->cursor() as $id)
-			{
+			foreach(Items::where('id',$request->input('id'))->cursor() as $id){
 				$file = $request->file('image');
 				$photo_id = $id->id;
 				$image = Input::File('image');
@@ -48,13 +43,12 @@ class PhotoController extends Controller
 				Storage::disk('item')->put($filename, File::get($file));
 			}
 			
-			Session::flash('success','Dodano zdjęcie');
+			Session::flash('success', 'Dodano zdjęcie');
 			return redirect()->back();
 		}
 	}
 	
-	public function addPhotoGalleryDuringAddProduct(Request $request)
-	{
+	public function addPhotoGalleryDuringAddProduct(Request $request){
 		$this->validate($request, [
 				'image' => 'required|image|mimes:jpeg,jpg|max:2048',
 		]);
@@ -63,16 +57,15 @@ class PhotoController extends Controller
 		$request->image->move(public_path('/pokaz_produkt/miniaturki/'.$request->photo_id), $imageName);
 		Session::flash('success','Dodano!');
 		return view('admin.photo.AddPhotoGallery')
-		->with(compact('imageName'))
-		->with('photo_id',$request->photo_id);
+		    ->with(compact('imageName'))
+		    ->with('photo_id',$request->photo_id);
 		 
 	
 	}
 	
-	public function editPhotoGalleryDuringEditProduct(Request $request)
-	{
+	public function editPhotoGalleryDuringEditProduct(Request $request){
 		$this->validate($request, [
-				'image' => 'required|image|mimes:jpeg,jpg|max:2048',
+			'image' => 'required|image|mimes:jpeg,jpg|max:2048',
 		]);
 		$imageName = time().'.'.$request->image->getClientOriginalExtension();
 		$request->image->move(public_path('/pokaz_produkt/miniaturki/'.$request->id), $imageName);
@@ -80,8 +73,7 @@ class PhotoController extends Controller
 		return redirect()->back();
 	}
 	
-	public function getItemPhoto($file)
-	{
+	public function getItemPhoto($file){
 		$image = Storage::disk('item')->get($file);
 		return $image;
 	}
