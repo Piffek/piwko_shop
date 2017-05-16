@@ -20,6 +20,7 @@ class ProductsAdminController extends Controller
         $items = new Items();
         $items = Items::all();
         $kind = kinds::all();
+	    
         return view('admin.products.allProducts',compact('items'), compact('kinds'));
     }
     
