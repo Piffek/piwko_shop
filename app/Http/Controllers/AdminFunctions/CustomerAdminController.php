@@ -13,17 +13,8 @@ use App\RolesHasUsers;
 
 class CustomerAdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-	
 
-	
-	
-    public function index()
-    {
+    public function index(){
 
     	$all_users = User::all();
     		
@@ -31,17 +22,12 @@ class CustomerAdminController extends Controller
     }
     
     
-    public function viewNewUser()
-    {
+    public function viewNewUser(){
     	$current = Carbon::now();
     	$current = new Carbon();
-    
-    		
-    
     	$today = $current->toDateString();
-
     	$new_users_todays = User::where('created_at', $today)->get();
-    
+	    
     	return view('admin.customers.new_customers',compact('new_users_todays'));
     
     }
@@ -52,9 +38,7 @@ class CustomerAdminController extends Controller
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    
-    public function showOneCustomers(User $id)
-    {
+    public function showOneCustomers(User $id){
     	$user= clone $id;
     	return view('admin.customers.show_one_customers',compact('user'));
     	 
@@ -66,9 +50,7 @@ class CustomerAdminController extends Controller
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    
-    public function editCustomers(User $id)
-    {
+    public function editCustomers(User $id){
     	$user= clone $id;
     	$rolesHas = User::find($user->id)->roles;
     	$roles = Roles::all();
@@ -78,54 +60,11 @@ class CustomerAdminController extends Controller
     	->with('roles',$roles);
     	
     }
+
+
     
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-    
-
-    public function changeRole(Request $request, $id)
-    {    	
+    public function changeRole(Request $request, $id){    	
     	$role = RolesHasUsers::where('users_id', $id)->first();
     	$role->roles_id = $request->roles_id;
 		$role->update();
@@ -133,6 +72,7 @@ class CustomerAdminController extends Controller
 		return redirect()->back();
     }
 
+	
     /**
      * Update the specified resource in storage.
      *
@@ -140,10 +80,9 @@ class CustomerAdminController extends Controller
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $id)
-    {
+    public function update(Request $request, User $id){
     	$id->update($request->all());    
-        Session::flash('success','Dane klienta zmieniono pomyślnie');
+        Session::flash('success', 'Dane klienta zmieniono pomyślnie');
         return redirect()->back();
     }
 
@@ -153,10 +92,9 @@ class CustomerAdminController extends Controller
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $id)
-    {
+    public function destroy(User $id){
     	$id->delete();
-    	Session::flash('success','Usunięto klienta');
+    	Session::flash('success', 'Usunięto klienta');
     	return redirect()->action('Admin\CustomerAdminController@index');
     }
 }
