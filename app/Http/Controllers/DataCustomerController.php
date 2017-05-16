@@ -10,58 +10,13 @@ use Session;
 
 class DataCustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function index(){
         $data_users = User::whereid(Auth::user()->id)->get();
-        return view('data.index',compact('data_users'));
+        return view('data.index', compact('data_users'));
         
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    	
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+    
+    public function edit($id){
     	$data_users = User::find($id);
     	return view('data.edit',compact('data_users'));
     }
@@ -73,23 +28,11 @@ class DataCustomerController extends Controller
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $id)
-    {
+    public function update(Request $request, User $id){
     	$id->update($request->all());
     	Session::flash('success','Operacja wykonana prawidłowo.');
     	return redirect()->action('DataCustomerController@index');
 
     	 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
