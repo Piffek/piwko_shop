@@ -9,12 +9,9 @@ use App\Mail\MailToOwner;
 
 class StoreCashierUsersNotVerification
 {
-	public function checkout($dataNotVerificationUsers)
-	{
+	public function checkout($dataNotVerificationUsers){
 		$products = session('basket');
-		foreach($products as $produkt)
-		{
-		
+		foreach($products as $produkt){
 			$add_logondata= new LogOnData;
 			$add_logondata -> firstnameonaccount= $dataNotVerificationUsers['firstnameonaccount'];
 			$add_logondata -> lastnameonaccount= $dataNotVerificationUsers['lastnameonaccount'];
@@ -43,11 +40,8 @@ class StoreCashierUsersNotVerification
 			$items = Items::find($produkt['id']);
 			$items->decreaseInventory($produkt['amount']);
 			$items->recordPurchase($produkt['amount']);
-			//Mail::to('patrykpiwko123412@gmail.com')->send(new MailToOwner($produkt['product'], $produkt['amount'], $dataNotVerificationUsers['lastnameonaccount']));
 			dispatch(new MailingLogon($produkt['random_id'], 'id_transaction', 'LogOnData'));
 		}
 		session()->forget('basket');
-		
-		
 	}
 }
