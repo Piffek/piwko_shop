@@ -19,6 +19,16 @@
 
 Route::get('/', 'HomePageController@index');
 
+	//--------------------------API---------------------------------------
+	
+	Route::get('/redirect', 'FacebookApi\SocialAuthController@redirect');
+	Route::get('/callback', 'FacebookApi\SocialAuthController@callback');
+
+
+	//--------------------------------------------------------------------
+
+
+
 	Route::get('koszyk_goscia',[
 			'as' => 'basketGuest',
 			'uses'=> 'ProductController@getBasket'

@@ -32,6 +32,6 @@ class CreateAddAdressDelivery extends Migration
      */
     public function down()
     {
-        //
+    	Schema::dropIfExists('add_adress_delivery');
     }
 }

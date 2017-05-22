@@ -27,6 +27,6 @@ class CreateKindsTable extends Migration
      */
     public function down()
     {
-        //
+    	Schema::dropIfExists('kinds');
     }
 }

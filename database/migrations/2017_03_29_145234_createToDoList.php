@@ -31,6 +31,6 @@ class CreateToDoList extends Migration
      */
     public function down()
     {
-        //
+    	Schema::dropIfExists('toDoList');
     }
 }
