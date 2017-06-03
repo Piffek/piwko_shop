@@ -37,6 +37,6 @@ class CreateBasketsTable extends Migration
      */
     public function down()
     {
-        //
+    	Schema::dropIfExists('baskets');
     }
 }

@@ -49,6 +49,7 @@
                             </div>
                         </div>
                     </form>
+                   <a href="redirect">Zaloguj przez Facebook</a>
                 </div>
             </div>
         </div>

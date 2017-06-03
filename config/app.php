@@ -181,9 +181,13 @@ return [
     	Barryvdh\DomPDF\ServiceProvider::class,
     	Unisharp\Ckeditor\ServiceProvider::class,
     	Collective\Html\HtmlServiceProvider::class,
+<<<<<<< HEAD
     	Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
     		
 
+=======
+    	Laravel\Socialite\SocialiteServiceProvider::class,
+>>>>>>> 4b71a5915bbcaaa405802379fe49c1d9c6ffbba1
     ],
 
     /*
@@ -236,7 +240,7 @@ return [
     	'Image' => Intervention\Image\Facades\Image::class,
     	'Form' => Collective\Html\FormFacade::class,
     	'Html' => Collective\Html\HtmlFacade::class,
-
+    	'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

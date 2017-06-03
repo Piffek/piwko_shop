@@ -31,7 +31,11 @@
     27 => 'Barryvdh\\DomPDF\\ServiceProvider',
     28 => 'Unisharp\\Ckeditor\\ServiceProvider',
     29 => 'Collective\\Html\\HtmlServiceProvider',
+<<<<<<< HEAD
     30 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
+=======
+    30 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+>>>>>>> 4b71a5915bbcaaa405802379fe49c1d9c6ffbba1
   ),
   'eager' => 
   array (
@@ -147,6 +151,7 @@
     'form' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Laravel\\Socialite\\Contracts\\Factory' => 'Laravel\\Socialite\\SocialiteServiceProvider',
   ),
   'when' => 
   array (
@@ -187,6 +192,9 @@
     array (
     ),
     'Collective\\Html\\HtmlServiceProvider' => 
+    array (
+    ),
+    'Laravel\\Socialite\\SocialiteServiceProvider' => 
     array (
     ),
   ),

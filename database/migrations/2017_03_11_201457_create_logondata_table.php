@@ -48,6 +48,6 @@ class CreateLogondataTable extends Migration
      */
     public function down()
     {
-        //
+    	Schema::dropIfExists('logondata');
     }
 }
