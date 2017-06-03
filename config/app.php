@@ -181,6 +181,7 @@ return [
     	Barryvdh\DomPDF\ServiceProvider::class,
     	Unisharp\Ckeditor\ServiceProvider::class,
     	Collective\Html\HtmlServiceProvider::class,
+    	Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
     		
 
     ],

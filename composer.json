@@ -14,7 +14,8 @@
 		"codedge/laravel-fpdf" : "^1.0",
 		"intervention/image" : "^2.3",
 		"unisharp/laravel-ckeditor" : "^4.5",
-		"laravelcollective/html" : "^5.3.0"
+		"laravelcollective/html" : "^5.3.0",
+		"spatie/laravel-medialibrary": "3.0.0"
 	},
 	"require-dev" : {
 		"fzaninotto/faker" : "~1.4",
