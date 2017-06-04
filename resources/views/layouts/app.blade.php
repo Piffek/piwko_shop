@@ -12,8 +12,10 @@
 			<div id="page">
 				<div id="right-top"></div>
 				<div id="left-top"></div>
-				<div id="borderTopBottom"></div>
-				<div id="borderLeftRight"></div>
+				<div id="borderTop"></div>
+				<div id="borderBottom"></div>
+				<div id="borderLeft"></div>
+				<div id="borderRight"></div>
 				<div id="right-bottom"></div>
 				<div id="left-bottom"></div>
 			</div>                   

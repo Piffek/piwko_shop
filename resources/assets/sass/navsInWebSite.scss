@@ -34,36 +34,52 @@ body{
 #page{
 	height:100vh;
 	width:100%;	
+	padding:100px;
 	position:absolute;
 }
 
 
 
 
-#borderTopBottom{
-	margin-top:7vh;
-	margin-left:6%;
-	margin-right:6%;
-	width:88%;
-	height:86vh;
-    border-top:1px solid white;
-    border-bottom:1px solid white;
+#borderTop{
+	position:absolute;
+	background-color:rgba(142,142,142,0.5);
+	height:1px;
+	top:45px;
+	left:75px;
+	right:75px;
 }
 
-#borderLeftRight{
+#borderBottom{
 	position:absolute;
-	margin-left:3%;
-	margin-right:2%;
-	top:13vh;
-	width:94%;
-	height:73vh;
-    border-right:1px solid white;
-    border-left:1px solid white;
+	background-color:rgba(142,142,142,0.5);
+	height:1px;
+	left:75px;
+	right:75px;
+	bottom:45px;
+}
+
+#borderLeft{
+	position:absolute;
+	background-color:rgba(142,142,142,0.5);
+	width:1px;
+	bottom:75px;
+	top:75px;
+	left:45px;
+}
+
+#borderRight{
+	position:absolute;
+	background-color:rgba(142,142,142,0.5);
+	width:1px;
+	bottom:75px;
+	top:75px;
+	right:45px;
 }
 
 #right-top{
  	background-color:transparent;
-    border: 1px solid white;
+    border: 1px solid rgba(142,142,142,0.5);
     height:50px;
     width:50px;
 	right:20px;
@@ -73,7 +89,7 @@ body{
 
 #left-top{
 	background-color:transparent;
-	border:1px solid white;
+    border: 1px solid rgba(142,142,142,0.5);
 	width:50px;
 	height:50px;
 	left:20px;
@@ -85,7 +101,7 @@ body{
 	width:50px;
 	height:50px;
 	background-color:transparent;
-	border:1px solid white;
+    border: 1px solid rgba(142,142,142,0.5);
 	bottom:20px;
 	right:20px;
 	position:absolute;
@@ -95,7 +111,7 @@ body{
 	width:50px;
 	height:50px;
 	background-color:transparent;
-	border:1px solid white;
+    border: 1px solid rgba(142,142,142,0.5);
 	left:20px;
 	position:absolute;
 	bottom:20px;
