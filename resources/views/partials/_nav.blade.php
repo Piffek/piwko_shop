@@ -14,7 +14,7 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
@@ -24,10 +24,9 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
 
-                            <a style="margin-top:7px;" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">zaloguj</a>
-                       
-                         	 <a style="margin-top:7px;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</a>
-                            <li><a href="{{route('basketGuest')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Koszyk</span></a>
+                            <li><a class="menuTop" data-toggle="modal" data-target=".bs-example-modal-lg">zaloguj</a></li>
+                            <li><a class="menuTop" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</a></li>
+                            <li><a class="menuTop" href="{{route('basketGuest')}}">Koszyk</a></li>
                         @else
                        		
 							@if(Auth::user()->getRolesUser()->id === 1)
@@ -80,7 +79,17 @@
                     @include('partials._validator')
                 </div>
             </div>
+            		<div id="bannerTop"></div>  
         </nav>
+
+
+
+
+
+
+
+
+
 
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria="false" aria-labellebdy="MyLargeModalLabel">
@@ -98,7 +107,6 @@
       @include('auth.register')
 	</div>
 </div>
-
 
 
 </div>

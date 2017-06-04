@@ -1,0 +1,106 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	font-family: 'Droid Sans', sans-serif;
+}
+
+.menuTop{
+	color:#979797;
+	text-decoration:none;
+	cursor:pointer;
+	font-size: 20px;
+	padding:5px;
+}
+
+
+#bannerTop{
+	height:100vh;
+	background: url('/images/bannerTop.jpg') center;
+	background-attachment: fixed;
+	background-repeat:no-repeat;
+}
+
+#imageProduct{
+	height:200px;
+	width:200px;
+}
+
+#product{
+	width:200px;
+	margin-top:100px;
+	border-top: 1px solid white;
+
+}
+
+img{
+	border:0;
+}
+
+
+#mainCorner{
+	margin-left:2%;
+	margin-right:2%;
+}
+
+#borderTopBottom{
+	margin-left:3%;
+	width:90%;
+	height:86%;
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+    position:absolute;
+}
+
+#borderLeftRight{
+	margin-top:3%;
+	width:96%;
+	height:75%;
+    border-right:1px solid white;
+    border-left:1px solid white;
+    position:absolute;
+}
+
+#right-top{
+ 	background-color:transparent;
+    border: 3px solid white;
+    height:50px;
+    width:50px;
+	float:right;
+	margin-right:-25px;
+	margin-top:-25px;
+}
+
+#left-top{
+	background-color:transparent;
+	border:3px solid white;
+	width:50px;
+	height:50px;
+	float:left;
+	margin-left:-25px;
+	margin-top:-25px;
+}
+
+#right-bottom{
+	width:50px;
+	height:50px;
+	background-color:transparent;
+	border:3px solid white;
+	float:right;
+	margin-right:-25px;
+	margin-bottom:-25px;
+}
+
+#left-bottom{
+	width:50px;
+	height:50px;
+	background-color:transparent;
+	border:3px solid white;
+	float:left;
+	margin-left:-25px;
+	margin-bottom:-25px;
+}
+
+
