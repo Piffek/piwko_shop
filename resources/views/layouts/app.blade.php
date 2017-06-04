@@ -7,9 +7,16 @@
         @include('partials._nav')
 	    @include('partials._messages')
 		@include('partials._validator')
-    	@include('partials.flash')   
-	       
-                          
+    	@include('partials.flash')
+    	
+			<div id="page">
+				<div id="right-top"></div>
+				<div id="left-top"></div>
+				<div id="borderTopBottom"></div>
+				<div id="borderLeftRight"></div>
+				<div id="right-bottom"></div>
+				<div id="left-bottom"></div>
+			</div>                   
 
           @yield('content')
                        

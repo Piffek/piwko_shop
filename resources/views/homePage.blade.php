@@ -1,20 +1,8 @@
-<!-- dziedziczy po layout -->
 @extends('layouts.app')
 
 
-
-
-
-	
-
-
-<!-- umieszczamy tekst, który chcemy mieć w divie kontent -->
 @section('content')
-<div id="mainCorner">
-<div id="borderTopBottom"></div>
-<div id="borderLeftRight"></div>
-	<div id="right-top"></div>
-	<div id="left-top"></div>
+
 	<div class ="container">
 			<div class ="row">
 				<div class="col-md-12">
@@ -47,8 +35,4 @@
 					</div>
 				</div>
 	 </div> 
- 	<div id="right-bottom"></div>
-	<div id="left-bottom"></div>
-</div>
-
 @endsection
