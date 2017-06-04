@@ -8,7 +8,7 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
-                    Dziękujemy {{ Auth::user->name }} za zalogowanie
+                    Dziękujemy {{ Auth::user()->name }} za zalogowanie
                 </div>
             </div>
         </div>
