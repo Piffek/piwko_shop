@@ -63,8 +63,7 @@ class MailingLogon implements ShouldQueue
 		$message->to($userEmail, 'John Smith')->subject('Zakup'.$customer->id.'');
 
 		$message->attachData($pdf->output(), 'faktura_nr_'.$customer->id.'.pdf');
-    		});
+    		}
     	}
     	
-    }
 }
