@@ -21,9 +21,7 @@
 		                        <span class="icon-bar"></span>
 		                    </button>
 		                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/strona_domowa') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                    
                 </div>
 
                 <div class="collapse navbar-collapse">
@@ -32,8 +30,9 @@
                         &nbsp;
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul id="top" class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        
                         @if (Auth::guest())
                             <li><a class="menuTop" data-toggle="modal" data-target=".bs-example-modal-lg">zaloguj</a></li>
                             <li><a class="menuTop" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</a></li>
@@ -86,6 +85,7 @@
 		                                </ul>
 		                            </li>
 		                        @endif
+		                   
 		                    </ul>
 		                    @include('partials._validator')
 		                </div>

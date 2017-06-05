@@ -4,17 +4,24 @@ body, html{
 	overflow:hidden;
 }
 
-.menuTop{
-	color:#979797;
+#top .menuTop{
+	color:#808080;
 	text-decoration:none;
 	cursor:pointer;
 	font-size: 20px;
+	display:inline-block;
+	height:45px;
 }
 
-a .menuTop:hover{
-	background-color:transparent;
+#top{
+	display:block;
+	margin-top:-100px;
 }
 
+#top .menuTop:hover{
+	background-color:#808080;
+	color:white;
+}
 
 #bannerTop{
 	height:100vh;
@@ -24,17 +31,29 @@ a .menuTop:hover{
 }
 
 #imageProduct{
-	height:100%;
-	width:100%;
-	border-top-left-radius:20px;
-	border-top-right-radius:20px;
+	height:200px;
+	width:200px;
 	padding:1px;
 }
 
 #product{
-	width:200px;
-	margin-top:100px;
-	border-radius:20px;
+	width:250px;
+	background-color:rgba(255,255,255,0.5);
+	
+}
+
+#bg-products{
+	height:100vh;
+	background: url('/images/bg-products.jpg') center;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+}
+
+#absolute{
+	position:absolute;
+	z-index:3333;
+	margin-top:80px;
+	width:100%;
 }
 
 nav{
@@ -44,14 +63,7 @@ nav{
 
 
 #productBottom{
-	background: #f1e767; /* Old browsers */
-	background: -moz-linear-gradient(top, #f1e767 0%, #feb645 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #f1e767 0%,#feb645 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #f1e767 0%,#feb645 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=0 ); /* IE6-9 */
-	border: 1px solid;
-	border-bottom-left-radius:20px;
-	border-bottom-right-radius:20px;
+	color:black;
 	font-family: 'Cabin', sans-serif;
 }
 

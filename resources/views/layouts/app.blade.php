@@ -11,12 +11,19 @@
 		@include('partials._validator')
     	@include('partials.flash')
         
+      
 		<section>
-        	@yield('content')
-        </section>               
+			<div id="bg-products">
+				<div id="absolute">
+		        	@yield('content')
+	        	</div>   
+		    </div>
+        </section>  
+                  
                    
-          
-		@include('partials._footer')
+        <section>
+		    @include('partials._footer')
+	    </section>  
     </body>
 </html>
 
