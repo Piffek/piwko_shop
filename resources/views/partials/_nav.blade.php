@@ -1,14 +1,26 @@
-<div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Branding Image -->
+
+          
+
+		
+        <nav>
+            <div id="page">
+				<div id="right-top"></div>
+				<div id="left-top"></div>
+				<div id="borderTop"></div>
+				<div id="borderBottom"></div>
+				<div id="borderLeft"></div>
+				<div id="borderRight"></div>
+				<div id="right-bottom"></div>
+				<div id="left-bottom"></div>
+		            <div class="container">
+		                <div class="navbar-header">
+		          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+		                        <span class="sr-only">Toggle Navigation</span>
+		                        <span class="icon-bar"></span>
+		                        <span class="icon-bar"></span>
+		                        <span class="icon-bar"></span>
+		                    </button>
+		                    <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/strona_domowa') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
@@ -23,7 +35,6 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-
                             <li><a class="menuTop" data-toggle="modal" data-target=".bs-example-modal-lg">zaloguj</a></li>
                             <li><a class="menuTop" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</a></li>
                             <li><a class="menuTop" href="{{route('basketGuest')}}">Koszyk</a></li>
@@ -68,22 +79,20 @@
                                         
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                        
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                    @include('partials._validator')
-                </div>
-            </div>
-            		<div id="bannerTop"></div>  
-        </nav>
-
-
-
+		                                            {{ csrf_field() }}
+		                                        </form>
+		                                        
+		                                    </li>
+		                                </ul>
+		                            </li>
+		                        @endif
+		                    </ul>
+		                    @include('partials._validator')
+		                </div>
+		            </div>
+            	
+			</div>	
+			
 
 
 
@@ -107,6 +116,10 @@
       @include('auth.register')
 	</div>
 </div>
+        </nav>
+
+<div id="bannerTop"></div>  
+
 
 
 </div>

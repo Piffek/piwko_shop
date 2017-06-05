@@ -4,24 +4,16 @@
 	    @include('partials._head')
 	</head>
     <body>
-        @include('partials._nav')
+	    <section>
+	        @include('partials._nav')
+	    </section> 
 	    @include('partials._messages')
 		@include('partials._validator')
     	@include('partials.flash')
-    	
-			<div id="page">
-				<div id="right-top"></div>
-				<div id="left-top"></div>
-				<div id="borderTop"></div>
-				<div id="borderBottom"></div>
-				<div id="borderLeft"></div>
-				<div id="borderRight"></div>
-				<div id="right-bottom"></div>
-				<div id="left-bottom"></div>
-			</div>                   
-
-          @yield('content')
-                       
+        
+		<section>
+        	@yield('content')
+        </section>               
                    
           
 		@include('partials._footer')
