@@ -16,8 +16,9 @@
 			<div id="bg-products">
 				<div id="absolute">
 		        	@yield('content')
-	        	</div>   
+	        	</div>
 		    </div>
+ 
         </section>  
                   
                    

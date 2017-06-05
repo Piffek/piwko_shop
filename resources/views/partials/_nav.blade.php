@@ -30,7 +30,7 @@
                         &nbsp;
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul id="top" class="nav navbar-nav navbar-right">
+                    <ul id="top" class="nav navbar-nav navbar-left">
                         <!-- Authentication Links -->
                         
                         @if (Auth::guest())
@@ -40,19 +40,19 @@
                         @else
                        		
 							@if(Auth::user()->getRolesUser()->id === 1)
-                            	<li><a href=" {{ route('adminStartPage') }}">
+                            	<li><a class="menuTop" href=" {{ route('adminStartPage') }}">
                         			Admin</a></li>
                             	<li class="dropdown">
                             @endif
                             @if(Auth::user()->getRolesUser()->id === 2)
-                            	<li><a href=" {{ route('showWorkerPanel') }}">
+                            	<li><a class="menuTop" href=" {{ route('showWorkerPanel') }}">
                         			Pracownik</a></li>
                             	<li class="dropdown">
                             @endif
-                        	<li><a href=" {{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                        	<li><a class="menuTop" href=" {{ route('basket') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
                         		</span>Koszyk</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+                                <a class="menuTop" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">
  									 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 	{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

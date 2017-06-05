@@ -1,0 +1,52 @@
+#imageProduct{
+	height:200px;
+	width:200px;
+	padding:10px;
+	-webkit-box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 4px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+#product{
+	width:250px;
+	background-color:rgba(255,255,255,0.5);
+	margin-top:20px;
+}
+
+#bg-products{
+	height:100vh;
+	background: url('/images/bg-products.jpg') center;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+	width:100vw;
+	position:absolute;
+	background-size:cover;
+}
+
+
+#absolute{
+	position:absolute;
+	z-index:3333;
+	margin-top:80px;
+	width:100%;
+}
+
+nav{
+	position:absolute;
+	z-index:2222;
+}
+
+
+#productBottom{
+	color:black;
+	font-family: 'Cabin', sans-serif;
+}
+
+
+#page{
+	height:100vh;
+	width:100%;	
+	padding:100px;
+	position: fixed;
+	top:0;
+}

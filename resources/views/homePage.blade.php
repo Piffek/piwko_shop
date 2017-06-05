@@ -13,8 +13,7 @@
 				 		
 				 			<img id="imageProduct" src="{{route('getPhotohomePage', ['photo'=> $item->id])}}.jpg"><br>
 				 			<div id="productBottom">
-              					<b>{{ $item->product }}</b>
-              					<hr>
+              					<b>{{ $item->product }}</b><br>
                             	{{ $item->kind}} <br>
                                 Sprzedanych: {{ $item->buy_amount }} szt<br>
                                 @if($item->amount > 0)
