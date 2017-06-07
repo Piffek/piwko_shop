@@ -67,6 +67,13 @@ class User extends Authenticatable
     	$this->save();
     }
     
+    public function toDoList(){
+    	
+    	return $this->hasMany('App\ToDoList', 'id_user');
+    	
+    }
+    
+    
     
     
     

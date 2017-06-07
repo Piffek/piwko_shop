@@ -2,7 +2,7 @@
 
 <div class="box-body">
 	<ul class="todo-list">
-		@foreach($todolist as $task)
+		@foreach($taskCurrentUser as $task)
 	    	<li>
 				<span class="handle">
 					<i class="fa fa-ellipsis-v"></i>
@@ -17,7 +17,7 @@
                 </div>
              </li>  
 		@endforeach
-		{{ $todolist->links() }}
+		
 </ul>
             <div class="box-footer clearfix no-border">
               <button id="addTask" type="button" class="btn btn-default pull-right" onclick="showToDoField()"><i class="fa fa-plus"></i>Dodaj zadanie</button>
