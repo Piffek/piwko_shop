@@ -183,6 +183,7 @@ return [
     	Collective\Html\HtmlServiceProvider::class,
     	Laravel\Socialite\SocialiteServiceProvider::class,
     	App\Providers\ToDoListServiceProvider::class,
+    	Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -236,6 +237,7 @@ return [
     	'Form' => Collective\Html\FormFacade::class,
     	'Html' => Collective\Html\HtmlFacade::class,
     	'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+    	'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

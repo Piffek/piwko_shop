@@ -33,6 +33,7 @@
     29 => 'Collective\\Html\\HtmlServiceProvider',
     30 => 'Laravel\\Socialite\\SocialiteServiceProvider',
     31 => 'App\\Providers\\ToDoListServiceProvider',
+    32 => 'Barryvdh\\Debugbar\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -54,6 +55,7 @@
     15 => 'Barryvdh\\DomPDF\\ServiceProvider',
     16 => 'Unisharp\\Ckeditor\\ServiceProvider',
     17 => 'App\\Providers\\ToDoListServiceProvider',
+    18 => 'Barryvdh\\Debugbar\\ServiceProvider',
   ),
   'deferred' => 
   array (
