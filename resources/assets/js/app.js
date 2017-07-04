@@ -6,11 +6,11 @@
  */
 
 require('./bootstrap');
-require('./components/addToDoListToDB.js');
-require('./components/scrolling.js');
-require('./components/showToDoListToDB.js');
-require('./components/sliiide.min.js');
-require('./form/validateAddToBasketForm.js');
+require('./components/addToDoListToDB');
+require('./components/scrolling');
+require('./components/showToDoListToDB');
+require('./components/sliiide');
+require('./form/validateAddToBasketForm');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
