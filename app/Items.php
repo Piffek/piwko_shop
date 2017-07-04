@@ -26,6 +26,11 @@ class Items extends Model
 		$this->update();
 	}
 	
+	public function id($query){
+		return $query->where('id', 1);
+	}
+
+	
 	public function addToBasket($request, $id){
 		foreach($this->where('id',$id)->get() as $oneProduct){
 			$product = array(

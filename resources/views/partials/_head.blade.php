@@ -23,4 +23,3 @@
 
         
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script> 
