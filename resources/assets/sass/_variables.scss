@@ -1,7 +1,7 @@
 
 // Body
-$body-bg: #f5f8fa;
-
+//$body-bg: #676666;
+$body-bg: black;
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
 $list-group-border: $laravel-border-color;
@@ -23,7 +23,7 @@ $line-height-base: 1.6;
 $text-color: #636b6f;
 
 // Navbar
-$navbar-default-bg: #fff;
+$navbar-default-bg: black;
 
 // Buttons
 $btn-default-color: $text-color;

@@ -1,0 +1,33 @@
+
+body, html{
+	font-family: 'Droid Sans', sans-serif;
+	overflow:hidden;
+}
+
+#top .menuTop{
+	color:#808080;
+	text-decoration:none;
+	cursor:pointer;
+	font-size: 15px;
+	height:45px;
+}
+
+
+#top{
+	display:block;
+	margin-top:-100px;
+}
+
+#top .menuTop:hover{
+	background-color:#808080;
+	color:white;
+}
+
+#bannerTop{
+	height:100vh;
+	background: url('/images/bannerTop.jpg') center;
+	background-attachment: fixed;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+

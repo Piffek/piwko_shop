@@ -15,8 +15,13 @@
 		"intervention/image" : "^2.3",
 		"unisharp/laravel-ckeditor" : "^4.5",
 		"laravelcollective/html" : "^5.3.0",
+<<<<<<< HEAD
 		"laravel/socialite" : "~2.0.0",
 		"spatie/laravel-medialibrary": "3.0.0"
+=======
+		"laravel/socialite": "~2.0.0",
+		"barryvdh/laravel-debugbar": "^2.4"
+>>>>>>> 53326fee8737ac980d3e6c5f8e60cb46bf232173
 	},
 	"require-dev" : {
 		"fzaninotto/faker" : "~1.4",

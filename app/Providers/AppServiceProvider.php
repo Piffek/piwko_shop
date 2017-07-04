@@ -36,12 +36,12 @@ class AppServiceProvider extends ServiceProvider
 		 	
 		 $new_order_from_singoff = LogOnData::where('created_at',$today)->count();
 		 
-		 $todolist = ToDoList::paginate(5);
+		
+		 
 		 
 		view()->share('new_user', $new_user);
 		view()->share('new_order', $new_order);
 		view()->share('new_order_from_singoff', $new_order_from_singoff);
-		view()->share('todolist', $todolist);
 
 		 
     }

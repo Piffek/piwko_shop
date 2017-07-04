@@ -10,4 +10,11 @@ class Roles extends Model
 	    'id','name'
 	];
 	protected $table = 'roles';
+	
+	
+	public function selectWhereRoleIsUser(){
+		
+		return Roles::where('name', 'User')->first();
+		
+	}
 }
