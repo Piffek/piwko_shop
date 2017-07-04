@@ -21,6 +21,7 @@ class BasketController extends Controller
 	    	$basket = Baskets::where('id_user', Auth::user()->id)->get();
 	    	return view('basket.index', compact('basket'));
     	}
+
     	return view('basket.index');
     }
     
