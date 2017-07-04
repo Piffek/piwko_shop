@@ -24,6 +24,7 @@
                    
         <section>
 		    @include('partials._footer')
+		    @include('partials.script')
 	    </section>  
     </body>
 </html>

@@ -41,7 +41,7 @@
 							{!! Form::hidden('product', $items->product) !!}
 							{!! Form::hidden('price', $items->price) !!}
 							{!! Form::hidden('id_product', $items->id) !!}
-							{!! Form::text('amount') !!}
+							{!! Form::text('amount', 'Ilosc', ['id' => 'amount', 'v-if' => 'seen']) !!}
 							{!! Form::submit('Do koszyka!') !!}
 							<div id="galeria"></div>	
 						{!! Form::close() !!}			
@@ -53,7 +53,7 @@
 						Ilosc:
 						{!! Form::open(['route' => ['addToGuestBasket', $items->id ]]) !!}
 							{!! Form::hidden('random_id_product', rand(0, 1000000)) !!}
-							{!! Form::text('amount') !!}
+							{!! Form::text('amount', 'Ilosc', ['id' => 'amount', 'v-if' => 'seen']) !!}
 							{!! Form::submit('Do koszyka!') !!}
 						{!! Form::close() !!}
 					@else
