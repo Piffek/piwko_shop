@@ -32,12 +32,8 @@
     28 => 'Unisharp\\Ckeditor\\ServiceProvider',
     29 => 'Collective\\Html\\HtmlServiceProvider',
     30 => 'Laravel\\Socialite\\SocialiteServiceProvider',
-<<<<<<< HEAD
-    31 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
-=======
     31 => 'App\\Providers\\ToDoListServiceProvider',
     32 => 'Barryvdh\\Debugbar\\ServiceProvider',
->>>>>>> 53326fee8737ac980d3e6c5f8e60cb46bf232173
   ),
   'eager' => 
   array (
@@ -58,12 +54,8 @@
     14 => 'App\\Providers\\RouteServiceProvider',
     15 => 'Barryvdh\\DomPDF\\ServiceProvider',
     16 => 'Unisharp\\Ckeditor\\ServiceProvider',
-<<<<<<< HEAD
-    17 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
-=======
     17 => 'App\\Providers\\ToDoListServiceProvider',
     18 => 'Barryvdh\\Debugbar\\ServiceProvider',
->>>>>>> 53326fee8737ac980d3e6c5f8e60cb46bf232173
   ),
   'deferred' => 
   array (

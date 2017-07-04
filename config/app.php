@@ -182,13 +182,9 @@ return [
     	Unisharp\Ckeditor\ServiceProvider::class,
     	Collective\Html\HtmlServiceProvider::class,
     	Laravel\Socialite\SocialiteServiceProvider::class,
-<<<<<<< HEAD
-    	Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
 
-=======
     	App\Providers\ToDoListServiceProvider::class,
     	Barryvdh\Debugbar\ServiceProvider::class,
->>>>>>> 53326fee8737ac980d3e6c5f8e60cb46bf232173
     ],
 
     /*
