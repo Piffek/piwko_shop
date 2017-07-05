@@ -41,7 +41,7 @@
 							{!! Form::hidden('product', $items->product) !!}
 							{!! Form::hidden('price', $items->price) !!}
 							{!! Form::hidden('id_product', $items->id) !!}
-							{!! Form::text('amount', 'Ilosc', ['id' => 'amount', 'v-if' => 'seen']) !!}
+							{!! Form::text('amount', 'Ilosc', ['id' => 'amount']) !!}
 							{!! Form::submit('Do koszyka!') !!}
 							<div id="galeria"></div>	
 						{!! Form::close() !!}			

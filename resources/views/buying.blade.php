@@ -36,7 +36,7 @@
 								<td>{{$itemInBuyingPage->price}}</td>
 								<td>{{$itemInBuyingPage->amount}}</td>
 								<td>{{$itemInBuyingPage->created_at}}</td>
-								<td><a class='btn btn-warning' href="{{route('billsPDF',['id'=>$buyings->id])}}">Faktura</a></td>
+								<td><a class='btn btn-warning' href="{{route('billsPDF',['id'=>$itemInBuyingPage->id])}}">Faktura</a></td>
 							</tbody>
 						@endforeach
 					</table>
