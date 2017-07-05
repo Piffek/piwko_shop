@@ -1,8 +1,7 @@
 <script src="/startLayout/js/jquery-1.9.1.js"></script> 
 <script src="/startLayout/js/bootstrap.js"></script>
 
-<script src="{{ asset('js/scrolling.js') }}"></script>
-<script src="{{ asset('js/form/validateAddToBasketForm.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 
 <script>

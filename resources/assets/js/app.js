@@ -8,8 +8,7 @@
 require('./bootstrap');
 require('./components/addToDoListToDB');
 require('./components/scrolling');
-require('./components/showToDoListToDB');
-require('./components/sliiide');
+require('./components/addToDoListToDB');
 require('./form/validateAddToBasketForm');
 
 /**

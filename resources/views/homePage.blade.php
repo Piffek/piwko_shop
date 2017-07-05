@@ -37,8 +37,7 @@
 					@endforeach
 					</div>
 					</div>
+						
 				</center>
-				
-			
 
 @endsection
