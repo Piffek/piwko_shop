@@ -51,12 +51,11 @@
 				@else
 					@if($items->amount > 0)
 						Ilosc:
-						<div id="amount">
-						    <todo-item></todo-item>
-						</div>
-						<template id="amounts">
-						<p>cos</p>
-				        </template>
+						{!! Form::open(['route' => ['addToGuestBasket', $items->id ]]) !!}
+							{!! Form::hidden('random_id_product', rand(0, 1000000)) !!}
+							{!! Form::text('amount', 'Ilosc', ['id' => 'amount']) !!}
+							{!! Form::submit('Do koszyka!') !!}
+						{!! Form::close() !!}
 					@else
 						Tego produktu aktualnie nie ma w magazynie
 					@endif
