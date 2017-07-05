@@ -26,8 +26,6 @@
 		    @include('partials._footer')
 		    @include('partials.script')
 	    </section>  
-	        <example></example>
-<script src="/js/app.js"></script>
     </body>
 
 </html>

@@ -2,6 +2,7 @@
 <script src="/startLayout/js/bootstrap.js"></script>
 
 <script src="{{ asset('js/scrolling.js') }}"></script>
+<script src="{{ asset('js/form/validateAddToBasketForm.js') }}"></script>
 
 
 <script>

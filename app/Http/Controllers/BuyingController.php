@@ -13,8 +13,8 @@ class BuyingController extends Controller
 {
 
     public function index(Request $request){
-    	$buying = Buyings::where('id_user', Auth::user()->id)->paginate('10');
-    	return view('buying', compact('buying'));
+    	$buyings = Buyings::where('id_user', Auth::user()->id)->paginate('10');
+    	return view('buyings', compact('buyings'));
     }
 
     public function create(Request $request, StoreCashier $cashier){
