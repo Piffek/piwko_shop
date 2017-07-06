@@ -15,7 +15,11 @@ class AddAdressDelivery extends Model
 	];
 	protected $table = 'add_adress_delivery';
 	
-	public function getSt($field, $what){
+	public function getAdress($field, $what){
 	    return AddAdressDelivery::where($field, $what)->get();
+	}
+	
+	public function createAdress($field, $what, $request){
+	    return AddAdressDelivery::create([$field => $what] + $request->all());
 	}
 }

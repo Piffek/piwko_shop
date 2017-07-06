@@ -11,12 +11,12 @@ class AdressDeliveryController extends Controller
 {
 
     public function index(AddAdressDelivery $adress){
-        $add_adress = $adress->getSt('id_user', Auth::user()->id);
+        $add_adress = $adress->getAdress('id_user', Auth::user()->id);
     	return view('add_adress_delivery.index',compact('add_adress'));
     }
 
-    public function store(Request $request){
-    	AddAdressDelivery::create(['id_user'=>Auth::id()] + $request->all());
+    public function store(Request $request, AddAdressDelivery $adress){
+        $adress->createAdress('id_user', Auth::id(), $request);
     	Session::flash('success', 'Dodano Nowy adres.');
     	return redirect()->action('AdressDeliveryController@index');
     }
