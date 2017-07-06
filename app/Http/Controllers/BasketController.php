@@ -15,10 +15,10 @@ class BasketController extends Controller
 {
 	use MyTrait\ExampleTrait;
 
-    public function index()
+    public function index(Baskets $baskets)
     {
-    	if (Auth::check()){  	
-	    	$basket = Baskets::where('id_user', Auth::user()->id)->get();
+    	if (Auth::check()){  
+    	    $basket = $baskets->getBasket('id_user', Auth::user()->id);
 	    	return view('basket.index', compact('basket'));
     	}
     	return view('basket.index');
@@ -35,13 +35,18 @@ class BasketController extends Controller
     	return view('basket');
     }
 
-    public function store(Request $request){
-    	$basket = new Baskets();
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Baskets $basket
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request, Baskets $basket){
     	if($basket->orIsset($request->product)){
     		return back()->with('warning', 'Masz już ten produkt w koszyku.');
-    	}else 
-    	{
-    		Baskets::create(['id_user'=>Auth::id()] + $request->all());
+    	}else{
+    	    $basket->createBasket('id_user', Auth::id(), $request);
     		return back()->with('success', 'Dodano do koszyka!.');
     	}
     }

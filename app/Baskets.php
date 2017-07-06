@@ -25,5 +25,13 @@ class Baskets extends Model
 		}
 	}
 	
+	public function getBasket($field, $what){
+	    return Baskets::where($field, $what)->get();
+	}
+	
+	public function createBasket($field, $what, $request){
+	    return Baskets::create([$field => $what] + $request->all());
+	}
+	
 	
 }
