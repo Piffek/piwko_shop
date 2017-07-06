@@ -10,14 +10,14 @@ use Session;
 
 class DataCustomerController extends Controller
 {
-    public function index(){
-        $data_users = User::whereid(Auth::user()->id)->get();
+    public function index(User $user){
+        $data_users = $user->getUser('id', Auth::user()->id);
         return view('data.index', compact('data_users'));
         
     }
     
-    public function edit($id){
-    	$data_users = User::find($id);
+    public function edit(User $user, $id){
+    	$data_users = $user->findUser($id);
     	return view('data.edit',compact('data_users'));
     }
 

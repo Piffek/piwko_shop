@@ -68,9 +68,15 @@ class User extends Authenticatable
     }
     
     public function toDoList(){
-    	
     	return $this->hasMany('App\ToDoList', 'id_user');
-    	
+    }
+    
+    public function findUser($id){
+        return User::find($id);
+    }
+    
+    public function getUser($field, $what){
+        return User::where($field, $what)->get();
     }
     
     
