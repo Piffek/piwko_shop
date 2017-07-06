@@ -32,7 +32,6 @@ class HomeController extends Controller
     		$roleHasUser->roles_id = $roleId->id;
     		$roleHasUser->save();
     		return view('home');
-    		
     	}
     	else
     	{

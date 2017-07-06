@@ -10,7 +10,6 @@ use App\MyHelper\StoreCashierUsersNotVerification;
 
 class LogOnDataController extends Controller
 {
-
     public function create(Request $request, StoreCashierUsersNotVerification $cashier){	
     	$dataNotVerificationUsers = array(
     			'firstname' => $request->input('firstname'),

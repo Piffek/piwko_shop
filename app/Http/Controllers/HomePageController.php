@@ -11,7 +11,6 @@ class HomePageController extends Controller
 {	
     public function index(){
         $products= Items::all();
-	    
         return view('homePage',compact('products'));
     }
 }

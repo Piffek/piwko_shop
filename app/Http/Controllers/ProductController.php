@@ -15,8 +15,6 @@ class ProductController extends Controller
     	return redirect()->back()->with('success', 'Dodano do koszyka');		
     }
 
-    
-    
     public function getBasket(){
     	$products = session('basket');
     	return view('basket.index')->with(array(
@@ -37,7 +35,7 @@ class ProductController extends Controller
     	foreach ($products as $key => $product){
     	    if($product['random_id'] == $id){
     	        unset($products[$key]);
-	    }
+	        }
     	}
     	session()->put('basket', $products);
 	    

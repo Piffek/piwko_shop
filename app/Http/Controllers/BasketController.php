@@ -21,12 +21,9 @@ class BasketController extends Controller
 	    	$basket = Baskets::where('id_user', Auth::user()->id)->get();
 	    	return view('basket.index', compact('basket'));
     	}
-
     	return view('basket.index');
     }
     
-
-   
 
     /**
      * Show the form for creating a new resource.
@@ -39,14 +36,14 @@ class BasketController extends Controller
     }
 
     public function store(Request $request){
-	$basket = new Baskets();
-	if($basket->orIsset($request->product)){
-		return back()->with('warning', 'Masz już ten produkt w koszyku.');
-	}else 
-	{
-		Baskets::create(['id_user'=>Auth::id()] + $request->all());
-		return back()->with('success', 'Dodano do koszyka!.');
-	}
+    	$basket = new Baskets();
+    	if($basket->orIsset($request->product)){
+    		return back()->with('warning', 'Masz już ten produkt w koszyku.');
+    	}else 
+    	{
+    		Baskets::create(['id_user'=>Auth::id()] + $request->all());
+    		return back()->with('success', 'Dodano do koszyka!.');
+    	}
     }
 
     

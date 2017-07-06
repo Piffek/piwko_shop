@@ -31,8 +31,6 @@ class DataCustomerController extends Controller
     public function update(Request $request, User $id){
     	$id->update($request->all());
     	Session::flash('success','Operacja wykonana prawidłowo.');
-    	return redirect()->action('DataCustomerController@index');
-
-    	 
+    	return redirect()->action('DataCustomerController@index'); 
     }
 }
