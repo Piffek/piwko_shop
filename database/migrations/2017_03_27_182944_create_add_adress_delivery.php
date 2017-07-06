@@ -17,7 +17,6 @@ class CreateAddAdressDelivery extends Migration
 			$table->increments('id');
 			$table->integer('id_user')->unsigned();
 			$table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-			$table->string('user');
 			$table->string('street');
 			$table->string('city');
 			$table->string('phone');
