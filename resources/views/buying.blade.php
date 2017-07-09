@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container">
-	@if (count($buying) === 0)
+	@if (count($buy) === 0)
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
 		  <div class="panel-heading">Twoje zakupy</div>
@@ -16,7 +16,7 @@
 		  	</table>
 		 </div>
 	</div>
-		   	@elseif (count($buying) > 0)
+		   	@elseif (count($buy) > 0)
 		   	<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
 				  <div class="panel-heading">Twoje zakupy</div>
@@ -30,17 +30,17 @@
 					  		<th>Faktura</th>
 					  		</tr>
 					  	</thread>
-						@foreach($buying as $buyings)
+						@foreach($buy as $buying)
 							<tbody>
-							   	<td>{{$buyings->product}}</td>
-								<td>{{$buyings->price}}</td>
-								<td>{{$buyings->amount}}</td>
-								<td>{{$buyings->created_at}}</td>
-								<td><a class='btn btn-warning' href="{{route('billsPDF',['id'=>$buyings->id])}}">Faktura</a></td>
+							   	<td>{{$buying->product}}</td>
+								<td>{{$buying->price}}</td>
+								<td>{{$buying->amount}}</td>
+								<td>{{$buying->created_at}}</td>
+								<td><a class='btn btn-warning' href="{{route('billsPDF',['id'=>$buying->id])}}">Faktura</a></td>
 							</tbody>
 						@endforeach
 					</table>
-							{{ $buying->links() }}	
+							{{ $buy->links() }}	
 				</div>	
 			@endif
 		</div>

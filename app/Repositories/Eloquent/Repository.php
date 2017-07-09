@@ -40,10 +40,6 @@ abstract class Repository implements RepositoryInterface
         return $this->model->find($columns, $id);
     }
 
-    public function paginate($perPage = 15, $columns = array('*')){
-        return $this->model->paginate($perPage, $columns);
-    }
-
     public function create(array $data){
         return $this->model->create($data);
     }

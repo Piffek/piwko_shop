@@ -27,7 +27,7 @@ class CreateBuyingsTable extends Migration
     		$table->string('companyname');
     		$table->string('delivery');
     		$table->string('paying');
-    		$table->integer('id_adress_delivery');
+    		$table->integer('id_adress_delivery')->nullable();
     		$table->string('state');
     		$table->timestamps();
     	});
