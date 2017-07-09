@@ -13,6 +13,7 @@ class Buyings extends Model
 	    'remember_token',
 	];
 	protected $table = 'buyings';
+	
 	public function getId(){
 		return $this->id;
 	}

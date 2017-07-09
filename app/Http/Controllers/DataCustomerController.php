@@ -3,33 +3,49 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\Dane;
-use Session;
+use Illuminate\Support\Facades\Auth;;
+use Illuminate\Support\Facades\Session;
+use App\Repositories\UserRepository as User;
 
 class DataCustomerController extends Controller
 {
+    public function __construct(User $user){
+        $this->user = $user;
+    }
+    
+    
+    /**
+     * Show data.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(){
-        $data_users = User::whereid(Auth::user()->id)->get();
+        $data_users = $this->user->where('id', Auth::user()->id)->get();
         return view('data.index', compact('data_users'));
         
     }
     
-    public function edit($id){
-    	$data_users = User::find($id);
-    	return view('data.edit',compact('data_users'));
-    }
-
     /**
-     * Update the specified resource in storage.
+     * Show form to edit data user.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $id){
-    	$id->update($request->all());
+    public function edit($id){
+        $data_users = $this->user->find($id);
+    	return view('data.edit',compact('data_users'));
+    }
+
+    /**
+     * Update data user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  User  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id){
+        $this->user->update($request->all(), $id);
     	Session::flash('success','Operacja wykonana prawidłowo.');
     	return redirect()->action('DataCustomerController@index');
 
