@@ -38,7 +38,6 @@
                             <li><a class="menuTop" data-toggle="modal" data-target=".bs-example-modal-sm">Zarejestruj</a></li>
                             <li><a class="menuTop" href="{{route('basketGuest')}}">Koszyk</a></li>
                         @else
-                       		
 							@if(Auth::user()->getRolesUser()->id === 1)
                             	<li><a class="menuTop" href=" {{ route('adminStartPage') }}">
                         			Admin</a></li>

@@ -15,8 +15,6 @@
 //@Admin page
 
 
-
-
 Route::get('/', 'HomePageController@index');
 
 	//--------------------------API---------------------------------------
@@ -104,15 +102,15 @@ Route::get('/', 'HomePageController@index');
 	
 	Route::get('dodaj_adres_dostawy/destroy/{id}', [
 			'as'=>'deleteAdressDelivery',
-			'uses' => 'Adress_deliveryController@destroy'
+			'uses' => 'AdressDeliveryController@destroy'
 	]);
 	Route::post('dodaj_adres_dostawy/store', [
 			'as'=>'addAdressDelivery',
-			'uses' => 'Adress_deliveryController@store'
+			'uses' => 'AdressDeliveryController@store'
 	]);
 	Route::get('dodaj_adres_dostawy', [
 			'as'=>'showAdressDelivery',
-			'uses' => 'Adress_deliveryController@index'
+			'uses' => 'AdressDeliveryController@index'
 	]);
 	
 Route::group([

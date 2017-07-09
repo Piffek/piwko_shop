@@ -8,10 +8,11 @@ use App\User;
 use App\Repositories\Eloquent\Repository;
 use Illuminate\Support\Facades\Auth;
 
-class UserRepository extends Repository{
+class AddAdressDeliveryRepository extends Repository{
     
     public function model(){
-        return User::class;
+        return 'App\AddAdressDelivery';
     }
-
+   
+    
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Add_adress_delivery extends Model
+class AdressDelivery extends Model
 {
 	protected $fillable = [
 		'id','id_user','user', 'street', 'city', 'phone',

@@ -70,6 +70,12 @@ class User extends Authenticatable
         
     }
     
+    public function getRolesUser(){
+        foreach(Auth::user()->roles as $role){
+            return $role;
+        }
+    }
+    
     
     
 }
