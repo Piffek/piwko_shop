@@ -45,7 +45,7 @@ abstract class Repository implements RepositoryInterface
     }
 
     public function update(array $data, $id, $attribute="id"){
-        return $this->model->where($attribute, '=', $id)->update($data);
+        return $this->model->where($attribute, $id)->update($data);
     }
 
     public function findBy($attribute, $value, $columns = array('*')){

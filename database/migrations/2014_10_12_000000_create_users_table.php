@@ -25,9 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('companyname');
             $table->integer('nip');
             $table->boolean('activated')->default(false);
-            $table->string('_token');
+            $table->string('_token')->default(false);
             $table->rememberToken();
-            $table->timestamps();
+            $table->date('created_at');
         });
     }
 

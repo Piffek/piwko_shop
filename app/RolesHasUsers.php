@@ -12,8 +12,6 @@ class RolesHasUsers extends Model
 	];
 	
 	public function selectCountRoleCurrentUser(){
-		
 		return RolesHasUsers::where('users_id',Auth::user()->id)->get()->count();
-		
 	}
 }

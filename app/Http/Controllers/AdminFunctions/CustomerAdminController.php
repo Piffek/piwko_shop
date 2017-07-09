@@ -3,30 +3,33 @@
 namespace App\Http\Controllers\AdminFunctions;
 
 use Illuminate\Http\Request;
-use App\Roles;
-use App\Http\Controllers\Controller;
+use App\Repositories\RolesRepository as Roles;
+use App\Repositories\RolesHasUsersRepository as RolesHasUser;
 use App\Repositories\UserRepository as User;
+use App\Http\Controllers\Controller;
 use View;
 use Carbon\Carbon;
 use Session;
-use App\RolesHasUsers;
 
 class CustomerAdminController extends Controller
 {
+    public function __construct(User $user, Roles $roles, RolesHasUser $rolesHasUser){
+        $this->user = $user;
+        $this->roles = $roles;
+        $this->rolesHasUser = $rolesHasUser;
+    }
 
     public function index(User $user){
-    	$all_users = $user->all();
+    	$all_users = $this->user->all();
     	return view('admin.customers.customers',compact('all_users'));
     }
     
     
-    public function viewNewUser(){
-    	$current = Carbon::now();
-    	$current = new Carbon();
+    public function viewNewUser(Carbon $carbon){
+        $current = $carbon->now();
     	$today = $current->toDateString();
-    	$new_users_todays = User::where('created_at', $today)->get();
-	    
-    	return view('admin.customers.new_customers',compact('new_users_todays'));
+    	$new_users_todays = $this->user->where('created_at', $today)->get();
+    	return view('admin.customers.new_customers', compact('new_users_todays'));
     
     }
     
@@ -36,8 +39,8 @@ class CustomerAdminController extends Controller
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function showOneCustomers(User $id){
-    	$user= clone $id;
+    public function showOneCustomers($id){
+        $user = $this->user->find($id);
     	return view('admin.customers.show_one_customers',compact('user'));
     	 
     }
@@ -48,14 +51,14 @@ class CustomerAdminController extends Controller
      * @param  User  $id
      * @return \Illuminate\Http\Response
      */
-    public function editCustomers(User $id){
-    	$user= clone $id;
-    	$rolesHas = User::find($user->id)->roles;
-    	$roles = Roles::all();
+    public function editCustomers($id){
+    	$user = $this->user->find($id);
+    	$rolesHas = $this->user->find($id)->roles;
+    	$roles = $this->roles->all();
     	return view('admin.customers.edit_customers')
-    	->with('user',$user) 
-    	->with('rolesHas',$rolesHas)
-    	->with('roles',$roles);
+    	->with('user', $user) 
+    	->with('rolesHas', $rolesHas)
+    	->with('roles', $roles);
     	
     }
 
@@ -63,9 +66,7 @@ class CustomerAdminController extends Controller
     
 
     public function changeRole(Request $request, $id){    	
-    	$role = RolesHasUsers::where('users_id', $id)->first();
-    	$role->roles_id = $request->roles_id;
-		$role->update();
+        $role = $this->rolesHasUser->update(array('roles_id' => $request->roles_id), $id, 'users_id');
 		Session::flash('success', 'Zmieniono role');
 		return redirect()->back();
     }
