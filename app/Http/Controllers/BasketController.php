@@ -14,7 +14,12 @@ class BasketController extends Controller
     public function __construct(Baskets $basket){
         $this->basket = $basket;
     }
-
+    
+    /**
+     * Show basket.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
     	if (Auth::check()){ 
@@ -33,14 +38,22 @@ class BasketController extends Controller
     {
     	return view('basket');
     }
-
+    
+    
+    /**
+     * Add new product to basket.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request){
     	if($this->basket->orIsset($request->product)){
     		return back()->with('warning', 'Masz już ten produkt w koszyku.');
-    	}else{
-    	    $this->basket->create(['id_user'=>Auth::id()] + $request->all());
-    		return back()->with('success', 'Dodano do koszyka!.');
     	}
+    	
+    	$this->basket->create(['id_user'=>Auth::id()] + $request->all());
+        return back()->with('success', 'Dodano do koszyka!.');
+    	
     }
 
     
@@ -51,8 +64,8 @@ class BasketController extends Controller
      * @param  Baskets $id
      * @return \Illuminate\Http\Response
      */
-    public function changeAmount(Request $request, Baskets $id){
-    	$id->update($request->all());
+    public function changeAmount(Request $request, $id){
+        $this->basket->update($request->all(), $id);
     	Session::flash('success', 'zmieniono ilosc.');
     	return redirect()->back();
     }
