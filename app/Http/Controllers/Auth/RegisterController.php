@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ConfirmationAccount;
-use App\User;
+use App\Repositories\UserRepository as User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -35,8 +35,9 @@ class RegisterController extends Controller
 	 *
 	 * @return void
 	 */
-	public function __construct(){
+	public function __construct(User $user){
 		$this->middleware('guest');
+		$this->user = $user;
 		
 	}
 	/**
@@ -71,25 +72,25 @@ class RegisterController extends Controller
 	 * @return mixed
 	 */
 	public function confirmEmail($token){
-		User::whereToken($token)->firstOrFail()->hasVerified();
+	    $this->user->where('token', array($token))->firstOrFail()->hasVerified();
 		return redirect('strona_domowa')->with('status', 'Możesz się zalogować.');
 	}
 
 	protected function create(array $data)
 	{
-		return User::create([
-				'name' => $data['name'],
-				'email' => $data['email'],
-				'password' => bcrypt($data['password']),
-				'surname' => $data['surname'],
-				'street' => $data['street'],
-				'city' => $data['city'],
-				'phone' => $data['phone'],
-				'companyname' => $data['companyname'],
-				'nip' => $data['nip'],
-				'activated' => $data['activated'],
+	    return $this->user->create([
+	        'name' => $data['name'],
+	        'email' => $data['email'],
+	        'password' => bcrypt($data['password']),
+	        'surname' => $data['surname'],
+	        'street' => $data['street'],
+	        'city' => $data['city'],
+	        'phone' => $data['phone'],
+	        'companyname' => $data['companyname'],
+	        'nip' => $data['nip'],
+	        'activated' => $data['activated'],
+	    ]);
 
-		]);
 	}
 
 }

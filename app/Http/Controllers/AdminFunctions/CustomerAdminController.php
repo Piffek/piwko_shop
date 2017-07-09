@@ -5,7 +5,7 @@ namespace App\Http\Controllers\AdminFunctions;
 use Illuminate\Http\Request;
 use App\Roles;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Repositories\UserRepository as User;
 use View;
 use Carbon\Carbon;
 use Session;
@@ -15,8 +15,6 @@ class CustomerAdminController extends Controller
 {
 
     public function index(User $user){
-
-    	//$all_users = User::all();
     	$all_users = $user->all();
     	return view('admin.customers.customers',compact('all_users'));
     }

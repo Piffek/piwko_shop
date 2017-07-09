@@ -21,10 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index(Roles $role, RolesHasUsers $roleHasUser){
     	
-    	$role = new Roles;
-    	$roleHasUser = new RolesHasUsers();
     	$roleId = $role->selectWhereRoleIsUser();
     	$count = $roleHasUser->selectCountRoleCurrentUser();
     	if($count===0){

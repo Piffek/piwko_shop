@@ -295,7 +295,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('user/activation/{token}', 'Auth\AuthController@activateUser')->name('user.activate');
 Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
 
 Route::get('/pdf/{id}', function ($id) {
