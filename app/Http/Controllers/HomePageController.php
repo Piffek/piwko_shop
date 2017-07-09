@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Items;
-use App\Basket;
-use Session;
+use App\Repositories\ItemsRepository as Item;
 
 class HomePageController extends Controller
 {	
+    public function __construct(Item $item){
+        $this->item = $item;
+    }
+    
     public function index(){
-        $products= Items::all();
+        $products= $this->item->all();
 	    
         return view('homePage',compact('products'));
     }
