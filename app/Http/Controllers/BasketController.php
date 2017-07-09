@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Baskets;
-use App\User;
-use App\Items;
+use App\Repositories\BasketsRepository as Baskets;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Session;
@@ -13,21 +11,19 @@ use Session;
 
 class BasketController extends Controller
 {
-	use MyTrait\ExampleTrait;
+    public function __construct(Baskets $basket){
+        $this->basket = $basket;
+    }
 
     public function index()
     {
-    	if (Auth::check()){  	
-	    	$basket = Baskets::where('id_user', Auth::user()->id)->get();
+    	if (Auth::check()){ 
+    	    $basket = $this->basket->where('id_user', Auth::user()->id)->get();
 	    	return view('basket.index', compact('basket'));
     	}
-
     	return view('basket.index');
     }
-    
-
    
-
     /**
      * Show the form for creating a new resource.
      *
@@ -39,14 +35,12 @@ class BasketController extends Controller
     }
 
     public function store(Request $request){
-	$basket = new Baskets();
-	if($basket->orIsset($request->product)){
-		return back()->with('warning', 'Masz już ten produkt w koszyku.');
-	}else 
-	{
-		Baskets::create(['id_user'=>Auth::id()] + $request->all());
-		return back()->with('success', 'Dodano do koszyka!.');
-	}
+    	if($this->basket->orIsset($request->product)){
+    		return back()->with('warning', 'Masz już ten produkt w koszyku.');
+    	}else{
+    	    $this->basket->create(['id_user'=>Auth::id()] + $request->all());
+    		return back()->with('success', 'Dodano do koszyka!.');
+    	}
     }
 
     
@@ -69,8 +63,8 @@ class BasketController extends Controller
      * @param  Baskets  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Baskets $id){
-    	$id->delete();
+    public function destroy($id){
+        $this->basket->delete($id);
     	return back()->with('status', 'Usunięto.');
     }
     

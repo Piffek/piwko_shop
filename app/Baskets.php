@@ -16,14 +16,7 @@ class Baskets extends Model
 	
 	protected $table = 'Baskets';
 	
-	
-	public function orIsset($product){
-		foreach($this->all() as $productInDb){
-			if($productInDb->product === $product){
-				return true;
-			}
-		}
-	}
+
 	
 	
 }
