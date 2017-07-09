@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Session;
+
 
 class Items extends Model
 {
@@ -26,20 +26,7 @@ class Items extends Model
 		$this->update();
 	}
 	
-	public function addToBasket($request, $id){
-		foreach($this->where('id',$id)->get() as $oneProduct){
-			$product = array(
-			    'all_price' => $oneProduct['price']*$request['amount'],
-			    'random_id' => $request['random_id_product'],
-			    'product' => $oneProduct['product'],
-			    'price' => $oneProduct['price'],
-			    'amount' => $request['amount'],
-			    'id' => $id,
-			);
-			session()->push('basket', $product);
-		}
-			
-	}
+	
 
 
 }

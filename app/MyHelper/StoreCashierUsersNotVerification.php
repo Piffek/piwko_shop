@@ -1,7 +1,7 @@
 <?php 
 
 namespace App\MyHelper;
-use App\Items;
+use App\Repositories\ItemsRepository as Item;
 use App\Jobs\MailingLogon;
 use App\LogOnData;
 use Illuminate\Support\Facades\Mail;
@@ -9,6 +9,9 @@ use App\Mail\MailToOwner;
 
 class StoreCashierUsersNotVerification
 {
+    public function __construct(Item $item){
+        $this->item = $item;
+    }
 	public function checkout($dataNotVerificationUsers){
 		$products = session('basket');
 		foreach($products as $produkt){
@@ -37,7 +40,7 @@ class StoreCashierUsersNotVerification
 			$add_logondata -> state = 'W realizacji';
 			$add_logondata-> save();
 			
-			$items = Items::find($produkt['id']);
+			$items = $this->item->find($produkt['id']);
 			$items->decreaseInventory($produkt['amount']);
 			$items->recordPurchase($produkt['amount']);
 			dispatch(new MailingLogon($produkt['random_id'], 'id_transaction', 'LogOnData'));
