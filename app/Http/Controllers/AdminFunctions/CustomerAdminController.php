@@ -14,10 +14,10 @@ use App\RolesHasUsers;
 class CustomerAdminController extends Controller
 {
 
-    public function index(){
+    public function index(User $user){
 
-    	$all_users = User::all();
-    		
+    	//$all_users = User::all();
+    	$all_users = $user->all();
     	return view('admin.customers.customers',compact('all_users'));
     }
     
