@@ -2,17 +2,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Items;
+use App\Repositories\ItemsRepository as Item;
 use App\Exceptions\UnidentifiedProductException;
 
 class ShowProductController extends Controller
 {
-    public function index(Items $items,$id){
-    	$items = Items::find($id);
-    	if(!is_null($items)){
-    		return view('showProduct.index',['items' => $items]);
-    	}else{
-    		throw new UnidentifiedProductException;
+    public function __construct(Item $item){
+        $this->item = $item;
+    }
+    
+    /**
+     * Add new product to basket.
+     *
+     * @param  Item $id
+     * @return \Illuminate\Http\Response || App\Exceptions\UnidentifiedProductException
+     */
+    public function index($id){
+        $items = $this->item->find($id);
+        
+    	if(is_null($items)){
+    	    throw new UnidentifiedProductException;
     	}
+    	return view('showProduct.index',['items' => $items]);
     }
 }

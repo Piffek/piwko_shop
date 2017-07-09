@@ -9,4 +9,6 @@ class ItemsRepository extends Repository{
     public function model(){
         return 'App\Items';
     }
+    
+    
 }

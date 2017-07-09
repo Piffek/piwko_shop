@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\ItemsRepository as Items;
-use Session;
 
 class ProductController extends Controller
 {
@@ -13,6 +12,13 @@ class ProductController extends Controller
         $this->item = $item;
     }
     
+    /**
+     * Redirect to one product after add to basket.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Items $id
+     * @return \Illuminate\Http\Response
+     */
     public function getAddToBasket(Request $request, $id){
         $this->addToBasket($request->all(), $id);
 	    
@@ -20,7 +26,11 @@ class ProductController extends Controller
     }
 
     
-    
+    /**
+     * Get basket.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getBasket(){
     	$products = session('basket');
     	return view('basket.index')->with(array(
@@ -28,6 +38,11 @@ class ProductController extends Controller
     	));
     }
     
+    /**
+     * Get name and price sum product with basket.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getSummary(){
     	$products = session('basket');
     	return view('transactionGuestPage')->with(array(
@@ -36,6 +51,11 @@ class ProductController extends Controller
     }
     
     
+    /**
+     * Delete product with basket.
+     * @param Items $id
+     * @return \Illuminate\Http\Response
+     */
     public function delete($id){
     	$products = session('basket');
     	foreach ($products as $key => $product){
@@ -49,6 +69,13 @@ class ProductController extends Controller
     
     }
     
+    /**
+     * Add to basket
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Items $id
+     * @return \Illuminate\Http\Response
+     */
     public function addToBasket($request, $id){
         foreach($this->item->where('id', $id)->get() as $oneProduct){
             $product = array(
