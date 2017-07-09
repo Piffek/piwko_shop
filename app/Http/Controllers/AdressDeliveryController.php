@@ -9,15 +9,26 @@ use App\Repositories\AdressDeliveryRepository as AdressDelivery;
 
 class AdressDeliveryController extends Controller
 {
+    
+    public function __construct(AdressDelivery $adressDelivery){
+        $this->adressDelivery = $adressDelivery;
+    }
 
 
-    public function index(AdressDelivery $adressDelivery){
-        $add_adress = $adressDelivery->where('id_user', Auth::user()->id)->get();
+    public function index(){
+        $add_adress = $this->adressDelivery->where('id_user', Auth::user()->id)->get();
     	return view('add_adress_delivery.index',compact('add_adress'));
     }
 
-    public function store(Request $request, AdressDelivery $adressDelivery){
-        $adressDelivery->create(['id_user'=>Auth::id()] + $request->all());
+    
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\AdressDelivery $adressDelivery
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request){
+        $this->adressDelivery->create(['id_user'=>Auth::id()] + $request->all());
     	Session::flash('success', 'Dodano Nowy adres.');
         
     	return redirect()->action('AdressDeliveryController@index');
@@ -26,12 +37,11 @@ class AdressDeliveryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Add_adress_delivery $id
+     * @param  \App\AdressDelivery $adressDelivery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdressDelivery $id){
-    	$id->delete();
-        
+    public function destroy($id){
+        $this->adressDelivery->delete($id);
     	return back()->with('status', 'Usunięto.');
     }
 }
