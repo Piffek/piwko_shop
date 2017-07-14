@@ -47,7 +47,7 @@ class RegisterController extends Controller
 	 * @param  array  $data
 	 * @return \Illuminate\Contracts\Validation\Validator
 	 */
-	protected function validator(array $data){
+	public function validator(array $data){
 		return Validator::make($data, [
 			'name' => 'required|integer|max:255',
 			'email' => 'required|email|max:255|unique:users',

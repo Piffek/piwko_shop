@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\UserRepository as User;
+use Validator;
 
 class DataCustomerController extends Controller
 {
@@ -13,6 +14,12 @@ class DataCustomerController extends Controller
         $this->user = $user;
     }
     
+    protected function validator(array $request){
+        return Validator::make($request, [
+            'phone' => 'required|integer|min:9',
+            'nip' => 'required|integer|min:14',
+        ]);
+    }
     
     /**
      * Show data.
@@ -45,6 +52,7 @@ class DataCustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
+        $this->validator($request->all())->validate();
         $this->user->update($request->all(), $id);
     	Session::flash('success','Operacja wykonana prawidłowo.');
     	return redirect()->action('DataCustomerController@index');

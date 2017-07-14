@@ -11,8 +11,6 @@
 			{!! Form::open(['route' => ['updateData', $data_users->id ]]) !!}
 				{!! Form::label('Imię i nazwisko') !!}
 				{!! Form::text('surname',$data_users->surname) !!}<br>
-				{!! Form::label('Email') !!}<br>
-				{!! Form::text('email',$data_users->email) !!}<br>
 				{!! Form::label('Ulica') !!}<br>
 				{!! Form::text('street',$data_users->street) !!}<br>
 				{!! Form::label('Miasto') !!}<br>
