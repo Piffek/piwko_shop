@@ -5,7 +5,6 @@ namespace App\Service;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use App\SocialAccount;
 use App\User;
-use App\RolesHasUser;
 
 class SocialAccountService
 {

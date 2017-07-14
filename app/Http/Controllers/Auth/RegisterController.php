@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Validator;
+
 class RegisterController extends Controller
 {
 	/*
@@ -48,9 +49,11 @@ class RegisterController extends Controller
 	 */
 	protected function validator(array $data){
 		return Validator::make($data, [
-			'name' => 'required|max:255',
+			'name' => 'required|integer|max:255',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|min:6|confirmed',
+		    'phone' => 'required|integer|min:9',
+		    'nip' => 'integer|min:14',
 		]);
 	}
 

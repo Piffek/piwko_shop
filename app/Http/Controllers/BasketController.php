@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\BasketsRepository as Baskets;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Validator;
 use Session;
 
 
@@ -14,6 +14,13 @@ class BasketController extends Controller
     public function __construct(Baskets $basket){
         $this->basket = $basket;
     }
+    
+    public function validator(array $request){
+        return Validator::make($request, [
+            'amount' => 'required',
+        ]);
+    }
+    
     
     /**
      * Show basket.
@@ -47,6 +54,7 @@ class BasketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        $this->validator($request->all())->validate();
     	if($this->basket->orIsset($request->product)){
     		return back()->with('warning', 'Masz już ten produkt w koszyku.');
     	}

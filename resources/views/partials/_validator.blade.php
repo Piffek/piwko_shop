@@ -20,4 +20,28 @@
 		<strong>{{ $errors->first('name') }}</strong>
 	</span>
 
-@endif           
+@endif      
+
+@if ($errors->has('phone'))
+
+	<span class="help-block col-md-offset-4">
+		<strong>{{ $errors->first('phone') }}</strong>
+	</span>
+
+@endif     
+
+@if ($errors->has('nip'))
+
+	<span class="help-block col-md-offset-4">
+		<strong>{{ $errors->first('nip') }}</strong>
+	</span>
+
+@endif
+
+@if ($errors->has('amount'))
+
+	<span class="help-block col-md-offset-4">
+		<strong>{{ $errors->first('amount') }}</strong>
+	</span>
+
+@endif               

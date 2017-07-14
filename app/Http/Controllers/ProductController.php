@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 use App\Repositories\ItemsRepository as Items;
 
 class ProductController extends Controller
@@ -12,6 +13,7 @@ class ProductController extends Controller
         $this->item = $item;
     }
     
+
     /**
      * Redirect to one product after add to basket.
      *

@@ -24,6 +24,7 @@
 					}
 					closedir($galeria);
 				?>	
+				<div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">    
 				<div class="col-md-6 col-md-offset-3">
 				@if(Auth::check())
 					@if($items->amount > 0)
