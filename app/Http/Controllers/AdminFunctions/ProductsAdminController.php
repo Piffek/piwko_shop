@@ -10,16 +10,31 @@ use Illuminate\Http\Request;
 use Image;
 use Input;
 use Session;
-use Storage;
+use Validator;
+use App\Repositories\ItemsRepository as ItemRepository;
+use App\Repositories\KindsRepository as KindsRepo;
 
 
 class ProductsAdminController extends Controller
 {
+    
+    public function __construct(ItemRepository $item, KindsRepo $kinds){
+        $this->item = $item;
+        $this->kinds = $kinds;
+    }
+    
+    protected function validator(array $data){
+        return Validator::make($data, [
+            'image' => 'required|image|mimes:jpeg,jpg|max:2048',
+            'price' => 'min:1|integer|required',
+            'amount' => 'min:1|integer|required',
+        ]);
+    }
+    
 
     public function index(){
-        $items = new Items();
-        $items = Items::all();
-        $kind = kinds::all();
+        $items = $this->item->all();
+        $kind = $this->kinds->all();
 	    
         return view('admin.products.allProducts',compact('items'), compact('kinds'));
     }
@@ -29,11 +44,9 @@ class ProductsAdminController extends Controller
     }
 
     public function store(Request $request){
-    	$this->validate($request, [
-    			'image' => 'required|image|mimes:jpeg,jpg|max:2048',
-    	]);
     	
     	if(Input::file()){
+    	    $this->validator($request->all())->validate();
     		Items::create($request->all());
     		
     		foreach(Items::where('product',$request->product)->cursor() as $id){	
