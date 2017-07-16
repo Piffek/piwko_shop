@@ -18,9 +18,12 @@ use App\Repositories\KindsRepository as KindsRepo;
 class ProductsAdminController extends Controller
 {
     
-    public function __construct(ItemRepository $item, KindsRepo $kinds){
+    public function __construct(ItemRepository $item, KindsRepo $kinds,  Request $request){
         $this->item = $item;
         $this->kinds = $kinds;
+        $this->percent_promotion = $request->percent_promotion ? $request->percent_promotion : '0' ;
+        $this->promotion = $request->promotion ? $request->promotion : 'nie' ;
+        $this->text_promotion = $request->text_promotion ? $request->text_promotion : '0';
     }
     
     protected function validator(array $data){
@@ -47,7 +50,11 @@ class ProductsAdminController extends Controller
     	
     	if(Input::file()){
     	    $this->validator($request->all())->validate();
-    		Items::create($request->all());
+    	    $this->item->create([
+    	        'percent_promotion' => $this->percent_promotion,
+    	        'promotion' => $this->promotion,
+    	        'text_promotion' => $this->text_promotion,
+    	    ] + $request->all());
     		
     		foreach(Items::where('product',$request->product)->cursor() as $id){	
     			$photo_id = $id->id;

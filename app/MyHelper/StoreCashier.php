@@ -8,9 +8,14 @@ use App\Buyings;
 use App\Jobs\MailingLogon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MailToOwner;
+use App\Repositories\ItemsRepository as Item;
 
 class StoreCashier
 {
+    public function __construct(Item $item){
+        $this->item = $item;
+    }
+    
 	public function checkout($adress_delivery){
 		$baskets = Baskets::where('id_user', Auth::user()->id)->get();
 		foreach($baskets as $basket){
