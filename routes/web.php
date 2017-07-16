@@ -142,7 +142,7 @@ Route::group([
 	]);
 	Route::post('/admin/edit_customers/update/{id}', [
 			'as'=>'adminEditCustomers',
-			'uses','AdminFunctions\CustomerAdminController@update'
+			'uses'=>'AdminFunctions\CustomerAdminController@update'
 	]);
 	Route::get('/admin/edit_customers/{id}', [
 			'as'=>'adminEditOneCustomer',

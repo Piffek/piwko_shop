@@ -5,15 +5,16 @@ namespace App\Http\Controllers\AdminFunctions;
 use Illuminate\Http\Request;
 use App\Repositories\RolesRepository as Roles;
 use App\Repositories\RolesHasUsersRepository as RolesHasUser;
-use App\Repositories\UserRepository as User;
+use App\Repositories\UserRepository as UserRepo;
 use App\Http\Controllers\Controller;
 use View;
 use Carbon\Carbon;
 use Session;
+use App\User;
 
 class CustomerAdminController extends Controller
 {
-    public function __construct(User $user, Roles $roles, RolesHasUser $rolesHasUser){
+    public function __construct(UserRepo $user, Roles $roles, RolesHasUser $rolesHasUser){
         $this->user = $user;
         $this->roles = $roles;
         $this->rolesHasUser = $rolesHasUser;
@@ -80,7 +81,7 @@ class CustomerAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $id){
-    	$id->update($request->all());    
+        $id->update($request->all());    
         Session::flash('success', 'Dane klienta zmieniono pomyślnie');
         return redirect()->back();
     }
