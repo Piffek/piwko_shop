@@ -11,7 +11,7 @@
 			 		<div class="col-md-3">
 				 		<div id="product">
 				 		
-				 			<img id="imageProduct" src="{{route('getPhotohomePage', ['photo'=> $item->id])}}.jpg"><br>
+				 			<img id="imageProduct" src="/zdjecia/{{$item->id}}.jpg"><br>
 				 			<div id="productBottom">
               					<b>{{ $item->product }}</b><br>
                             	{{ $item->kind}} <br>

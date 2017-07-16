@@ -16,7 +16,7 @@ class PhotoController extends Controller
 {
 	
 	public function deletePhotoDuringEdit($id){
-		Storage::disk('item')->delete($id.'.jpg');
+	    \File::Delete('zdjecia/'.$id.'.jpg');
 		Session::flash('success', 'Pomyslnie usunięto zdjęcie');
 		return redirect()->back();
 	}
@@ -40,7 +40,8 @@ class PhotoController extends Controller
 				$photo_id = $id->id;
 				$image = Input::File('image');
 				$filename = $id->id . '.' . $image->getClientOriginalExtension();
-				Storage::disk('item')->put($filename, File::get($file));
+				$img = Image::make($request->file('image'))->resize(200, 200);
+				$img->save(public_path('zdjecia/'.$filename));
 			}
 			
 			Session::flash('success', 'Dodano zdjęcie');

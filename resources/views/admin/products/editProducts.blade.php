@@ -18,7 +18,7 @@
 			      			{!! csrf_field() !!}
 							Zdjęcie tego przedmiotu<br>
 							{!!Form::hidden('id',$item->id) !!}
-									<img  height="250px" width="250px"  src="{{route('getPhotohomePage', ['photo'=> $item->id])}}.jpg" >
+									<img  src="/zdjecia/{{$item->id}}.jpg" >
 							{!! Form::file('image') !!}
 							<a href="{{route('adminDeletePhoto', ['id'=>$item->id])}}" class="btn btn-danger" role="button">Usuń</a>
 							{!! Form::submit('Dodaj') !!}
@@ -90,7 +90,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 				{!! Form::label('Opis') !!}<br>
-				{!! Form::text('desc',$item->desc) !!}<br>
+				{!! Form::textarea('desc',$item->desc) !!}<br>
 		</div>
 
 	</div>

@@ -42,7 +42,9 @@ class ProductsAdminController extends Controller
     			$file = $request->file('image');
 	    		$image = Input::File('image');
 	    		$filename = $id->id . '.' . $image->getClientOriginalExtension();
-	    		Storage::disk('item')->put($filename, File::get($file));
+	    	    
+	    		$img = Image::make($request->file('image'))->resize(250, 250);
+	    		$img->save(public_path('zdjecia/'.$filename));
     		}
     		Session::flash('success','Dodaj miniaturki');
     		return view('admin.photo.AddPhotoGallery', compact('photo_id'));
