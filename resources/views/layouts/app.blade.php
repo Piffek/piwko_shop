@@ -23,6 +23,7 @@
                   
                    
         <section>
+            @include('partials._script')
 		    @include('partials._footer')
 	    </section>  
     </body>
