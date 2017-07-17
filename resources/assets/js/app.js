@@ -19,5 +19,5 @@ require('./components/addToDoListToDB');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: 'body'
+    el: '#body'
 });
