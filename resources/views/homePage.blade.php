@@ -3,7 +3,6 @@
 
 @section('content')
 
-
 				<center>
 				<div class="container">
 					<div class="row">

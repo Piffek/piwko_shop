@@ -117,7 +117,7 @@
 </div>
         </nav>
 
-<div id="bannerTop"></div>  
+@include('partials._firstPositionInHomePage');
 
 
 

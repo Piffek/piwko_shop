@@ -4,24 +4,25 @@ body, html{
 	overflow:hidden;
 }
 
-#top .menuTop{
-	color:#808080;
-	text-decoration:none;
-	cursor:pointer;
-	font-size: 15px;
-	height:45px;
-}
-
-
 #top{
 	display:block;
 	margin-top:-100px;
+    
+    .menuTop:hover{
+        background-color:#808080;
+        color:white;
+    }
+    
+    .menuTop{
+        color:#808080;
+        text-decoration:none;
+        cursor:pointer;
+        font-size: 15px;
+        height:45px;
+    }
+
 }
 
-#top .menuTop:hover{
-	background-color:#808080;
-	color:white;
-}
 
 #bannerTop{
 	height:100vh;

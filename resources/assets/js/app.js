@@ -9,6 +9,7 @@ require('./bootstrap');
 require('./components/addToDoListToDB');
 require('./components/scrolling');
 require('./components/addToDoListToDB');
+require('./components/inputInHomePage');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
