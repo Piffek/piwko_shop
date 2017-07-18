@@ -8,15 +8,46 @@ article{
     margin-top: 100px;
     text-align: center;
     display: flex;
+    font-size: 15px;
     & > :nth-child(1){
         flex: 1 0 50%;
+        width:50vw;
     }
     
-    & > :nth-child(1){
-        flex: 1 0 50%;
+    & > :nth-child(2){
+        flex: 2 0 50%;
+        width:50vw;
     }
     
+    p::first-letter{
+        color:royalblue;
+        font-size: 50px;
+    }
+    animation-name: ex;
+    animation-duration: 3s;
+    
+}
 
+.flex-item{
+    width: 100px;
+}
 
+@keyframes ex {
+    from {margin-top: -150px;}
+    to {margin-top: 100px;}
+}
 
+@media screen and (max-width:1000px){
+    article{
+       flex-wrap: wrap;
+        & > :nth-child(1){
+            width:100vw;
+            display: block; 
+        }
+
+        & > :nth-child(2){
+            width:100vw;
+            display: block;
+        }
+    }
 }
