@@ -3,13 +3,19 @@
     <h1>Tytuł Strony</h1>
 </header>
 <article> 
-        <p class="flex-item">firstDescfirstDescfirstDescfirstDescfirstDescfirstDescfirs
-        tDescfirstDescfirstDescfirstDescfirstDescfirstD
+        <p>firstDescfirstDescfirstDescfirst
+        DescfirstDescfirstDescfirs
+        tDescfirstDescfirstDescfirstDescf
+        irstDescfirstD
         escfirstDescfirstDescfirstDescfirstDesc
         </p>
     
-        <p class="flex-item">firstDescfirstDescfirstDescfirstDescfirstDescfirstDescfirs
-        tDescfirstDescfirstDescfirstDescfirstDescfirstDescfirstDescfirstDescfirstDescfirstDesc
-        firstDescfirstDescfirstDescfirstDescfirstDescfirstDescfirstDescfirstDescirstDescfirst</p>
+        <p>firstDescfirstDescfirstDescfir
+        stDescfirstDescfirstDescfirs
+        tDescfirstDescfirstDescfirstDescfirstDescf
+        irstDescfirstDescfirstDescfirstDescfirstDesc
+        firstDescfirstDescfirstDesc
+        firstDescfirstDescfirstDescfirstDescf
+        irstDescirstDescfirst</p>
 </article>
 </div>  

@@ -36,15 +36,21 @@ article{
 
 @media screen and (max-width:1000px){
     article{
-       flex-wrap: wrap;
+        font-size: 12px;
+        flex-wrap: wrap;
+        
         & > :nth-child(1){
             width:100vw;
             display: block; 
+            padding: 5px;
         }
 
         & > :nth-child(2){
             width:100vw;
             display: block;
+            padding: 5px;
         }
+        
     }
+
 }
