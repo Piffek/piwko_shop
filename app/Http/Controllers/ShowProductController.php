@@ -23,6 +23,12 @@ class ShowProductController extends Controller
     	if(is_null($items)){
     	    throw new UnidentifiedProductException;
     	}
-    	return view('showProduct.index',['items' => $items]);
+    	$directory = 'pokaz_produkt/miniaturki/%d';
+    	$files = \File::allFiles(sprintf($directory, $id));
+    	return view('showProduct.index',[
+    	    'items' => $items,
+    	    'files' => $files,
+    	    
+    	]);
     }
 }

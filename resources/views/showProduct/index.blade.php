@@ -6,24 +6,8 @@
 		<div  class="panel panel-default">
 			<div class="panel-body text-center">
 			<div id="galeria"></div>	
-					<?php 
-					$zdjecie=$items->id;
-					$katalog = "pokaz_produkt/miniaturki/$zdjecie";
-					$katalogminiaturki = "pokaz_produkt/miniaturki/$zdjecie";
-					$galeria = opendir( $katalog );
-					while ( $zdjecie = readdir( $galeria ) )
-					{
-
-						$odczyt = pathinfo( $katalog.'/'.$zdjecie );
-						if ( $odczyt['extension']  == 'jpg' )
-						{
-
-							echo '<a href="/'.$katalog.'/'.$zdjecie.'" class="highslide" onclick="return hs.expand(this)" title="Zdjęcie: '.$zdjecie.'"><img width="200" height="133" src="/'.$katalogminiaturki.'/'.$zdjecie.'" alt="Zdjęcie: '.$zdjecie.'" /></a>';
-						}
-
-					}
-					closedir($galeria);
-				?>	
+			
+					
 				<div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">    
 				<div class="col-md-6 col-md-offset-3">
 				@if(Auth::check())
@@ -50,6 +34,9 @@
 						Tego produktu aktualnie nie ma w magazynie
 					@endif
 				@else
+				@foreach($files as $file)
+			        <a href="/{{ $file }}" class="highslide" onclick="return hs.expand(this)"><img width="200" height="133" src="/ {{ $file }}" /></a>
+			    @endforeach
 					@if($items->amount > 0)
 						Ilosc:
 						{!! Form::open(['route' => ['addToGuestBasket', $items->id ]]) !!}
